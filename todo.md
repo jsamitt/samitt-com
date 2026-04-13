@@ -1,4 +1,4 @@
-# Samitt.com — Open Items
+# Samitt.co — Open Items
 
 ## Placeholders
 
@@ -13,11 +13,9 @@
 
 - [x] **Email field added** — Form now collects name, email, company, and message
 - [x] **API route created** — `src/app/api/contact/route.ts` handles POST requests
-- [ ] **Connect email service** — The API route logs submissions but doesn't send email yet. To enable:
-  1. `npm install resend`
-  2. Add `RESEND_API_KEY` to Vercel environment variables
-  3. Uncomment the Resend block in `src/app/api/contact/route.ts`
-- [ ] **Spam protection** — Add honeypot field or reCAPTCHA once the form is live
+- [x] **Email delivery live** — Resend connected, submissions go to Gmail with reply-to set
+- [ ] **Verify sending domain** — Currently sends from `onboarding@resend.dev`. Verify `samitt.co` in Resend to send from `jeff@samitt.co`
+- [ ] **Spam protection** — Add honeypot field or reCAPTCHA if spam becomes a problem
 
 ## Analytics
 
@@ -27,19 +25,11 @@
 ## SEO
 
 - [x] **robots.txt** — Auto-generated via `src/app/robots.ts`
-- [x] **sitemap.xml** — Auto-generated via `src/app/sitemap.ts`
-- [ ] **Update sitemap URL** — Currently hardcoded to `samitt.com`. Update if using a different domain.
+- [x] **sitemap.xml** — Auto-generated via `src/app/sitemap.ts` (using `samitt.co`)
 
 ## Deployment
 
 - [x] **GitHub repo** — https://github.com/jsamitt/samitt-com
-- [ ] **Deploy to Vercel** — Import the repo at https://vercel.com/new
-- [ ] **Domain setup (samitt.com)**:
-  1. Purchase `samitt.com` from a registrar (Namecheap, Cloudflare, etc.)
-  2. In Vercel dashboard: Project Settings > Domains > Add `samitt.com`
-  3. Configure DNS at the registrar:
-     - `A` record → `76.76.21.21` (apex domain)
-     - `CNAME` record → `cname.vercel-dns.com` (for `www`)
-  4. SSL is provisioned automatically by Vercel
-  5. Set up `www` → apex redirect in Vercel
-- [ ] **Email forwarding** — If you want `jeff@samitt.com`, set up email forwarding or Google Workspace on the domain while configuring DNS
+- [x] **Deployed to Vercel** — samitt-com.vercel.app
+- [x] **Domain** — samitt.co (Cloudflare registrar, DNS pointing to Vercel)
+- [x] **Email forwarding** — jeff@samitt.co → Gmail via Cloudflare Email Routing

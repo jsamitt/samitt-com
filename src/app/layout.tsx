@@ -12,6 +12,7 @@ const inter = Inter({
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://samitt.co"),
   title: "Jeff Samitt — AI-Native Product Executive & Builder/Operator",
   description:
     "Fractional CPO, interim product leader, and hands-on builder. I embed, lead, and ship for growth-stage companies.",
