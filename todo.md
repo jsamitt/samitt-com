@@ -2,7 +2,7 @@
 
 ## Placeholders
 
-- [ ] **Article links** — Both articles in the Thinking section link to `#` instead of real URLs. Replace with actual LinkedIn post / PDF links once published.
+- [ ] **Article links** — Both articles in the Thinking section link to `#`. Replace with actual LinkedIn post / PDF links once published.
   - "Most Product Teams Are Still Staffed Like It's 2020" (`src/lib/data.ts`, line 181)
   - "Product Mindset in the AI Era" (`src/lib/data.ts`, line 187)
 - [ ] **GitHub repos** — The four repo cards are static placeholder data. Options: replace with real repo names/descriptions, or fetch live from the GitHub API (`src/lib/data.ts`, `githubRepos` array)
@@ -11,19 +11,35 @@
 
 ## Contact Form
 
-- [ ] **Form backend** — The contact form currently shows a client-side "Thanks for reaching out" message but doesn't actually send data anywhere. Options:
-  - Add a Next.js API route (`src/app/api/contact/route.ts`) that forwards to an email service (Resend, SendGrid, etc.)
-  - Use a third-party form service (Formspree, Netlify Forms, Basin)
-  - Connect to a CRM (HubSpot form endpoint)
-- [ ] **Form validation** — Add email field if desired; add client-side validation beyond `required`
+- [x] **Email field added** — Form now collects name, email, company, and message
+- [x] **API route created** — `src/app/api/contact/route.ts` handles POST requests
+- [ ] **Connect email service** — The API route logs submissions but doesn't send email yet. To enable:
+  1. `npm install resend`
+  2. Add `RESEND_API_KEY` to Vercel environment variables
+  3. Uncomment the Resend block in `src/app/api/contact/route.ts`
 - [ ] **Spam protection** — Add honeypot field or reCAPTCHA once the form is live
 
-## Domain Setup (samitt.com)
+## Analytics
 
-- [ ] **Register domain** — Purchase `samitt.com` from a registrar (Namecheap, Google Domains, Cloudflare Registrar, etc.)
-- [ ] **Connect to Vercel** — In the Vercel dashboard, go to Project Settings > Domains and add `samitt.com`
-- [ ] **Configure DNS** — Point the domain's DNS to Vercel:
-  - `A` record: `76.76.21.21` (for apex domain `samitt.com`)
-  - `CNAME` record: `cname.vercel-dns.com` (for `www.samitt.com`)
-- [ ] **SSL** — Vercel provisions a free SSL certificate automatically once DNS propagates
-- [ ] **Redirect** — Set up `www.samitt.com` → `samitt.com` redirect in Vercel (or vice versa)
+- [x] **Google Analytics wired up** — Just needs the measurement ID
+- [ ] **Set GA measurement ID** — Add `NEXT_PUBLIC_GA_ID` environment variable in Vercel (e.g. `G-XXXXXXXXXX`)
+
+## SEO
+
+- [x] **robots.txt** — Auto-generated via `src/app/robots.ts`
+- [x] **sitemap.xml** — Auto-generated via `src/app/sitemap.ts`
+- [ ] **Update sitemap URL** — Currently hardcoded to `samitt.com`. Update if using a different domain.
+
+## Deployment
+
+- [x] **GitHub repo** — https://github.com/jsamitt/samitt-com
+- [ ] **Deploy to Vercel** — Import the repo at https://vercel.com/new
+- [ ] **Domain setup (samitt.com)**:
+  1. Purchase `samitt.com` from a registrar (Namecheap, Cloudflare, etc.)
+  2. In Vercel dashboard: Project Settings > Domains > Add `samitt.com`
+  3. Configure DNS at the registrar:
+     - `A` record → `76.76.21.21` (apex domain)
+     - `CNAME` record → `cname.vercel-dns.com` (for `www`)
+  4. SSL is provisioned automatically by Vercel
+  5. Set up `www` → apex redirect in Vercel
+- [ ] **Email forwarding** — If you want `jeff@samitt.com`, set up email forwarding or Google Workspace on the domain while configuring DNS
