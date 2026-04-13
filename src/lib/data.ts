@@ -178,13 +178,13 @@ export const articles: Article[] = [
     title: "Most Product Teams Are Still Staffed Like It\u2019s 2020",
     excerpt:
       "AI hasn\u2019t just made product teams faster. It\u2019s reshaping who\u2019s on the team, what each person does, and what good product leadership looks like.",
-    link: "#",
+    link: "https://www.linkedin.com/posts/jeffsamitt_most-product-teams-are-still-staffed-like-share-7441921133764853760-nnNt",
   },
   {
     title: "Product Mindset in the AI Era",
     excerpt:
       "The foundations haven\u2019t changed \u2014 empowered teams, customer obsession, outcome focus. But the team model has to evolve.",
-    link: "#",
+    link: "https://www.linkedin.com/in/jeffsamitt/overlay/1774289085235/single-media-viewer/?profileId=ACoAAAAZ4lYBhUjliXNxwOnxwx78WRVO5BEeW0w",
   },
 ];
 
