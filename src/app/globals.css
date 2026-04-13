@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-navy-900: #1B3A5C;
+  --color-navy-800: #224A72;
+  --color-navy-700: #2A5A88;
+  --color-teal: #0D7C8F;
+  --color-teal-light: #10A3BB;
+  --color-mint: #02C39A;
+  --color-mint-light: #33D4B0;
+  --color-offwhite: #F4F7F9;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-navy-900);
+  color: var(--color-offwhite);
+  font-family: var(--font-sans);
+}
+
+/* Dot grid background for hero */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(13, 124, 143, 0.25) 1px, transparent 1px);
+  background-size: 32px 32px;
+  animation: dot-drift 20s ease-in-out infinite alternate;
+}
+
+@keyframes dot-drift {
+  0% {
+    background-position: 0 0;
+    opacity: 0.4;
+  }
+  50% {
+    background-position: 16px 16px;
+    opacity: 0.6;
+  }
+  100% {
+    background-position: 0 32px;
+    opacity: 0.4;
+  }
+}
+
+/* Smooth scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-navy-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy-700);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-teal);
 }
