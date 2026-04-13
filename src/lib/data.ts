@@ -142,28 +142,45 @@ export interface GitHubRepo {
   name: string;
   description: string;
   language: string;
+  isPublic: boolean;
 }
 
 export const githubRepos: GitHubRepo[] = [
   {
-    name: "samitt-com",
-    description: "Personal website — this site",
+    name: "email-triage",
+    description: "AI-powered email triage for a shared Gmail inbox — classifies, summarizes, and drafts replies",
     language: "TypeScript",
+    isPublic: true,
   },
   {
-    name: "ai-email-triage",
-    description: "AI-powered email categorization and reply drafting",
-    language: "Python",
+    name: "awaire",
+    description: "Mobile web app for construction worker safety — heat stress monitoring, WBGT calculation, and predictive alerts",
+    language: "TypeScript",
+    isPublic: false,
   },
   {
     name: "latin-lives",
-    description: "Gamified Latin language learning app",
+    description: "Gamified Latin language learning app with teacher dashboard and lesson capture",
     language: "TypeScript",
+    isPublic: false,
   },
   {
     name: "wordella",
-    description: "Early literacy spelling app for kids",
+    description: "Early literacy spelling and reading app for young children",
     language: "TypeScript",
+    isPublic: false,
+  },
+  {
+    name: "samitt-com",
+    description: "This site — personal website built with Next.js and Tailwind",
+    language: "TypeScript",
+    isPublic: true,
+  },
+  {
+    name: "heat-relief-and-hydration-calculator",
+    description: "Web calculator for work schedule and hydration break recommendations",
+    language: "JavaScript",
+    isPublic: true,
   },
 ];
 
