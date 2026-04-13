@@ -23,7 +23,7 @@ export async function POST(request: Request) {
   try {
     const resend = new Resend(apiKey);
     await resend.emails.send({
-      from: "Samitt.co Contact <onboarding@resend.dev>",
+      from: "Samitt.co Contact <jeff@samitt.co>",
       to: "jsamitt@gmail.com",
       replyTo: email,
       subject: `Contact form: ${name}${company ? ` from ${company}` : ""}`,
