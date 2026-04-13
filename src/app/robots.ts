@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://samitt.com/sitemap.xml",
+    sitemap: "https://samitt.co/sitemap.xml",
   };
 }
