@@ -242,5 +242,5 @@ export const timeline: TimelineEntry[] = [
 export const socialLinks = {
   linkedin: "https://linkedin.com/in/jeffsamitt",
   github: "https://github.com/jsamitt",
-  email: "mailto:jsamitt@gmail.com",
+  email: "mailto:jeff@samitt.co",
 };
