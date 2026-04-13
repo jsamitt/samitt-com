@@ -140,6 +140,7 @@ export const currentBuilds: CurrentBuild[] = [
 
 export interface GitHubRepo {
   name: string;
+  slug: string;
   description: string;
   language: string;
   isPublic: boolean;
@@ -147,37 +148,43 @@ export interface GitHubRepo {
 
 export const githubRepos: GitHubRepo[] = [
   {
-    name: "email-triage",
-    description: "AI-powered email triage for a shared Gmail inbox — classifies, summarizes, and drafts replies",
+    name: "Email-triage",
+    slug: "email-triage",
+    description: "AI-powered email triage for a shared Gmail inbox — ingests, classifies, summarizes, and drafts AI-generated replies that learn over time",
     language: "TypeScript",
     isPublic: true,
   },
   {
-    name: "awaire",
-    description: "Mobile web app for construction worker safety — heat stress monitoring, WBGT calculation, and predictive alerts",
+    name: "Awaire",
+    slug: "awaire",
+    description: "Mobile & web app for construction worker safety — workforce heat stress monitoring, predictive alerts, and regulatory compliance",
     language: "TypeScript",
     isPublic: false,
   },
   {
-    name: "latin-lives",
+    name: "Latin-lives",
+    slug: "latin-lives",
     description: "Gamified Latin language learning app with teacher dashboard and lesson capture",
     language: "TypeScript",
     isPublic: false,
   },
   {
-    name: "wordella",
+    name: "Wordella",
+    slug: "wordella",
     description: "Early literacy spelling and reading app for young children",
     language: "TypeScript",
     isPublic: false,
   },
   {
-    name: "samitt-com",
+    name: "Samitt.co",
+    slug: "samitt-com",
     description: "This site — personal website built with Next.js and Tailwind",
     language: "TypeScript",
     isPublic: true,
   },
   {
-    name: "heat-relief-and-hydration-calculator",
+    name: "Heat-relief-and-hydration-calculator",
+    slug: "heat-relief-and-hydration-calculator",
     description: "Web calculator for work schedule and hydration break recommendations",
     language: "JavaScript",
     isPublic: true,

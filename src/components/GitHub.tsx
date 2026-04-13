@@ -44,7 +44,7 @@ function RepoCard({ repo }: { repo: (typeof githubRepos)[number] }) {
   if (repo.isPublic) {
     return (
       <a
-        href={`${socialLinks.github}/${repo.name}`}
+        href={`${socialLinks.github}/${repo.slug}`}
         target="_blank"
         rel="noopener noreferrer"
         className={`${baseClass} hover:border-teal/50 hover:-translate-y-1`}
