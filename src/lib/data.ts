@@ -165,14 +165,14 @@ export const githubRepos: GitHubRepo[] = [
     name: "Latin-lives",
     slug: "latin-lives",
     description: "Gamified Latin language learning app with teacher dashboard and lesson capture",
-    language: "TypeScript",
+    language: "Swift",
     isPublic: false,
   },
   {
     name: "Wordella",
     slug: "wordella",
     description: "Early literacy spelling and reading app for young children",
-    language: "TypeScript",
+    language: "React Native",
     isPublic: false,
   },
   {

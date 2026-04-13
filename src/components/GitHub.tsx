@@ -6,6 +6,8 @@ const langColors: Record<string, string> = {
   TypeScript: "bg-blue-400",
   Python: "bg-yellow-400",
   JavaScript: "bg-yellow-300",
+  Swift: "bg-orange-400",
+  "React Native": "bg-sky-400",
 };
 
 function RepoCard({ repo }: { repo: (typeof githubRepos)[number] }) {
