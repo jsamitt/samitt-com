@@ -139,7 +139,7 @@ export const currentBuilds: CurrentBuild[] = [
   {
     name: "Latin Lives",
     description:
-      "A Latin language learning app for high school students. Features photo/upload capture of teacher lesson materials, and creates gamified learning modules for vocabulary, sentences, declensions, and culture topics. Includes a teacher dashboard for tracking student usage and progress.",
+      "A Latin language learning app for high school students. Features photo/upload capture of teacher lesson materials, and creates gamified learning modules for vocabulary, grammar, and culture topics. Includes a teacher dashboard for tracking student progress.",
     status: "In Beta testing",
     builtWith: "AI-assisted vibe coding tools, Claude API",
   },
