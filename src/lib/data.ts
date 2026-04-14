@@ -150,7 +150,7 @@ export const githubRepos: GitHubRepo[] = [
   {
     name: "Email-triage",
     slug: "email-triage",
-    description: "AI-powered email triage for a shared Gmail inbox — ingests, classifies, summarizes, and drafts AI-generated replies that learn over time",
+    description: "AI-powered email triage agent for a shared Gmail inbox — ingests, classifies, summarizes, and drafts AI-generated replies that learn over time",
     language: "TypeScript",
     isPublic: true,
   },
