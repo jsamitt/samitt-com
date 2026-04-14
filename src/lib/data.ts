@@ -148,7 +148,7 @@ export interface GitHubRepo {
 
 export const githubRepos: GitHubRepo[] = [
   {
-    name: "Email-triage",
+    name: "Email triage agent",
     slug: "email-triage",
     description: "AI-powered email triage agent for a shared Gmail inbox — ingests, classifies, summarizes, and drafts AI-generated replies that learn over time",
     language: "TypeScript",
@@ -162,7 +162,7 @@ export const githubRepos: GitHubRepo[] = [
     isPublic: false,
   },
   {
-    name: "Latin-lives",
+    name: "Latin Lives",
     slug: "latin-lives",
     description: "Gamified Latin language learning app with teacher dashboard and lesson capture",
     language: "Swift",
@@ -183,7 +183,7 @@ export const githubRepos: GitHubRepo[] = [
     isPublic: true,
   },
   {
-    name: "Heat-relief-and-hydration-calculator",
+    name: "Heat relief & hydration calculator",
     slug: "heat-relief-and-hydration-calculator",
     description: "Web calculator for work schedule and hydration break recommendations",
     language: "JavaScript",
