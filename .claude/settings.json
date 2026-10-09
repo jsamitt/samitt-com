@@ -1,0 +1,6 @@
+{
+  "extraKnownMarketplaces": {
+    "proof": { "source": { "source": "github", "repo": "jsamitt/proof-claude-plugin" } }
+  },
+  "enabledPlugins": { "proof@proof": true }
+}
