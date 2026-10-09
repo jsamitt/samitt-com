@@ -1,0 +1,119 @@
+{
+  "$schema": "proof/harness-config@1",
+  "project": {
+    "name": "Samitt.com",
+    "summary": "Jeff Samitt's personal site at samitt.co — a single-page Next.js portfolio for recruiters, founders and execs, with a Resend-backed contact form.",
+    "docs": [
+      "CLAUDE.md",
+      "AGENTS.md",
+      "todo.md"
+    ]
+  },
+  "goals": [
+    "Win consulting and role leads through the contact form",
+    "Showcase what I'm building — keep Currently Building, GitHub and Selected Work current and credible"
+  ],
+  "commands": {
+    "test": null,
+    "typecheck": "npx tsc --noEmit",
+    "lint": "npm run lint",
+    "build": "npm run build",
+    "run": "npm run dev"
+  },
+  "verify": {
+    "on_stop": false,
+    "steps": [
+      "typecheck",
+      "build"
+    ],
+    "manual": [
+      "Open the Vercel preview (or npm run dev) and eyeball the changed sections at desktop and phone width",
+      "If the contact form or /api/contact changed: submit a real test message on the preview and confirm it arrives in Gmail with reply-to set"
+    ]
+  },
+  "board": {
+    "enabled": true,
+    "name": "Samitt.com",
+    "field": "Status",
+    "stages": {
+      "backlog": "Backlog",
+      "spec_draft": "Spec Draft",
+      "ready": "Ready to Dev",
+      "in_dev": "In Dev",
+      "in_review": "In Review",
+      "shipped": "Shipped"
+    }
+  },
+  "labels": {
+    "ready": "ready-to-dev",
+    "in_progress": "in-progress",
+    "discovered": "discovered",
+    "blocked": "blocked",
+    "p1": "P1",
+    "p2": "P2",
+    "p3": "P3",
+    "investigate": "needs-investigation",
+    "needs_design": "needs-design"
+  },
+  "voice": {
+    "audience": null
+  },
+  "review": {
+    "lenses": [
+      "correctness",
+      "breaker",
+      "risk"
+    ],
+    "risk_focus": [
+      "Contact form delivery: /api/contact must keep sending via Resend from jeff@samitt.co to jsamitt@gmail.com with reply-to set; a silent failure means lost leads with no alert.",
+      "RESEND_API_KEY and NEXT_PUBLIC_GA_ID live in Vercel env vars; changes must never hardcode, log or expose the Resend key client-side.",
+      "Contact form abuse: the endpoint has no rate limit, honeypot or input length caps; changes must not widen this, and anything touching it should consider spam burning Resend quota or getting samitt.co flagged.",
+      "Every push to main deploys straight to production on Vercel with no staging gate; a change that builds but renders broken, or breaks metadata/OG image/sitemap/robots, goes live immediately."
+    ]
+  },
+  "design": {
+    "tokens": "src/app/globals.css",
+    "reference": null,
+    "platform": "web",
+    "rules": [
+      "Use the @theme colour tokens (navy-900/800/700, teal, teal-light, mint, mint-light, offwhite) — no ad-hoc hex values",
+      "Layout must work at phone width with no horizontal scroll"
+    ]
+  },
+  "ship": {
+    "preflight": [
+      "typecheck",
+      "build"
+    ],
+    "steps": [
+      {
+        "name": "Merge the PR to main",
+        "run": null
+      },
+      {
+        "name": "Vercel auto-deploys main — wait for the deployment to go green in the Vercel dashboard",
+        "run": null
+      },
+      {
+        "name": "Smoke test samitt.co",
+        "run": "curl -sSfL -o /dev/null -w '%{http_code}' https://samitt.co",
+        "expect": "200"
+      }
+    ],
+    "version_files": [],
+    "changelog": null,
+    "store_notes": false
+  },
+  "learnings": {
+    "file": "DECISIONS.md"
+  },
+  "protected_paths": [
+    "**/.env*",
+    "**/*.pem",
+    "**/*.key"
+  ],
+  "branch": {
+    "base": "main",
+    "prefix": "feat/"
+  }
+}
