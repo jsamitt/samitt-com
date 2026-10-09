@@ -76,7 +76,10 @@
     "reference": null,
     "platform": "web",
     "rules": [
-      "Use the @theme colour tokens (navy-900/800/700, teal, teal-light, mint, mint-light, offwhite) — no ad-hoc hex values",
+      "Marigold (accent) is only ever a fill behind ink text, never a text colour on light backgrounds — it measures 1.7:1 on page and is unreadable",
+      "Outline form fields with the field token, never rule — rule is 1.35:1 against page and invisible as a control boundary",
+      "Use the role tokens (page, surface, band, ink, ink-muted, rule, field, accent, on-dark…) for colour; no raw hex or Tailwind palette colours (white/10, gray-400) in components. Legacy navy/teal/mint tokens are for unmigrated code only",
+      "Headings and figures use font-display (Bricolage Grotesque); body text uses font-body (Figtree)",
       "Layout must work at phone width with no horizontal scroll"
     ]
   },

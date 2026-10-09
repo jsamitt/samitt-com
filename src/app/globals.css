@@ -1,6 +1,29 @@
 @import "tailwindcss";
 
 @theme inline {
+  /* Design tokens — named by role. Use these in all new and migrated code.
+     Approved 2026-10-09 (canvas: https://claude.ai/artifact/XiJbYorS6Z7vBHQMvL8oBr). */
+  --color-page: #F1F4EE;          /* page background */
+  --color-surface: #FFFFFF;       /* raised sections, cards, form fields */
+  --color-band: #DDE7DA;          /* tinted section band, soft fills */
+  --color-ink: #14302B;           /* text, primary buttons, heavy rules, dark section */
+  --color-ink-muted: #3E5852;     /* secondary text, labels, descriptions */
+  --color-rule: #C9D6CD;          /* hairline dividers — decorative, never a control's only boundary */
+  --color-field: #78927F;         /* form field borders (3.4:1 on surface) */
+  --color-accent: #F2B135;        /* fill behind ink text only — never text on light backgrounds */
+  --color-on-dark: #F1F4EE;       /* text on ink */
+  --color-on-dark-muted: #C5D4CD; /* secondary text on ink */
+  --color-dark-rule: #2C4A44;     /* dividers on ink */
+  --color-positive: #2E8B57;      /* availability / positive status */
+
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-body: var(--font-figtree), system-ui, sans-serif;
+
+  --radius-card: 24px;
+  --radius-field: 14px;
+
+  /* Legacy — the pre-2026 navy/teal/mint palette. Still used by the live
+     components; remove once every section is migrated to the tokens above. */
   --color-navy-900: #1B3A5C;
   --color-navy-800: #224A72;
   --color-navy-700: #2A5A88;
