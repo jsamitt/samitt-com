@@ -2,75 +2,85 @@ import { githubRepos, socialLinks } from "@/lib/data";
 import { SectionHeading } from "./SectionHeading";
 import { FadeIn } from "./FadeIn";
 
+// Language dots are data, not brand colours; the language name always sits
+// beside the dot, so colour is never the only cue.
 const langColors: Record<string, string> = {
-  TypeScript: "bg-blue-400",
-  Python: "bg-yellow-400",
-  JavaScript: "bg-yellow-300",
-  Swift: "bg-orange-400",
-  "React Native": "bg-sky-400",
+  TypeScript: "#3B6EA8",
+  Swift: "#E07A3F",
+  "React Native": "#4FA3C7",
+  JavaScript: "#D9B43C",
 };
 
 function RepoCard({ repo }: { repo: (typeof githubRepos)[number] }) {
-  const inner = (
-    <>
-      <div className="flex items-center gap-2 mb-3">
-        {repo.isPublic ? (
-          <svg className="w-4 h-4 text-offwhite/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
-          </svg>
-        ) : (
-          <svg className="w-4 h-4 text-offwhite/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-          </svg>
-        )}
-        <h3 className="text-sm font-bold text-teal">{repo.name}</h3>
-        {!repo.isPublic && (
-          <span className="text-[10px] font-medium text-offwhite/30 border border-offwhite/15 rounded px-1.5 py-0.5">
-            Private
-          </span>
+  return (
+    <article className="h-full p-7 rounded-card border border-rule bg-surface flex flex-col gap-3">
+      <div className="flex items-center justify-between gap-3">
+        <h3 className="font-display font-bold text-[22px] leading-tight">
+          {repo.name}
+        </h3>
+        <span
+          className={`shrink-0 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[13px] font-semibold ${
+            repo.isPublic ? "bg-band" : "bg-page"
+          }`}
+        >
+          {!repo.isPublic && (
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="5" y="11" width="14" height="10" rx="2" />
+              <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+            </svg>
+          )}
+          {repo.isPublic ? "Public" : "Private"}
+        </span>
+      </div>
+      <p className="grow text-base text-ink-muted">{repo.description}</p>
+      <div className="pt-3 border-t border-band flex items-center justify-between gap-3 text-[15px]">
+        <span className="inline-flex items-center gap-2 text-ink-muted">
+          <span
+            aria-hidden="true"
+            className="w-2.5 h-2.5 rounded-full"
+            style={{ background: langColors[repo.language] ?? "var(--color-field)" }}
+          />
+          {repo.language}
+        </span>
+        {repo.isPublic && (
+          <a
+            href={`${socialLinks.github}/${repo.slug}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold underline underline-offset-4 decoration-2 decoration-accent"
+          >
+            View repo →
+          </a>
         )}
       </div>
-      <p className="text-offwhite/60 text-sm mb-4 leading-relaxed">
-        {repo.description}
-      </p>
-      <div className="flex items-center gap-2">
-        <span className={`w-3 h-3 rounded-full ${langColors[repo.language] || "bg-gray-400"}`} />
-        <span className="text-xs text-offwhite/50">{repo.language}</span>
-      </div>
-    </>
+    </article>
   );
-
-  const baseClass =
-    "flex flex-col h-full p-6 rounded-xl bg-white/5 border border-white/10 transition-all duration-300";
-
-  if (repo.isPublic) {
-    return (
-      <a
-        href={`${socialLinks.github}/${repo.slug}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${baseClass} hover:border-teal/50 hover:-translate-y-1`}
-      >
-        {inner}
-      </a>
-    );
-  }
-
-  return <div className={baseClass}>{inner}</div>;
 }
 
 export function GitHub() {
   return (
-    <section id="github" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="github" className="bg-surface">
+      <div className="max-w-[1200px] mx-auto px-5 lg:px-8 py-24">
         <FadeIn>
-          <SectionHeading number="04"
-            title="On GitHub"
-            subtitle="Public repos and private projects"
-          />
+          <div className="mb-12 flex flex-wrap items-end justify-between gap-x-12 gap-y-4">
+            <SectionHeading number="04" title="On GitHub" className="" />
+            <p className="max-w-[420px] text-ink-muted">
+              Public repos and private projects.
+            </p>
+          </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-5">
           {githubRepos.map((repo, i) => (
             <FadeIn key={repo.name} delay={i * 80}>
               <RepoCard repo={repo} />
@@ -78,20 +88,15 @@ export function GitHub() {
           ))}
         </div>
 
-        <FadeIn delay={400}>
-          <div className="mt-10 text-center">
-            <a
-              href={socialLinks.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold border border-offwhite/20 rounded-lg text-offwhite/70 hover:text-mint hover:border-mint transition-colors"
-            >
-              View all on GitHub
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-              </svg>
-            </a>
-          </div>
+        <FadeIn>
+          <a
+            href={socialLinks.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-9 inline-flex items-center min-h-12 px-6 rounded-full border-[1.5px] border-ink font-semibold"
+          >
+            View all on GitHub →
+          </a>
         </FadeIn>
       </div>
     </section>
