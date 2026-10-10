@@ -7,7 +7,7 @@ export function SelectedWork() {
     <section id="work" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <FadeIn>
-          <SectionHeading
+          <SectionHeading number="02"
             title="Selected Work"
             subtitle="A mix of executive-led initiatives and hands-on builds"
           />

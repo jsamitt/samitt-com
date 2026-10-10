@@ -7,7 +7,7 @@ export function Background() {
     <section id="background" className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <FadeIn>
-          <SectionHeading title="Background" />
+          <SectionHeading number="06" title="Background" />
         </FadeIn>
 
         <div className="relative">

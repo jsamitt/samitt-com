@@ -7,7 +7,7 @@ export function Thinking() {
     <section id="thinking" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <FadeIn>
-          <SectionHeading
+          <SectionHeading number="05"
             title="Thinking"
             subtitle="Occasional writing on product, AI, and building"
           />
