@@ -37,7 +37,7 @@ export function Nav() {
     >
       <div
         className={`max-w-[1200px] mx-auto px-5 lg:px-8 flex items-center justify-between gap-4 transition-[height] duration-300 ${
-          solid ? "h-[72px]" : "h-[92px]"
+          solid ? "h-[72px]" : "h-[92px] border-b border-rule"
         }`}
       >
         <a
