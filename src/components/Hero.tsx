@@ -6,12 +6,6 @@ export function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Animated dot grid background */}
-      <div className="dot-grid absolute inset-0 pointer-events-none" />
-
-      {/* Gradient overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-navy-900/50 via-transparent to-navy-900 pointer-events-none" />
-
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <FadeIn>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
