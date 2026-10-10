@@ -149,21 +149,21 @@ export const currentBuilds: CurrentBuild[] = [
     name: "Mise en Place",
     description:
       "A freemium, AI-powered family meal planning app that gets smarter every week — building context on who's home, what they love, and how your kitchen actually works.",
-    status: "In Development",
+    status: "In development",
     builtWith: "AI-assisted vibe coding tools, Claude API",
   },
   {
     name: "Wordella",
     description:
       "A freemium mobile app for young children focused on early spelling and reading skills. Built in partnership with a design collaborator, targeting the App Store.",
-    status: "In Alpha testing",
+    status: "Alpha testing",
     builtWith: "AI-assisted vibe coding tools",
   },
   {
     name: "Latin Lives",
     description:
       "A Latin language learning app for high school students. Features photo/upload capture of teacher lesson materials, and creates gamified learning modules for vocabulary, grammar, and culture topics. Includes a teacher dashboard for tracking student progress.",
-    status: "In Beta testing",
+    status: "Beta testing",
     builtWith: "AI-assisted vibe coding tools, Claude API",
   },
 ];
