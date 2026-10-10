@@ -11,7 +11,7 @@ says what was decided, why, and when. Prune entries that stop being true.
 
 ## 2026-10-10 — Build visible keyboard focus even when the canvas doesn't draw it  ([#6](https://github.com/jsamitt/samitt-com/issues/6), [#7](https://github.com/jsamitt/samitt-com/issues/7))
 
-**Decision:** Every link and button gets a visible pine (`ink`) `focus-visible` outline, defined once in `globals.css`. Dark sections (the pine Contact section) override it with `on-dark`.
+**Decision:** Every link and button gets a visible pine (`ink`) `focus-visible` outline, defined once in `globals.css`. Dark sections (the pine Contact section) override it with `on-dark`; form fields aren't covered by the global rule and get their own visible focus style in their component.
 **Why:** The redesign artboards have no focus states, so builds made from them shipped with none — the browser default ring is easy to lose on sage and on the ink pill. Missed in #6, then repeated in #7 because the lesson lived only in an issue comment.
 **Rejected:** Marigold (`accent`) as the ring colour — 1.7:1 on page, invisible.
 
