@@ -7,7 +7,7 @@ export function CurrentBuilds() {
     <section id="building" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <FadeIn>
-          <SectionHeading
+          <SectionHeading number="03"
             title="Currently Building"
             subtitle="Independent projects — because I can't stop building things"
           />

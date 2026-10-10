@@ -64,7 +64,7 @@ export function GitHub() {
     <section id="github" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <FadeIn>
-          <SectionHeading
+          <SectionHeading number="04"
             title="On GitHub"
             subtitle="Public repos and private projects"
           />

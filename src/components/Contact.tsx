@@ -40,7 +40,7 @@ export function Contact() {
     <section id="contact" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <FadeIn>
-          <SectionHeading title="Let's Talk" />
+          <SectionHeading number="07" title="Let's Talk" />
         </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
