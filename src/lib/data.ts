@@ -140,7 +140,7 @@ export const selectedWork: WorkEntry[] = [
 export interface CurrentBuild {
   name: string;
   description: string;
-  status: string;
+  status: "In development" | "Alpha testing" | "Beta testing";
   builtWith: string;
 }
 
@@ -148,7 +148,7 @@ export const currentBuilds: CurrentBuild[] = [
   {
     name: "Mise en Place",
     description:
-      "A freemium, AI-powered family meal planning app that gets smarter every week — building context on who's home, what they love, and how your kitchen actually works.",
+      "A freemium, AI-powered family meal planning app that gets smarter every week — building context on who\u2019s home, what they love, and how your kitchen actually works.",
     status: "In development",
     builtWith: "AI-assisted vibe coding tools, Claude API",
   },

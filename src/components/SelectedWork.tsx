@@ -28,7 +28,7 @@ export function SelectedWork() {
             <FadeIn key={`${entry.company}-${i}`} delay={i * 80}>
               <article className="py-10 border-b border-rule flex flex-wrap gap-x-14 gap-y-5">
                 <div className="flex-[1_1_260px] flex flex-col items-start gap-2">
-                  <h3 className="font-display font-extrabold text-[30px] leading-tight">
+                  <h3 className="font-display font-extrabold text-[30px] leading-[1.1]">
                     {entry.company}
                   </h3>
                   <p className="text-base text-ink-muted">{entry.context}</p>

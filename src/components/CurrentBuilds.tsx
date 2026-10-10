@@ -14,7 +14,7 @@ export function CurrentBuilds() {
           />
         </FadeIn>
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {currentBuilds.map((project, i) => {
             // A build still in development is the one highlighted in marigold.
             const active = project.status === "In development";
@@ -28,7 +28,7 @@ export function CurrentBuilds() {
                   >
                     {project.status}
                   </span>
-                  <h3 className="font-display font-extrabold text-[32px] leading-tight">
+                  <h3 className="font-display font-extrabold text-[32px] leading-[1.05]">
                     {project.name}
                   </h3>
                   <p className="text-ink-muted">{project.description}</p>
