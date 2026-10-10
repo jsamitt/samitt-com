@@ -87,7 +87,8 @@
   "ship": {
     "preflight": [
       "typecheck",
-      "build"
+      "build",
+      "lint"
     ],
     "steps": [
       {
