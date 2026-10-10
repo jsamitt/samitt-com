@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nav after scrolling</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&amp;family=Figtree:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#14302B}a:hover{color:#2C5A51}
+</style>
+</helmet>
+<div style="width: 1440px; height: 260px; position: relative; overflow: hidden; background: #F1F4EE; color: #14302B; font-family: 'Figtree', system-ui, sans-serif">
+  <div style="position: absolute; left: 0; right: 0; top: 40px; max-width: 1200px; margin: 0 auto; padding: 0 32px; opacity: 0.55">
+    <div style="border-top: 2px solid #14302B; padding-top: 40px; display: flex; gap: 56px">
+      <div style="flex: 1 1 260px">
+        <div style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 30px">Capital One</div>
+        <div style="font-size: 16px; color: #3E5852">Senior Director of Product, payments &amp; tokenization</div>
+      </div>
+      <div style="flex: 2 1 560px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 26px">Scaled from $0 to $150M in monthly spend</div>
+    </div>
+  </div>
+  <header style="position: absolute; top: 0; left: 0; right: 0; background: #FFFFFF; border-bottom: 1px solid #C9D6CD; box-shadow: 0 6px 24px rgba(20, 48, 43, 0.08)">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+      <a href="#top" style="display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 20px"><span style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: #F2B135; font-size: 15px">JS</span>Jeff Samitt</a>
+      <nav aria-label="Primary" style="display: flex; align-items: center; gap: 24px; font-size: 16px; font-weight: 500">
+        <a href="#offer" style="text-decoration: none">What I do</a>
+        <a href="#work" style="text-decoration: none">Work</a>
+        <a href="#building" style="text-decoration: none">Building</a>
+        <a href="#github" style="text-decoration: none">GitHub</a>
+        <a href="#thinking" style="text-decoration: none">Thinking</a>
+        <a href="#background" style="text-decoration: none">Background</a>
+        <a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #14302B; color: #F1F4EE; text-decoration: none">Let’s talk</a>
+      </nav>
+    </div>
+  </header>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":260}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
