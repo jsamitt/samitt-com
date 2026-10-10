@@ -21,7 +21,7 @@ export function Hero() {
 
           <FadeIn delay={100}>
             <h1 className="max-w-[777px] font-display font-extrabold text-[clamp(46px,6.2vw,88px)] leading-[1.02] tracking-[-0.03em]">
-              Hi there. I&apos;m <br />
+              Hi there. I&rsquo;m <br />
               Jeff Samitt. I lead product teams —{" "}
               <span className="bg-accent rounded-[14px] px-3 [box-decoration-break:clone]">
                 and still build.
@@ -42,7 +42,7 @@ export function Hero() {
                 href="#contact"
                 className="inline-flex items-center min-h-[52px] px-7 rounded-full bg-ink text-on-dark font-semibold hover:bg-ink-muted transition-colors"
               >
-                Let&apos;s talk
+                Let&rsquo;s talk
               </a>
               <a
                 href="#work"
@@ -61,8 +61,8 @@ export function Hero() {
               alt="Jeff Samitt"
               width={800}
               height={800}
-              priority
-              sizes="(min-width: 1024px) 360px, 280px"
+              preload
+              sizes="(min-width: 640px) 360px, 280px"
               className="block w-[280px] sm:w-[360px] aspect-square object-cover rounded-full bg-band shadow-[0_0_0_12px_var(--color-surface),0_0_0_14px_var(--color-rule)]"
             />
           </FadeIn>

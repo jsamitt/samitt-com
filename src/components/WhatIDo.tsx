@@ -63,7 +63,7 @@ export function WhatIDo() {
               <div
                 className={`py-7 flex flex-wrap items-start gap-x-8 gap-y-3 ${
                   i === 0 ? "border-t-2 border-ink" : "border-t border-rule"
-                } ${i === services.length - 1 ? "border-b border-b-rule" : ""}`}
+                } ${i === services.length - 1 ? "border-b" : ""}`}
               >
                 {icons[service.icon]}
                 <h3 className="flex-[1_1_240px] font-display font-bold text-[26px] leading-tight">
