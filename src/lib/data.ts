@@ -16,28 +16,51 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    title: "Fractional CPO / Interim Product Leadership",
+    title: "Fractional CPO / interim product leadership",
     description:
       "Embed as your senior product leader. Own the roadmap, the team, and the outcomes.",
     icon: "compass",
   },
   {
-    title: "0-to-1 Product Builds",
+    title: "0-to-1 product builds",
     description:
       "Take products from concept to shipped — including hands-on prototyping with AI tools.",
     icon: "rocket",
   },
   {
-    title: "Product Team Design",
+    title: "Product team design",
     description:
       "Stand up product teams, operating models, and discovery practices from scratch.",
     icon: "users",
   },
   {
-    title: "AI-Accelerated Development",
+    title: "AI-accelerated development",
     description:
-      "Prototype, build, and iterate using vibe coding tools — 10-20x faster than traditional product cycles.",
+      "Prototype, build, and iterate using vibe coding tools — 10–20x faster than traditional product cycles.",
     icon: "zap",
+  },
+];
+
+export interface Outcome {
+  figure: string;
+  caption: string;
+}
+
+export const outcomes: Outcome[] = [
+  {
+    figure: "$0 → $150M",
+    caption:
+      "Monthly spend on a new checkout product, built with Google Chrome & Android · Capital One",
+  },
+  {
+    figure: ">$30M",
+    caption:
+      "Annual fraud loss avoidance and opex savings from automated decisioning · Capital One",
+  },
+  {
+    figure: "<12 months",
+    caption:
+      "From MVP to nationwide rollout, delivered 50% faster than planned · CarMax",
   },
 ];
 
