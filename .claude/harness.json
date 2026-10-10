@@ -24,7 +24,8 @@
     "on_stop": false,
     "steps": [
       "typecheck",
-      "build"
+      "build",
+      "lint"
     ],
     "manual": [
       "Open the Vercel preview (or npm run dev) and eyeball the changed sections at desktop and phone width",
