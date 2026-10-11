@@ -28,6 +28,11 @@ export const metadata: Metadata = {
       "Fractional CPO, interim product leader, and hands-on builder. I embed, lead, and ship for growth-stage companies.",
     type: "website",
   },
+  // X shows a small thumbnail unless told to use the full preview card.
+  // Next fills the twitter: title, description and image from the above.
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

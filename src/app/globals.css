@@ -22,18 +22,6 @@
 
   --radius-card: 24px;
   --radius-field: 14px;
-
-  /* Legacy — the pre-2026 navy/teal/mint palette. Still used by the live
-     components; remove once every section is migrated to the tokens above. */
-  --color-navy-900: #1B3A5C;
-  --color-navy-800: #224A72;
-  --color-navy-700: #2A5A88;
-  --color-teal: #0D7C8F;
-  --color-teal-light: #10A3BB;
-  --color-mint: #02C39A;
-  --color-mint-light: #33D4B0;
-  --color-offwhite: #F4F7F9;
-  --font-sans: var(--font-figtree), system-ui, sans-serif;
 }
 
 body {
