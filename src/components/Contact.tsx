@@ -3,15 +3,21 @@ import { useState } from "react";
 import { SectionHeading } from "./SectionHeading";
 import { FadeIn } from "./FadeIn";
 
+const fieldClass =
+  "w-full rounded-field border border-field bg-surface px-4 text-ink placeholder:text-ink-muted/70 disabled:text-ink-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";
+const labelClass = "text-[15px] font-semibold";
+const darkLinkClass =
+  "text-on-dark hover:text-on-dark-muted transition-colors focus-visible:outline-on-dark";
+
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSending(true);
-    setError("");
+    setError(false);
 
     const form = e.currentTarget;
     const data = {
@@ -30,153 +36,133 @@ export function Contact() {
       if (!res.ok) throw new Error("Failed to send");
       setSubmitted(true);
     } catch {
-      setError("Something went wrong. Please email me directly.");
+      setError(true);
     } finally {
       setSending(false);
     }
   }
 
   return (
-    <section id="contact" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <FadeIn>
-          <SectionHeading number="07" title="Let's Talk" />
+    <section id="contact" className="bg-ink text-on-dark">
+      <div className="max-w-[1200px] mx-auto px-5 lg:px-8 py-[104px] flex flex-wrap gap-14">
+        <FadeIn className="flex-[1_1_380px] min-w-0">
+          <SectionHeading
+            number="07"
+            title="Let’s talk."
+            tone="dark"
+            size="lg"
+            className="mb-5"
+          />
+          <p className="mb-9 max-w-[440px] text-lg leading-relaxed text-on-dark-muted">
+            Open to fractional and interim leadership, project-based work, and
+            the right long-term role. Remote-first, willing to travel up to 50%.
+            Based in Richmond, VA.
+          </p>
+
+          <div className="flex flex-col gap-3.5">
+            <a
+              href="mailto:jeff@samitt.co"
+              className={`inline-flex items-center gap-3.5 min-h-11 self-start font-medium ${darkLinkClass}`}
+            >
+              <span className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-ink-muted">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="M3 7l9 6 9-6" />
+                </svg>
+              </span>
+              jeff@samitt.co
+            </a>
+            <a
+              href="https://linkedin.com/in/jeffsamitt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-3.5 min-h-11 self-start font-medium ${darkLinkClass}`}
+            >
+              <span className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-ink-muted">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="3" />
+                  <path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" />
+                </svg>
+              </span>
+              linkedin.com/in/jeffsamitt
+            </a>
+          </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact info */}
-          <FadeIn delay={100}>
-            <div>
-              <p className="text-offwhite/70 leading-relaxed mb-8 max-w-md">
-                Available for fractional CPO engagements, interim product
-                leadership, and project-based consulting. Remote-first, willing
-                to travel up to 50%. Based in Richmond, VA.
-              </p>
-
-              <div className="space-y-5">
-                <a
-                  href="mailto:jeff@samitt.co"
-                  className="flex items-center gap-4 text-offwhite/70 hover:text-mint transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-mint/50 transition-colors">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                    </svg>
-                  </div>
-                  <span>jeff@samitt.co</span>
-                </a>
-
-                <a
-                  href="https://linkedin.com/in/jeffsamitt"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 text-offwhite/70 hover:text-mint transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-mint/50 transition-colors">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                    </svg>
-                  </div>
-                  <span>linkedin.com/in/jeffsamitt</span>
-                </a>
-
+        <FadeIn delay={100} className="flex-[1_1_440px] min-w-0">
+          <div className="p-6 sm:p-9 rounded-[28px] bg-page text-ink">
+            {submitted ? (
+              <div
+                role="status"
+                className="flex flex-col items-center justify-center gap-4 py-16 text-center"
+              >
+                <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M5 12.5l4.5 4.5L19 7.5" />
+                  </svg>
+                </span>
+                <h3 className="font-display font-extrabold text-[32px] leading-[1.1]">
+                  Thanks for reaching out
+                </h3>
+                <p className="text-ink-muted">I’ll get back to you shortly.</p>
               </div>
-            </div>
-          </FadeIn>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <fieldset disabled={sending} className="min-w-0 flex flex-col gap-[18px]">
+                  <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[18px]">
+                    <div className="flex flex-col gap-1.5">
+                      <label htmlFor="name" className={labelClass}>Name</label>
+                      <input type="text" id="name" name="name" required placeholder="Your name" className={`${fieldClass} min-h-12`} />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label htmlFor="email" className={labelClass}>Email</label>
+                      <input type="email" id="email" name="email" required placeholder="you@company.com" className={`${fieldClass} min-h-12`} />
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="company" className={labelClass}>
+                      Company <span className="font-normal text-ink-muted">(optional)</span>
+                    </label>
+                    <input type="text" id="company" name="company" placeholder="Your company" className={`${fieldClass} min-h-12`} />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="message" className={labelClass}>Message</label>
+                    <textarea id="message" name="message" required rows={5} placeholder="How can I help?" className={`${fieldClass} py-3.5 resize-y`} />
+                  </div>
 
-          {/* Contact form */}
-          <FadeIn delay={200}>
-            <div className="p-8 rounded-xl bg-white/5 border border-white/10">
-              {submitted ? (
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 rounded-full bg-mint/20 flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-mint" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">Thanks for reaching out</h3>
-                  <p className="text-offwhite/60">I&apos;ll get back to you shortly.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-offwhite/60 mb-2"
-                    >
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-offwhite placeholder:text-offwhite/30 focus:outline-none focus:border-teal transition-colors"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-offwhite/60 mb-2"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-offwhite placeholder:text-offwhite/30 focus:outline-none focus:border-teal transition-colors"
-                      placeholder="you@company.com"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="company"
-                      className="block text-sm font-medium text-offwhite/60 mb-2"
-                    >
-                      Company
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-offwhite placeholder:text-offwhite/30 focus:outline-none focus:border-teal transition-colors"
-                      placeholder="Your company"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-offwhite/60 mb-2"
-                    >
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-offwhite placeholder:text-offwhite/30 focus:outline-none focus:border-teal transition-colors resize-none"
-                      placeholder="How can I help?"
-                    />
-                  </div>
                   {error && (
-                    <p className="text-red-400 text-sm">{error}</p>
+                    <p role="alert" className="flex items-start gap-2.5 font-semibold text-negative">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden="true" className="flex-[0_0_20px] mt-0.5">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7.5v5.5M12 16.5v.01" />
+                      </svg>
+                      <span>
+                        Something went wrong. Please email me directly at{" "}
+                        <a href="mailto:jeff@samitt.co" className="text-negative underline">
+                          jeff@samitt.co
+                        </a>
+                        .
+                      </span>
+                    </p>
                   )}
+
                   <button
                     type="submit"
-                    disabled={sending}
-                    className="w-full py-3.5 bg-mint text-navy-900 font-bold rounded-lg hover:bg-mint-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    aria-busy={sending}
+                    className="self-start inline-flex items-center gap-2.5 min-h-[52px] px-8 rounded-full bg-accent text-ink font-bold cursor-pointer disabled:opacity-75 disabled:cursor-progress"
                   >
-                    {sending ? "Sending..." : "Send Message"}
+                    {sending && (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" aria-hidden="true" className="animate-spin">
+                        <path d="M21 12a9 9 0 1 1-9-9" />
+                      </svg>
+                    )}
+                    {sending ? "Sending…" : "Send message"}
                   </button>
-                </form>
-              )}
-            </div>
-          </FadeIn>
-        </div>
+                </fieldset>
+              </form>
+            )}
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
