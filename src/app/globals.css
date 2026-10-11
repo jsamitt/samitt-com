@@ -50,6 +50,12 @@ body {
     outline: 2px solid var(--color-ink);
     outline-offset: 3px;
   }
+
+  /* Sections focused by script (after a phone-menu link) aren't controls;
+     no ring around the whole section. */
+  [tabindex="-1"]:focus {
+    outline: none;
+  }
 }
 
 /* Smooth scrollbar styling */

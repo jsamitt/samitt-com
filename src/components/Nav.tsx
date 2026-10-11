@@ -14,8 +14,20 @@ function subscribeToScroll(onChange: () => void) {
 const getScrolled = () => window.scrollY > 20;
 const getServerScrolled = () => false;
 
-// Matches Tailwind's lg breakpoint, where the desktop nav takes over.
-const DESKTOP_QUERY = "(min-width: 1024px)";
+// Tailwind's lg breakpoint, where the desktop nav takes over. Kept in rem like
+// Tailwind's, so it moves with the browser's default font size as the CSS does.
+const DESKTOP_QUERY = "(min-width: 64rem)";
+
+// Following a menu link removes the focused link with the menu, so hand focus
+// to the section it jumps to; the next Tab then continues from there.
+function focusLinkTarget(hash: string) {
+  const target = document.getElementById(hash.slice(1));
+  if (!target) return;
+  requestAnimationFrame(() => {
+    if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+    target.focus({ preventScroll: true });
+  });
+}
 
 export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -164,7 +176,10 @@ export function Nav() {
               key={link.href}
               ref={i === 0 ? firstMenuLinkRef : undefined}
               href={link.href}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => {
+                setMenuOpen(false);
+                focusLinkTarget(link.href);
+              }}
               className="py-3.5 border-b border-rule font-display font-bold text-[28px] leading-tight text-ink"
             >
               {link.label}
@@ -173,7 +188,10 @@ export function Nav() {
           <div className="mt-auto pt-8 flex flex-col gap-4">
             <a
               href="#contact"
-              onClick={() => setMenuOpen(false)}
+              onClick={() => {
+                setMenuOpen(false);
+                focusLinkTarget("#contact");
+              }}
               className="flex items-center justify-center min-h-14 rounded-full bg-ink text-on-dark text-lg font-semibold"
             >
               Let&apos;s talk
