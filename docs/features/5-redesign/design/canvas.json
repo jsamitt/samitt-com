@@ -1,0 +1,129 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "ContactStates.dc.html": {
+      "h": 640,
+      "title": "State · Contact form: sending, sent, error",
+      "w": 1440,
+      "x": 0,
+      "y": 8900
+    },
+    "Favicon.dc.html": {
+      "h": 260,
+      "title": "Favicon · 16 / 32 / 64 / 180",
+      "w": 560,
+      "x": 3270,
+      "y": 8520
+    },
+    "Main.dc.html": {
+      "expand": "fill",
+      "h": 2400,
+      "title": "A · Editorial — senior & trusted",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Mashup.dc.html": {
+      "expand": "fill",
+      "h": 2500,
+      "title": "C × A — Hero, What I do, Currently building",
+      "w": 1440,
+      "x": 0,
+      "y": 2900
+    },
+    "NavMobile.dc.html": {
+      "h": 844,
+      "title": "State · Nav menu open, phone",
+      "w": 390,
+      "x": 1520,
+      "y": 8520
+    },
+    "NavScrolled.dc.html": {
+      "h": 260,
+      "title": "State · Nav after scrolling",
+      "w": 1440,
+      "x": 0,
+      "y": 8520
+    },
+    "OgImage.dc.html": {
+      "h": 630,
+      "title": "Link preview image · 1200×630",
+      "w": 1200,
+      "x": 1990,
+      "y": 8520
+    },
+    "Sections.dc.html": {
+      "expand": "fill",
+      "h": 5200,
+      "title": "C × A — Selected work, GitHub, Thinking, Background, Contact",
+      "w": 1440,
+      "x": 1520,
+      "y": 2900
+    },
+    "Studio.dc.html": {
+      "expand": "fill",
+      "h": 2400,
+      "title": "C · Studio — warm & human",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    },
+    "Workshop.dc.html": {
+      "expand": "fill",
+      "h": 2400,
+      "title": "B · Workshop — builder energy",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-09T15:20:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "heading": {
+      "kind": "title1",
+      "maxW": 4480,
+      "text": "Samitt.co — three directions, same content",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "mashup": {
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "Chosen: C’s colour & type, A’s structure — full site",
+      "w": 240,
+      "x": 0,
+      "y": 2600
+    },
+    "states": {
+      "kind": "title1",
+      "maxW": 3830,
+      "text": "States the full-site artboards don’t show",
+      "w": 240,
+      "x": 0,
+      "y": 8220
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Workshop.dc.html",
+    "Studio.dc.html",
+    "Mashup.dc.html",
+    "Sections.dc.html",
+    "NavScrolled.dc.html",
+    "NavMobile.dc.html",
+    "ContactStates.dc.html",
+    "OgImage.dc.html",
+    "Favicon.dc.html"
+  ],
+  "pages": [],
+  "title": "Samitt.co design directions"
+}

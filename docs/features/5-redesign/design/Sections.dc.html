@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>C × A — remaining sections</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Figtree:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#F1F4EE}
+a{color:#14302B}a:hover{color:#2C5A51}
+input,textarea{font:inherit}
+</style>
+</helmet>
+<div style="background: #F1F4EE; color: #14302B; font-family: 'Figtree', system-ui, sans-serif; font-size: 18px; line-height: 1.6">
+
+  <section id="work" style="background: #F1F4EE">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 32px">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 48px; margin-bottom: 48px">
+        <div>
+          <p style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 18px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: {{accent}}">02</p>
+          <h2 style="margin: 16px 0 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 48px; line-height: 1.05; letter-spacing: -0.02em">Selected work</h2>
+        </div>
+        <p style="margin: 0; max-width: 420px; color: #3E5852">A mix of executive-led initiatives and hands-on builds.</p>
+      </div>
+      <div style="border-top: 2px solid #14302B">
+        <sc-for list="{{work}}" as="w" hint-placeholder-count="6">
+          <article style="padding: 40px 0; border-bottom: 1px solid #C9D6CD; display: flex; flex-wrap: wrap; gap: 20px 56px">
+            <div style="flex: 1 1 260px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px">
+              <h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 30px; line-height: 1.1">{{w.company}}</h3>
+              <p style="margin: 0; font-size: 16px; color: #3E5852">{{w.context}}</p>
+              <sc-if value="{{w.builtByMe}}" hint-placeholder-val="{{false}}">
+                <span style="margin-top: 6px; display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: {{accent}}; font-size: 14px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14302B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z"></path></svg>Built by me</span>
+              </sc-if>
+            </div>
+            <div style="flex: 2 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+              <div>
+                <p style="margin: 0 0 4px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3E5852">Outcome</p>
+                <p style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 26px; line-height: 1.25">{{w.outcome}}</p>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px 32px">
+                <div>
+                  <p style="margin: 0 0 4px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3E5852">Challenge</p>
+                  <p style="margin: 0; font-size: 16px; color: #2F4A44">{{w.challenge}}</p>
+                </div>
+                <div>
+                  <p style="margin: 0 0 4px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3E5852">What I did</p>
+                  <p style="margin: 0; font-size: 16px; color: #2F4A44">{{w.whatIDid}}</p>
+                </div>
+              </div>
+              <sc-if value="{{w.hasTech}}" hint-placeholder-val="{{false}}">
+                <p style="margin: 0; padding-top: 14px; border-top: 1px dashed #C9D6CD; font-size: 15px; color: #3E5852"><strong style="color: #14302B; font-weight: 600">Tech:</strong> {{w.tech}}</p>
+              </sc-if>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="github" style="background: #FFFFFF">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 32px">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 48px; margin-bottom: 48px">
+        <div>
+          <p style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 18px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: {{accent}}">04</p>
+          <h2 style="margin: 16px 0 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 48px; line-height: 1.05; letter-spacing: -0.02em">On GitHub</h2>
+        </div>
+        <p style="margin: 0; max-width: 420px; color: #3E5852">Public repos and private projects.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+        <sc-for list="{{repos}}" as="r" hint-placeholder-count="6">
+          <article style="padding: 28px; border-radius: 24px; border: 1px solid #C9D6CD; background: #FFFFFF; display: flex; flex-direction: column; gap: 12px">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+              <h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 22px; line-height: 1.2">{{r.name}}</h3>
+              <span style="flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; background: {{r.badgeBg}}">
+                <sc-if value="{{r.isPrivate}}" hint-placeholder-val="{{false}}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#14302B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></sc-if>{{r.visibility}}</span>
+            </div>
+            <p style="margin: 0; flex-grow: 1; font-size: 16px; color: #2F4A44">{{r.description}}</p>
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid #DDE7DA; font-size: 15px">
+              <span style="display: inline-flex; align-items: center; gap: 8px; color: #3E5852"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{r.langColor}}"></span>{{r.language}}</span>
+              <sc-if value="{{r.isPublic}}" hint-placeholder-val="{{true}}"><a href="{{r.url}}" style="font-weight: 600; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: {{accent}}">View repo →</a></sc-if>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+      <a href="https://github.com/jsamitt" style="margin-top: 36px; display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border-radius: 999px; border: 1.5px solid #14302B; font-weight: 600; text-decoration: none">View all on GitHub →</a>
+    </div>
+  </section>
+
+  <section id="thinking" style="background: #F1F4EE">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 32px">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 48px; margin-bottom: 48px">
+        <div>
+          <p style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 18px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: {{accent}}">05</p>
+          <h2 style="margin: 16px 0 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 48px; line-height: 1.05; letter-spacing: -0.02em">Thinking</h2>
+        </div>
+        <p style="margin: 0; max-width: 420px; color: #3E5852">Occasional writing on product, AI, and building.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px">
+        <a href="https://www.linkedin.com/posts/jeffsamitt_most-product-teams-are-still-staffed-like-share-7441921133764853760-nnNt" style="text-decoration: none; border-top: 2px solid #14302B; padding-top: 28px; display: flex; flex-direction: column; gap: 16px">
+          <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3E5852">Article · LinkedIn</span>
+          <span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 34px; line-height: 1.1; letter-spacing: -0.01em">Most Product Teams Are Still Staffed Like It’s 2020</span>
+          <span style="color: #2F4A44">AI hasn’t just made product teams faster. It’s reshaping who’s on the team, what each person does, and what good product leadership looks like.</span>
+          <span style="font-weight: 600; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; text-decoration-color: {{accent}}">Read more →</span>
+        </a>
+        <a href="https://www.linkedin.com/in/jeffsamitt/overlay/1774289085235/single-media-viewer/?profileId=ACoAAAAZ4lYBhUjliXNxwOnxwx78WRVO5BEeW0w" style="text-decoration: none; border-top: 2px solid #14302B; padding-top: 28px; display: flex; flex-direction: column; gap: 16px">
+          <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3E5852">Article · LinkedIn</span>
+          <span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 34px; line-height: 1.1; letter-spacing: -0.01em">Product Mindset in the AI Era</span>
+          <span style="color: #2F4A44">The foundations haven’t changed — empowered teams, customer obsession, outcome focus. But the team model has to evolve.</span>
+          <span style="font-weight: 600; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; text-decoration-color: {{accent}}">Read more →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="background" style="background: #FFFFFF">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 32px; display: flex; flex-wrap: wrap; gap: 48px">
+      <div style="flex: 1 1 240px">
+        <p style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 18px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: {{accent}}">06</p>
+        <h2 style="margin: 16px 0 24px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 48px; line-height: 1.05; letter-spacing: -0.02em">Background</h2>
+        <a href="https://linkedin.com/in/jeffsamitt" style="font-weight: 600; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; text-decoration-color: {{accent}}">View full profile on LinkedIn →</a>
+      </div>
+      <div style="flex: 3 1 560px; min-width: 0; border-top: 2px solid #14302B">
+        <sc-for list="{{timeline}}" as="t" hint-placeholder-count="5">
+          <div style="padding: 22px 0; border-bottom: 1px solid #C9D6CD; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 32px">
+            <span style="flex: 0 0 150px; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; color: #3E5852">{{t.period}}</span>
+            <span style="flex: 1 1 200px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 24px; line-height: 1.2">{{t.company}}</span>
+            <span style="flex: 1 1 240px; color: #2F4A44">{{t.role}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="background: #14302B; color: #F1F4EE">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 104px 32px; display: flex; flex-wrap: wrap; gap: 56px">
+      <div style="flex: 1 1 380px; min-width: 0">
+        <p style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 18px; color: #14302B; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: {{accent}}">07</p>
+        <h2 style="margin: 16px 0 20px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: clamp(44px, 5vw, 64px); line-height: 1.02; letter-spacing: -0.03em">Let’s talk.</h2>
+        <p style="margin: 0 0 36px; max-width: 440px; color: #C5D4CD">Open to fractional and interim leadership, project-based work, and the right long-term role. Remote-first, willing to travel up to 50%. Based in Richmond, VA.</p>
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <a href="mailto:jeff@samitt.co" style="display: inline-flex; align-items: center; gap: 14px; min-height: 44px; color: #F1F4EE; text-decoration: none; font-weight: 500"><span style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #3E5852"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1F4EE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span>jeff@samitt.co</a>
+          <a href="https://linkedin.com/in/jeffsamitt" style="display: inline-flex; align-items: center; gap: 14px; min-height: 44px; color: #F1F4EE; text-decoration: none; font-weight: 500"><span style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #3E5852"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1F4EE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"></path></svg></span>linkedin.com/in/jeffsamitt</a>
+        </div>
+      </div>
+      <form style="flex: 1 1 440px; min-width: 0; padding: 36px; border-radius: 28px; background: #F1F4EE; color: #14302B; display: flex; flex-direction: column; gap: 18px">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px">
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <label for="c-name" style="font-size: 15px; font-weight: 600">Name</label>
+            <input id="c-name" type="text" placeholder="Your name" style="min-height: 48px; padding: 0 16px; border-radius: 14px; border: 1px solid #9FB5A9; background: #FFFFFF; color: #14302B">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <label for="c-email" style="font-size: 15px; font-weight: 600">Email</label>
+            <input id="c-email" type="email" placeholder="you@company.com" style="min-height: 48px; padding: 0 16px; border-radius: 14px; border: 1px solid #9FB5A9; background: #FFFFFF; color: #14302B">
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <label for="c-company" style="font-size: 15px; font-weight: 600">Company <span style="font-weight: 400; color: #3E5852">(optional)</span></label>
+          <input id="c-company" type="text" placeholder="Your company" style="min-height: 48px; padding: 0 16px; border-radius: 14px; border: 1px solid #9FB5A9; background: #FFFFFF; color: #14302B">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <label for="c-message" style="font-size: 15px; font-weight: 600">Message</label>
+          <textarea id="c-message" rows="5" placeholder="How can I help?" style="padding: 14px 16px; border-radius: 14px; border: 1px solid #9FB5A9; background: #FFFFFF; color: #14302B; resize: vertical"></textarea>
+        </div>
+        <button type="button" style="align-self: flex-start; min-height: 52px; padding: 0 32px; border: 0; border-radius: 999px; background: {{accent}}; color: #14302B; font: inherit; font-weight: 700; cursor: pointer">Send message</button>
+      </form>
+    </div>
+    <footer style="border-top: 1px solid #2C4A44">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 28px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 15px; color: #B9CBC3">
+        <p style="margin: 0">© 2026 Jeff Samitt / Proof LLC</p>
+        <nav aria-label="Social" style="display: flex; flex-wrap: wrap; gap: 24px">
+          <a href="https://linkedin.com/in/jeffsamitt" style="color: #F1F4EE">LinkedIn</a>
+          <a href="https://github.com/jsamitt" style="color: #F1F4EE">GitHub</a>
+          <a href="mailto:jeff@samitt.co" style="color: #F1F4EE">Email</a>
+        </nav>
+      </div>
+    </footer>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#F2B135","options":["#F2B135","#F4A38C","#A8D5BA","#B9C7F5"]},"$preview":{"width":1440,"height":5200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const work = [
+      { company: 'Capital One', context: 'Senior Director of Product, payments & tokenization', challenge: 'Build a new ecommerce checkout product in partnership with Google Chrome & Android', whatIDid: 'Led design, development, and launch end-to-end', outcome: 'Scaled from $0 to $150M in monthly spend' },
+      { company: 'Capital One', context: 'Senior Director of Product', challenge: 'Reduce fraud losses and servicing costs through better automated decisioning', whatIDid: 'Delivered software and data products enabling improved automated decisioning', outcome: '>$30M annual fraud loss avoidance and opex savings' },
+      { company: 'Koalafi', context: 'VP Head of Product, Series-A fintech', challenge: 'Launch first premium lending product with full credit-spectrum applicant experience', whatIDid: 'Designed and launched end-to-end, including COVID re-entry strategy', outcome: 'Industry-leading transparency with zero drop-off in applicant conversion' },
+      { company: 'Tigeraire', context: 'President & COO, hardware/software IoT startup', challenge: 'Automate customer and partner email management for a lean team', whatIDid: 'Conceived, designed, and built a production AI application entirely hands-on — Gmail integration, automated categorization, Claude API-powered reply drafting with a continuous human feedback loop, activity dashboard and archive', outcome: 'Fully deployed production app running in-house; eliminated manual email triage', tech: 'Claude API, vibe coding tools (Cursor, Replit, Windsurf)', builtByMe: true },
+      { company: 'Tigeraire', context: 'President & COO, hardware/software IoT startup', challenge: 'Overhaul online presence to reposition the company for both B2B lead gen and direct-to-consumer sales', whatIDid: 'Conceived, designed, and built a production site optimized for web and mobile, entirely hands-on — integration with Shopify, a regional 3PL, Amazon Seller Central, HubSpot CRM, Intuit QuickBooks, Google Analytics, GSuite, and GitHub', outcome: 'Fully deployed production ecommerce presence running on Shopify and Amazon; eliminated manual fulfillment; automated customer service operations', tech: 'Vibe coding tools (Cursor, ChatGPT, Grok)', builtByMe: true },
+      { company: 'CarMax', context: 'Group Product Leader', challenge: 'Transform CarMax from walk-in retail to digital omnichannel retailer', whatIDid: 'Built contact center management software and Salesforce CRM optimization', outcome: 'MVP delivered 50% faster than planned; nationwide rollout in under 12 months' }
+    ].map((w) => ({ ...w, builtByMe: !!w.builtByMe, hasTech: !!w.tech }));
+    const langColors = { TypeScript: '#3B6EA8', Swift: '#E07A3F', 'React Native': '#4FA3C7', JavaScript: '#D9B43C' };
+    const repos = [
+      { name: 'Email triage agent', slug: 'email-triage', description: 'AI-powered email triage agent for a shared Gmail inbox — ingests, classifies, summarizes, and drafts AI-generated replies that learn over time', language: 'TypeScript', isPublic: true },
+      { name: 'Awaire', slug: 'awaire', description: 'Mobile & web app for construction worker safety — workforce heat stress monitoring, predictive alerts, and regulatory compliance', language: 'TypeScript', isPublic: false },
+      { name: 'Latin Lives', slug: 'latin-lives', description: 'Gamified Latin language learning app with teacher dashboard and lesson capture', language: 'Swift', isPublic: false },
+      { name: 'Wordella', slug: 'wordella', description: 'Early literacy spelling and reading app for young children', language: 'React Native', isPublic: false },
+      { name: 'Samitt.co', slug: 'samitt-com', description: 'This site — personal website built with Next.js and Tailwind', language: 'TypeScript', isPublic: true },
+      { name: 'Heat relief & hydration calculator', slug: 'heat-relief-and-hydration-calculator', description: 'Web calculator for work schedule and hydration break recommendations', language: 'JavaScript', isPublic: true }
+    ].map((r) => ({
+      ...r,
+      isPrivate: !r.isPublic,
+      visibility: r.isPublic ? 'Public' : 'Private',
+      badgeBg: r.isPublic ? '#DDE7DA' : '#F1F4EE',
+      langColor: langColors[r.language] || '#9FB5A9',
+      url: 'https://github.com/jsamitt/' + r.slug
+    }));
+    const timeline = [
+      { company: 'Proof LLC', role: 'Fractional CPO & Product Consultant', period: '2020–Present' },
+      { company: 'Tigeraire', role: 'President & COO', period: '2023–Present' },
+      { company: 'Capital One', role: 'Senior Director of Product', period: '2021–2023' },
+      { company: 'Koalafi', role: 'VP Head of Product', period: '2019–2020' },
+      { company: 'CarMax', role: 'Group Product Leader', period: '2018–2019' }
+    ];
+    return { accent: this.props.accent ?? '#F2B135', work, repos, timeline };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 export const navLinks = [
-  { label: "What I Do", href: "#what-i-do" },
+  { label: "What I do", href: "#what-i-do" },
   { label: "Work", href: "#work" },
   { label: "Building", href: "#building" },
   { label: "GitHub", href: "#github" },
@@ -16,28 +16,51 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    title: "Fractional CPO / Interim Product Leadership",
+    title: "Fractional CPO / interim product leadership",
     description:
       "Embed as your senior product leader. Own the roadmap, the team, and the outcomes.",
     icon: "compass",
   },
   {
-    title: "0-to-1 Product Builds",
+    title: "0-to-1 product builds",
     description:
       "Take products from concept to shipped — including hands-on prototyping with AI tools.",
     icon: "rocket",
   },
   {
-    title: "Product Team Design",
+    title: "Product team design",
     description:
       "Stand up product teams, operating models, and discovery practices from scratch.",
     icon: "users",
   },
   {
-    title: "AI-Accelerated Development",
+    title: "AI-accelerated development",
     description:
-      "Prototype, build, and iterate using vibe coding tools — 10-20x faster than traditional product cycles.",
+      "Prototype, build, and iterate using vibe coding tools — 10–20x faster than traditional product cycles.",
     icon: "zap",
+  },
+];
+
+export interface Outcome {
+  figure: string;
+  caption: string;
+}
+
+export const outcomes: Outcome[] = [
+  {
+    figure: "$0 → $150M",
+    caption:
+      "Monthly spend on a new checkout product, built with Google Chrome & Android · Capital One",
+  },
+  {
+    figure: ">$30M",
+    caption:
+      "Annual fraud loss avoidance and opex savings from automated decisioning · Capital One",
+  },
+  {
+    figure: "<12 months",
+    caption:
+      "From MVP to nationwide rollout, delivered 50% faster than planned · CarMax",
   },
 ];
 
@@ -117,7 +140,7 @@ export const selectedWork: WorkEntry[] = [
 export interface CurrentBuild {
   name: string;
   description: string;
-  status: string;
+  status: "In development" | "Alpha testing" | "Beta testing";
   builtWith: string;
 }
 
@@ -125,22 +148,22 @@ export const currentBuilds: CurrentBuild[] = [
   {
     name: "Mise en Place",
     description:
-      "A freemium, AI-powered family meal planning app that gets smarter every week — building context on who's home, what they love, and how your kitchen actually works.",
-    status: "In Development",
+      "A freemium, AI-powered family meal planning app that gets smarter every week — building context on who\u2019s home, what they love, and how your kitchen actually works.",
+    status: "In development",
     builtWith: "AI-assisted vibe coding tools, Claude API",
   },
   {
     name: "Wordella",
     description:
       "A freemium mobile app for young children focused on early spelling and reading skills. Built in partnership with a design collaborator, targeting the App Store.",
-    status: "In Alpha testing",
+    status: "Alpha testing",
     builtWith: "AI-assisted vibe coding tools",
   },
   {
     name: "Latin Lives",
     description:
       "A Latin language learning app for high school students. Features photo/upload capture of teacher lesson materials, and creates gamified learning modules for vocabulary, grammar, and culture topics. Includes a teacher dashboard for tracking student progress.",
-    status: "In Beta testing",
+    status: "Beta testing",
     builtWith: "AI-assisted vibe coding tools, Claude API",
   },
 ];
