@@ -6,8 +6,8 @@
   - "Most Product Teams Are Still Staffed Like It's 2020" (`src/lib/data.ts`, line 181)
   - "Product Mindset in the AI Era" (`src/lib/data.ts`, line 187)
 - [ ] **GitHub repos** — The four repo cards are static placeholder data. Options: replace with real repo names/descriptions, or fetch live from the GitHub API (`src/lib/data.ts`, `githubRepos` array)
-- [ ] **Open Graph image** — No `og-image.png` in `/public` yet. Create a branded OG image for link previews (recommended: 1200x630px)
-- [ ] **Favicon** — Currently using the default Next.js favicon. Replace `/public/favicon.ico` with a custom one
+- [x] **Open Graph image** — Sage link-preview card generated at build time by `src/app/opengraph-image.tsx` (1200×630)
+- [x] **Favicon** — Marigold disc: `src/app/icon.svg`, `favicon.ico` (16/32/48) and a 180px `apple-icon.png`
 
 ## Contact Form
 
