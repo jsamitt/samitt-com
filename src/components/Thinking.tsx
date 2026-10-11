@@ -20,20 +20,20 @@ export function Thinking() {
             <FadeIn key={article.title} delay={i * 120}>
               <a
                 href={article.link}
-                className="block border-t-2 border-ink pt-7"
+                className="group block border-t-2 border-ink pt-7"
               >
-                <span className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4">
                   <span className="text-[13px] font-semibold tracking-[0.12em] uppercase text-ink-muted">
                     Article · LinkedIn
                   </span>
-                  <span className="font-display font-extrabold text-[34px] leading-[1.1] tracking-[-0.01em]">
+                  <h3 className="font-display font-extrabold text-[34px] leading-[1.1] tracking-[-0.01em] decoration-accent decoration-[3px] underline-offset-[6px] group-hover:underline">
                     {article.title}
-                  </span>
-                  <span className="text-ink-muted">{article.excerpt}</span>
+                  </h3>
+                  <p className="text-ink-muted">{article.excerpt}</p>
                   <span className="font-semibold underline underline-offset-4 decoration-2 decoration-accent">
-                    Read more →
+                    Read more <span aria-hidden="true">→</span>
                   </span>
-                </span>
+                </div>
               </a>
             </FadeIn>
           ))}
