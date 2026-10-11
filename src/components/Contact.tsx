@@ -1,10 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SectionHeading } from "./SectionHeading";
 import { FadeIn } from "./FadeIn";
 
 const fieldClass =
-  "w-full rounded-field border border-field bg-surface px-4 text-ink placeholder:text-ink-muted/70 disabled:text-ink-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";
+  "w-full rounded-field border border-field bg-surface px-4 text-ink placeholder:text-ink-muted disabled:text-ink-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";
 const labelClass = "text-[15px] font-semibold";
 const darkLinkClass =
   "text-on-dark hover:text-on-dark-muted transition-colors focus-visible:outline-on-dark";
@@ -13,9 +13,25 @@ export function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState(false);
+  // The disabled fieldset only applies after a re-render; this blocks a second
+  // submit fired in the same tick (scripts, autofill).
+  const inFlight = useRef(false);
+  const errorRef = useRef<HTMLParagraphElement>(null);
+  const sentRef = useRef<HTMLDivElement>(null);
+
+  // Disabling the fieldset drops focus to <body>; move it to the outcome so
+  // keyboard and screen-reader visitors land on the result.
+  useEffect(() => {
+    if (error) errorRef.current?.focus();
+  }, [error]);
+  useEffect(() => {
+    if (submitted) sentRef.current?.focus();
+  }, [submitted]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (inFlight.current) return;
+    inFlight.current = true;
     setSending(true);
     setError(false);
 
@@ -38,6 +54,7 @@ export function Contact() {
     } catch {
       setError(true);
     } finally {
+      inFlight.current = false;
       setSending(false);
     }
   }
@@ -93,8 +110,10 @@ export function Contact() {
           <div className="p-6 sm:p-9 rounded-[28px] bg-page text-ink">
             {submitted ? (
               <div
+                ref={sentRef}
                 role="status"
-                className="flex flex-col items-center justify-center gap-4 py-16 text-center"
+                tabIndex={-1}
+                className="focus:outline-none flex flex-col items-center justify-center gap-4 py-16 text-center"
               >
                 <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent">
                   <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -131,7 +150,7 @@ export function Contact() {
                   </div>
 
                   {error && (
-                    <p role="alert" className="flex items-start gap-2.5 font-semibold text-negative">
+                    <p ref={errorRef} role="alert" tabIndex={-1} className="focus:outline-none flex items-start gap-2.5 font-semibold text-negative">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden="true" className="flex-[0_0_20px] mt-0.5">
                         <circle cx="12" cy="12" r="9" />
                         <path d="M12 7.5v5.5M12 16.5v.01" />
