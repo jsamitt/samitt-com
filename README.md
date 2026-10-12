@@ -28,7 +28,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 - **Input checks.** The route rejects anything that isn't text within these limits, after trimming, with a 400: name 1–100 characters, company up to 100, email up to 254 and email-shaped, message 1–5,000. The form fields carry the same `maxLength`, so a real visitor can't hit this. Line breaks are stripped from name and company before they reach the subject line.
 - **Rate limit.** This lives in the Vercel dashboard, not the code. Firewall → Configure → New rule:
   - **If:** Request path equals `/api/contact` *and* Method equals `POST`
-  - **Then:** Rate limit, Fixed window, 60 seconds, 5 requests, key: IP. Action on exceeding: deny (429).
+  - **Then:** Rate limit, Fixed window, 60 seconds, 5 requests, key: IP. Action when exceeded: Too Many Requests (429), which is the default.
 
   Hobby allows one rate-limit rule per project. A blocked visitor sees the form's usual error, which includes Jeff's email address.
 
