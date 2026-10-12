@@ -1,14 +1,64 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-export async function POST(request: Request) {
-  const { name, email, company, message } = await request.json();
+// Limits are mirrored as maxLength on the form fields in Contact.tsx, so a
+// real visitor can't type past them and hit the error.
+const LIMITS = { name: 100, company: 100, email: 254, message: 5000 };
+const EMAIL_SHAPE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (!name || !email || !message) {
-    return NextResponse.json(
-      { error: "Name, email, and message are required" },
-      { status: 400 }
-    );
+// Line breaks and other control characters must never reach the subject line.
+function singleLine(value: string) {
+  return value.replace(/[\u0000-\u001F\u007F]+/g, " ").trim();
+}
+
+function invalid() {
+  return NextResponse.json({ error: "Invalid submission" }, { status: 400 });
+}
+
+export async function POST(request: Request) {
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    return invalid();
+  }
+  if (typeof body !== "object" || body === null || Array.isArray(body)) {
+    return invalid();
+  }
+  const fields = body as Record<string, unknown>;
+
+  // Honeypot: the "fax" field is invisible to people, so anything in it is a
+  // bot. Pretend it worked so the bot learns nothing, and send nothing. Anything
+  // a real person could trip (below) gets the visible error instead.
+  if (typeof fields.fax === "string" && fields.fax.trim() !== "") {
+    return NextResponse.json({ success: true });
+  }
+
+  const { name, email, company = "", message } = fields;
+  if (
+    typeof name !== "string" ||
+    typeof email !== "string" ||
+    typeof company !== "string" ||
+    typeof message !== "string"
+  ) {
+    return invalid();
+  }
+
+  const cleanName = singleLine(name);
+  const cleanCompany = singleLine(company);
+  const cleanEmail = email.trim();
+  const cleanMessage = message.trim();
+
+  if (
+    cleanName.length < 1 ||
+    cleanName.length > LIMITS.name ||
+    cleanCompany.length > LIMITS.company ||
+    cleanEmail.length > LIMITS.email ||
+    !EMAIL_SHAPE.test(cleanEmail) ||
+    cleanMessage.length < 1 ||
+    cleanMessage.length > LIMITS.message
+  ) {
+    return invalid();
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -25,14 +75,14 @@ export async function POST(request: Request) {
     await resend.emails.send({
       from: "Samitt.co Contact <jeff@samitt.co>",
       to: "jsamitt@gmail.com",
-      replyTo: email,
-      subject: `Contact form: ${name}${company ? ` from ${company}` : ""}`,
+      replyTo: cleanEmail,
+      subject: `Contact form: ${cleanName}${cleanCompany ? ` from ${cleanCompany}` : ""}`,
       text: [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Company: ${company || "N/A"}`,
+        `Name: ${cleanName}`,
+        `Email: ${cleanEmail}`,
+        `Company: ${cleanCompany || "N/A"}`,
         "",
-        message,
+        cleanMessage,
       ].join("\n"),
     });
 

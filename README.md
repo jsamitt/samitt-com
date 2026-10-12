@@ -20,6 +20,18 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to self-host [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque) (headings) and [Figtree](https://fonts.google.com/specimen/Figtree) (body text). The link-preview image can't use web fonts, so static copies of both live in `assets/fonts/` (see its README).
 
+## Contact form protection
+
+`/api/contact` sends through Resend, so every accepted submission costs quota and lands in Gmail. Three layers keep bots out without asking visitors to do anything:
+
+- **Honeypot.** A `fax` field in `src/components/Contact.tsx` is off-screen, out of the tab order and hidden from screen readers. A submission with it filled gets a normal success response, and nothing is sent.
+- **Input checks.** The route rejects anything that isn't text within these limits, after trimming, with a 400: name 1–100 characters, company up to 100, email up to 254 and email-shaped, message 1–5,000. The form fields carry the same `maxLength`, so a real visitor can't hit this. Line breaks are stripped from name and company before they reach the subject line.
+- **Rate limit.** This lives in the Vercel dashboard, not the code. Firewall → Configure → New rule:
+  - **If:** Request path equals `/api/contact` *and* Method equals `POST`
+  - **Then:** Rate limit, Fixed window, 60 seconds, 5 requests, key: IP. Action when exceeded: Too Many Requests (429), which is the default.
+
+  Hobby allows one rate-limit rule per project. A blocked visitor sees the form's usual error, which includes Jeff's email address.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
