@@ -89,7 +89,9 @@ export async function POST(request: Request) {
 
   try {
     const resend = new Resend(apiKey);
-    await resend.emails.send({
+    // Resend doesn't throw when the API rejects the email or can't be reached:
+    // it returns { data: null, error }. That's a failure, same as a throw.
+    const { error } = await resend.emails.send({
       from: "Samitt.co Contact <jeff@samitt.co>",
       to: "jsamitt@gmail.com",
       replyTo: cleanEmail,
@@ -102,6 +104,13 @@ export async function POST(request: Request) {
         cleanMessage,
       ].join("\n"),
     });
+    if (error) {
+      console.error("Resend rejected the email:", error.name, error.message);
+      return NextResponse.json(
+        { error: "Failed to send message" },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
