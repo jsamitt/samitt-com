@@ -24,13 +24,14 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 `/api/contact` sends through Resend, so every accepted submission costs quota and lands in Gmail. Three layers keep bots out without asking visitors to do anything:
 
-- **Honeypot.** A `fax` field in `src/components/Contact.tsx` is off-screen, out of the tab order and hidden from screen readers. A submission with it filled gets a normal success response, and nothing is sent.
-- **Input checks.** The route rejects anything that isn't text within these limits, after trimming, with a 400: name 1–100 characters, company up to 100, email up to 254 and email-shaped, message 1–5,000. The form fields carry the same `maxLength`, so a real visitor can't hit this. Line breaks are stripped from name and company before they reach the subject line.
-- **Rate limit.** This lives in the Vercel dashboard, not the code. Firewall → Configure → New rule:
+- **Honeypot.** A `contact_ref` field in `src/components/Contact.tsx` is labelled "Leave this field empty". Its wrapper is `inert` and clipped to 1px, so people can't see, focus, click or hear it, and its name and label match no autofill or password-manager field. A submission with it filled gets a normal success response, and nothing is sent. Don't rename it to anything a filler might recognise (fax, phone, website…): a real visitor's autofill would then trigger the fake success, and their message would be silently lost.
+- **Input checks.** The route rejects anything that isn't text within these limits, after trimming, with a 400: name 1–100 characters, company up to 100, email up to 254 and email-shaped, message 1–5,000. The form fields carry the same `maxLength`, so a real visitor can't hit this. Line breaks and other control characters in name and company become spaces before they reach the subject line, and a name made only of invisible characters (zero-width spaces and the like) counts as empty. Joiners and direction marks are kept, because Persian, Indic, Hebrew and emoji names need them. The email must be a single plain address, so Reply-To can't become a list.
+- **Rate limit.** This lives in the Vercel dashboard, not the code, and until it's published nothing limits how many valid submissions a script can post. Firewall → Configure → New rule, named e.g. "Contact form rate limit":
   - **If:** Request path equals `/api/contact` *and* Method equals `POST`
-  - **Then:** Rate limit, Fixed window, 60 seconds, 5 requests, key: IP. Action when exceeded: Too Many Requests (429), which is the default.
+  - **Then:** Rate limit, Fixed window, 60 seconds, 5 requests, key: IP. Action when exceeded: **Default (429)**.
+  - **Then click Review Changes → Publish.** Firewall changes do nothing until published. To check the rule matches before it blocks anything, publish it with the Log action first, then switch to Default (429).
 
-  Hobby allows one rate-limit rule per project. A blocked visitor sees the form's usual error, which includes Jeff's email address.
+  Hobby allows one rate-limit rule per project. Counters are kept per region, so a bot spread across regions can slightly exceed 5 a minute, which is fine for this threat. A blocked visitor sees the form's usual error, which includes Jeff's email address.
 
 ## Learn More
 
