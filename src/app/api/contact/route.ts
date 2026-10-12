@@ -11,14 +11,17 @@ const EMAIL_SHAPE =
   /^[^\s@,;<>"():[\]\\\p{Cc}\p{Cf}]+@[^\s@,;<>"():[\]\\\p{Cc}\p{Cf}]+\.[^\s@,;<>"():[\]\\\p{Cc}\p{Cf}.]+$/u;
 
 // Name and company go into the subject line, so they must be one line: control
-// characters and Unicode line/paragraph separators become spaces, and invisible
-// format characters (zero-width spaces and the like) are dropped, so a "name"
-// made only of them is empty and rejected.
+// characters and Unicode line/paragraph separators become spaces.
 function singleLine(value: string) {
-  return value
-    .replace(/[\p{Cc}\u2028\u2029]+/gu, " ")
-    .replace(/\p{Cf}+/gu, "")
-    .trim();
+  return value.replace(/[\p{Cc}\u2028\u2029]+/gu, " ").trim();
+}
+
+// True when nothing would show: only whitespace and invisible format characters
+// (zero-width spaces and the like). Used for the emptiness check only, because
+// format characters also include joiners and direction marks that real names
+// and emoji need, so they stay in what's sent.
+function isBlank(value: string) {
+  return value.replace(/[\s\p{Cf}]+/gu, "") === "";
 }
 
 function invalid() {
@@ -64,7 +67,7 @@ export async function POST(request: Request) {
   const cleanMessage = message.trim();
 
   if (
-    cleanName.length < 1 ||
+    isBlank(cleanName) ||
     cleanName.length > LIMITS.name ||
     cleanCompany.length > LIMITS.company ||
     cleanEmail.length > LIMITS.email ||
