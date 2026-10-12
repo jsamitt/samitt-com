@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 // Limits are mirrored as maxLength on the form fields in Contact.tsx, so a
@@ -26,6 +26,43 @@ function isBlank(value: string) {
 
 function invalid() {
   return NextResponse.json({ error: "Invalid submission" }, { status: 400 });
+}
+
+// Phone alert through ntfy when a real visitor's message didn't go through, so
+// Jeff can fix the cause and reply before the lead goes cold. Runs after the
+// response via after(), so a slow or failing ntfy never changes what the
+// visitor sees. Reason, name and email go in the body: a non-ASCII name in a
+// header could break the request. Never the message or company, and Cache: no
+// so ntfy doesn't keep it. The topic is the secret, so it's never logged.
+function alertFailure(reason: string, name: string, email: string) {
+  const topic = process.env.NTFY_TOPIC;
+  if (!topic) {
+    console.warn("contact alerts off: NTFY_TOPIC not set");
+    return;
+  }
+  after(async () => {
+    try {
+      const res = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}`, {
+        method: "POST",
+        headers: {
+          Title: "Contact form failed",
+          Priority: "high",
+          Cache: "no",
+        },
+        body: `${reason}\nFrom: ${name} <${email}>`,
+        signal: AbortSignal.timeout(10_000),
+      });
+      if (!res.ok) {
+        console.error(`Contact alert not sent: ntfy returned ${res.status}`);
+      }
+    } catch (err) {
+      // Name only: a fetch error's message could carry the URL, and the topic.
+      console.error(
+        "Contact alert not sent:",
+        err instanceof Error ? err.name : "unknown error"
+      );
+    }
+  });
 }
 
 export async function POST(request: Request) {
@@ -81,6 +118,7 @@ export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error("RESEND_API_KEY is not set");
+    alertFailure("API key not set", cleanName, cleanEmail);
     return NextResponse.json(
       { error: "Email service not configured" },
       { status: 500 }
@@ -89,7 +127,9 @@ export async function POST(request: Request) {
 
   try {
     const resend = new Resend(apiKey);
-    await resend.emails.send({
+    // Resend doesn't throw when the API rejects the email or can't be reached:
+    // it returns { data: null, error }. That's a failure, same as a throw.
+    const { error } = await resend.emails.send({
       from: "Samitt.co Contact <jeff@samitt.co>",
       to: "jsamitt@gmail.com",
       replyTo: cleanEmail,
@@ -102,10 +142,23 @@ export async function POST(request: Request) {
         cleanMessage,
       ].join("\n"),
     });
+    if (error) {
+      console.error("Resend rejected the email:", error.name, error.message);
+      alertFailure(`${error.name}: ${error.message}`, cleanName, cleanEmail);
+      return NextResponse.json(
+        { error: "Failed to send message" },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Failed to send email:", error);
+    alertFailure(
+      error instanceof Error ? `${error.name}: ${error.message}` : String(error),
+      cleanName,
+      cleanEmail
+    );
     return NextResponse.json(
       { error: "Failed to send message" },
       { status: 500 }

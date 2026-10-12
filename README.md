@@ -33,6 +33,21 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
   Hobby allows one rate-limit rule per project. Counters are kept per region, so a bot spread across regions can slightly exceed 5 a minute, which is fine for this threat. A blocked visitor sees the form's usual error, which includes Jeff's email address.
 
+## Contact form alerts
+
+When a real visitor's message doesn't go through (Resend rejects it, the send throws, or `RESEND_API_KEY` isn't set), the visitor sees the form's error with Jeff's email address, and `/api/contact` sends a phone notification through [ntfy](https://ntfy.sh): the reason, plus the visitor's name and email so Jeff can reply. The message text and company are never included, and the notification is sent with `Cache: no` so ntfy doesn't store it. It goes out after the visitor's response, so ntfy being slow or down never affects the form. Successful sends, rejected submissions and honeypot hits send nothing.
+
+Env var: **`NTFY_TOPIC`**, the ntfy topic name. Anyone who knows it can read and post to it, so treat it as a secret. Without it the form works exactly as before, and the server logs "contact alerts off: NTFY_TOPIC not set" when a send fails.
+
+One-time setup:
+
+1. Install the ntfy app on your phone (iOS or Android).
+2. Pick an unguessable topic name, e.g. `samitt-contact-` followed by a long random string (`openssl rand -hex 16`).
+3. In the app, subscribe to that topic on `ntfy.sh`.
+4. In Vercel → Project → Settings → Environment Variables, add `NTFY_TOPIC` with that name for **Production** and **Preview**, then redeploy.
+
+Because alerts are sent with `Cache: no`, ntfy keeps no copy, so a missed alert can't be fetched later; the Vercel function logs still record each failure's reason. A missing `RESEND_API_KEY` alerts on every submission until it's fixed.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
