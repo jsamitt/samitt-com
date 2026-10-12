@@ -51,6 +51,23 @@ async function ntfyCalls() {
   return fetchMock.mock.calls;
 }
 
+// Exactly one alert: the reason and who to reply to, never the message text
+// or company, and not stored by ntfy.
+async function expectOneAlert(reason: string) {
+  const calls = await ntfyCalls();
+  expect(calls).toHaveLength(1);
+  const [url, init] = calls[0];
+  expect(url).toBe("https://ntfy.sh/test-topic");
+  expect(init?.method).toBe("POST");
+  expect(init?.headers).toMatchObject({ Cache: "no" });
+  const body = String(init?.body);
+  expect(body).toContain(reason);
+  expect(body).toContain(visitor.name);
+  expect(body).toContain(visitor.email);
+  expect(body).not.toContain(visitor.message);
+  expect(body).not.toContain(visitor.company);
+}
+
 beforeEach(() => {
   vi.stubEnv("RESEND_API_KEY", "re_test");
   vi.stubEnv("NTFY_TOPIC", "test-topic");
@@ -78,6 +95,58 @@ describe("POST /api/contact send outcomes", () => {
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({ success: true });
     expect(send).toHaveBeenCalledTimes(1);
+    expect(await ntfyCalls()).toHaveLength(0);
+  });
+
+  // Resend 6 reports a rejected email in its return value and never throws,
+  // so this is the case that used to tell the visitor it had worked (#28).
+  it("returns an error and alerts when Resend rejects the email", async () => {
+    send.mockResolvedValue({
+      data: null,
+      error: { name: "validation_error", message: "API key is invalid" },
+    });
+
+    const res = await submit();
+
+    expect(res.status).toBe(500);
+    expect(await res.json()).toEqual({ error: "Failed to send message" });
+    await expectOneAlert("validation_error: API key is invalid");
+  });
+
+  it("returns an error and alerts when sending throws", async () => {
+    send.mockRejectedValue(new TypeError("fetch failed"));
+
+    const res = await submit();
+
+    expect(res.status).toBe(500);
+    expect(await res.json()).toEqual({ error: "Failed to send message" });
+    await expectOneAlert("TypeError: fetch failed");
+  });
+
+  it("returns an error and alerts when the Resend key is missing", async () => {
+    vi.stubEnv("RESEND_API_KEY", undefined);
+
+    const res = await submit();
+
+    expect(res.status).toBe(500);
+    expect(await res.json()).toEqual({
+      error: "Email service not configured",
+    });
+    expect(send).not.toHaveBeenCalled();
+    await expectOneAlert("API key not set");
+  });
+
+  it("still returns the error, and sends nothing to ntfy, when NTFY_TOPIC is unset", async () => {
+    vi.stubEnv("NTFY_TOPIC", undefined);
+    send.mockResolvedValue({
+      data: null,
+      error: { name: "validation_error", message: "API key is invalid" },
+    });
+
+    const res = await submit();
+
+    expect(res.status).toBe(500);
+    expect(await res.json()).toEqual({ error: "Failed to send message" });
     expect(await ntfyCalls()).toHaveLength(0);
   });
 });
