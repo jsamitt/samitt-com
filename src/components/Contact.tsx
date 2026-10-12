@@ -41,6 +41,7 @@ export function Contact() {
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       company: (form.elements.namedItem("company") as HTMLInputElement).value,
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      fax: (form.elements.namedItem("fax") as HTMLInputElement).value,
     };
 
     try {
@@ -128,25 +129,31 @@ export function Contact() {
             ) : (
               <form onSubmit={handleSubmit}>
                 <fieldset disabled={sending} className="min-w-0 flex flex-col gap-[18px]">
+                  {/* Honeypot: off-screen, out of the tab order and hidden from screen
+                      readers, so only bots fill it. No autofill type exists for "fax". */}
+                  <div aria-hidden="true" className="absolute -left-[10000px] w-px h-px overflow-hidden">
+                    <label htmlFor="fax">Fax</label>
+                    <input type="text" id="fax" name="fax" tabIndex={-1} autoComplete="off" defaultValue="" />
+                  </div>
                   <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[18px]">
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="name" className={labelClass}>Name</label>
-                      <input type="text" id="name" name="name" required placeholder="Your name" className={`${fieldClass} min-h-12`} />
+                      <input type="text" id="name" name="name" required maxLength={100} placeholder="Your name" className={`${fieldClass} min-h-12`} />
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="email" className={labelClass}>Email</label>
-                      <input type="email" id="email" name="email" required placeholder="you@company.com" className={`${fieldClass} min-h-12`} />
+                      <input type="email" id="email" name="email" required maxLength={254} placeholder="you@company.com" className={`${fieldClass} min-h-12`} />
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="company" className={labelClass}>
                       Company <span className="font-normal text-ink-muted">(optional)</span>
                     </label>
-                    <input type="text" id="company" name="company" placeholder="Your company" className={`${fieldClass} min-h-12`} />
+                    <input type="text" id="company" name="company" maxLength={100} placeholder="Your company" className={`${fieldClass} min-h-12`} />
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="message" className={labelClass}>Message</label>
-                    <textarea id="message" name="message" required rows={5} placeholder="How can I help?" className={`${fieldClass} py-3.5 resize-y`} />
+                    <textarea id="message" name="message" required maxLength={5000} rows={5} placeholder="How can I help?" className={`${fieldClass} py-3.5 resize-y`} />
                   </div>
 
                   {error && (
