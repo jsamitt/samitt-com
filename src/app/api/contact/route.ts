@@ -4,11 +4,21 @@ import { Resend } from "resend";
 // Limits are mirrored as maxLength on the form fields in Contact.tsx, so a
 // real visitor can't type past them and hit the error.
 const LIMITS = { name: 100, company: 100, email: 254, message: 5000 };
-const EMAIL_SHAPE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// One plain address: no whitespace, control or format characters, nothing that
+// could make Reply-To a list or a display name (,;<>"():[]\), and a dot in the
+// domain with no empty labels at the end.
+const EMAIL_SHAPE =
+  /^[^\s@,;<>"():[\]\\\p{Cc}\p{Cf}]+@[^\s@,;<>"():[\]\\\p{Cc}\p{Cf}]+\.[^\s@,;<>"():[\]\\\p{Cc}\p{Cf}.]+$/u;
 
-// Line breaks and other control characters must never reach the subject line.
+// Name and company go into the subject line, so they must be one line: control
+// characters and Unicode line/paragraph separators become spaces, and invisible
+// format characters (zero-width spaces and the like) are dropped, so a "name"
+// made only of them is empty and rejected.
 function singleLine(value: string) {
-  return value.replace(/[\u0000-\u001F\u007F]+/g, " ").trim();
+  return value
+    .replace(/[\p{Cc}\u2028\u2029]+/gu, " ")
+    .replace(/\p{Cf}+/gu, "")
+    .trim();
 }
 
 function invalid() {
@@ -27,10 +37,14 @@ export async function POST(request: Request) {
   }
   const fields = body as Record<string, unknown>;
 
-  // Honeypot: the "fax" field is invisible to people, so anything in it is a
-  // bot. Pretend it worked so the bot learns nothing, and send nothing. Anything
-  // a real person could trip (below) gets the visible error instead.
-  if (typeof fields.fax === "string" && fields.fax.trim() !== "") {
+  // Honeypot: "contact_ref" is unreachable for people (inert, clipped, no name
+  // or label an autofill tool maps), so anything in it is a bot. Pretend it
+  // worked so the bot learns nothing, and send nothing. Anything a real person
+  // could trip (below) gets the visible error instead.
+  if (
+    typeof fields.contact_ref === "string" &&
+    fields.contact_ref.trim() !== ""
+  ) {
     return NextResponse.json({ success: true });
   }
 

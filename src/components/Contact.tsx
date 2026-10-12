@@ -41,7 +41,7 @@ export function Contact() {
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       company: (form.elements.namedItem("company") as HTMLInputElement).value,
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
-      fax: (form.elements.namedItem("fax") as HTMLInputElement).value,
+      contact_ref: (form.elements.namedItem("contact_ref") as HTMLInputElement).value,
     };
 
     try {
@@ -129,11 +129,13 @@ export function Contact() {
             ) : (
               <form onSubmit={handleSubmit}>
                 <fieldset disabled={sending} className="min-w-0 flex flex-col gap-[18px]">
-                  {/* Honeypot: off-screen, out of the tab order and hidden from screen
-                      readers, so only bots fill it. No autofill type exists for "fax". */}
-                  <div aria-hidden="true" className="absolute -left-[10000px] w-px h-px overflow-hidden">
-                    <label htmlFor="fax">Fax</label>
-                    <input type="text" id="fax" name="fax" tabIndex={-1} autoComplete="off" defaultValue="" />
+                  {/* Honeypot for bots. inert takes it out of focus, clicks and the
+                      accessibility tree; the clip hides it without an offset, so
+                      right-to-left pages don't scroll. The name and label match
+                      no autofill or password-manager field, so people never fill it. */}
+                  <div inert aria-hidden="true" className="absolute left-0 top-0 w-px h-px overflow-hidden [clip-path:inset(50%)]">
+                    <label htmlFor="contact_ref">Leave this field empty</label>
+                    <input type="text" id="contact_ref" name="contact_ref" tabIndex={-1} autoComplete="off" defaultValue="" />
                   </div>
                   <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[18px]">
                     <div className="flex flex-col gap-1.5">
