@@ -28,6 +28,7 @@
       "lint"
     ],
     "manual": [
+      "Before merging: tick each 'Needs manual check' box on the PR, or strike it with a reason. On an integration branch, roll per-PR preview checks into the launch PR",
       "Open the Vercel preview (or npm run dev) and eyeball the changed sections at desktop and phone width",
       "If the contact form or /api/contact changed: submit a real test message on the preview and confirm it arrives in Gmail with reply-to set"
     ]
@@ -63,13 +64,15 @@
     "lenses": [
       "correctness",
       "breaker",
-      "risk"
+      "risk",
+      "design"
     ],
     "risk_focus": [
       "Contact form delivery: /api/contact must keep sending via Resend from jeff@samitt.co to jsamitt@gmail.com with reply-to set; a silent failure means lost leads with no alert.",
       "RESEND_API_KEY and NEXT_PUBLIC_GA_ID live in Vercel env vars; changes must never hardcode, log or expose the Resend key client-side.",
       "Contact form abuse: the endpoint has no rate limit, honeypot or input length caps; changes must not widen this, and anything touching it should consider spam burning Resend quota or getting samitt.co flagged.",
-      "Every push to main deploys straight to production on Vercel with no staging gate; a change that builds but renders broken, or breaks metadata/OG image/sitemap/robots, goes live immediately."
+      "Every push to main deploys straight to production on Vercel with no staging gate; a change that builds but renders broken, or breaks metadata/OG image/sitemap/robots, goes live immediately.",
+      "Keyboard and screen-reader use: designs drawn on the canvas omit focus styles, heading semantics and focus movement, so every interactive change must keep visible focus (ink, never accent), real headings, and focus that lands somewhere sensible after content appears, disappears or is disabled."
     ]
   },
   "design": {
