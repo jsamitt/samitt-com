@@ -2,10 +2,8 @@
 
 ## Placeholders
 
-- [ ] **Article links** — Both articles in the Thinking section link to `#`. Replace with actual LinkedIn post / PDF links once published.
-  - "Most Product Teams Are Still Staffed Like It's 2020" (`src/lib/data.ts`, line 181)
-  - "Product Mindset in the AI Era" (`src/lib/data.ts`, line 187)
-- [ ] **GitHub repos** — The four repo cards are static placeholder data. Options: replace with real repo names/descriptions, or fetch live from the GitHub API (`src/lib/data.ts`, `githubRepos` array)
+- [ ] **"Product Mindset in the AI Era" link** — Points to a LinkedIn media-viewer overlay. Replace with a direct post URL once Jeff provides one (`src/lib/data.ts`, `articles` array)
+- [x] **GitHub repos** — Tiles use real repo names and descriptions (`src/lib/data.ts`, `githubRepos` array)
 - [x] **Open Graph image** — Sage link-preview card generated at build time by `src/app/opengraph-image.tsx` (1200×630)
 - [x] **Favicon** — Marigold disc: `src/app/icon.svg`, `favicon.ico` (16/32/48) and a 180px `apple-icon.png`
 
