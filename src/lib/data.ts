@@ -16,7 +16,7 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    title: "Fractional CPO / interim product leadership",
+    title: "Fractional CPO / product leadership",
     description:
       "Embed as your senior product leader. Own the roadmap, the team, and the outcomes.",
     icon: "compass",
@@ -50,17 +50,17 @@ export const outcomes: Outcome[] = [
   {
     figure: "$0 → $150M",
     caption:
-      "Monthly spend on a new checkout product, built with Google Chrome & Android · Capital One",
+      "Monthly spend on a new digital commerce checkout product, built with Google Chrome & Android teams · Capital One",
   },
   {
     figure: ">$30M",
     caption:
-      "Annual fraud loss avoidance and opex savings from automated decisioning · Capital One",
+      "Annual fraud loss avoidance and opex savings from realtime automated decisioning platform · Capital One",
   },
   {
     figure: "<12 months",
     caption:
-      "From MVP to nationwide rollout, delivered 50% faster than planned · CarMax",
+      "New omni-channel sales contact center, from MVP to nationwide rollout, delivered 50% faster than planned · CarMax",
   },
 ];
 
@@ -157,6 +157,7 @@ export interface CurrentBuild {
     | "On the App Store"
     | "In development"
     | "Internal alpha"
+    | "External beta"
     | "Alpha testing"
     | "Beta testing";
   builtWith: string;
@@ -168,14 +169,14 @@ export const currentBuilds: CurrentBuild[] = [
     name: "Stealth startup",
     description:
       "A mobile-first platform for sports pools and competitive play. Think office pool, minus the spreadsheet and the guy who forgets to update it. More soon \u2014 it\u2019s stealth for a reason.",
-    status: "Live",
+    status: "Internal alpha",
     builtWith: "React Native/Expo, Postgres, Redis, Claude Code",
   },
   {
     name: "GymTime",
     description:
       "A strength-training iOS app for people who came to lift, not to post. Big numbers, a quiet rest timer, a lock-screen Live Activity, and no feed whatsoever.",
-    status: "Internal alpha",
+    status: "External beta",
     builtWith: "SwiftUI and Claude Code, from a Claude Design handoff",
   },
   {
