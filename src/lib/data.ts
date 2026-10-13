@@ -55,7 +55,7 @@ export const outcomes: Outcome[] = [
   {
     figure: ">$30M",
     caption:
-      "Annual fraud loss avoidance and opex savings from realtime automated decisioning platform · Capital One",
+      "Annualized fraud loss avoidance and opex savings obtained from realtime automated decisioning platform · Capital One",
   },
   {
     figure: "<12 months",
@@ -169,7 +169,7 @@ export const currentBuilds: CurrentBuild[] = [
     name: "Stealth startup",
     description:
       "A mobile-first platform for sports pools and competitive play. Think office pool, minus the spreadsheet and the guy who forgets to update it. More soon \u2014 it\u2019s stealth for a reason.",
-    status: "Internal alpha",
+    status: "External beta",
     builtWith: "React Native/Expo, Postgres, Redis, Claude Code",
   },
   {

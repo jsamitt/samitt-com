@@ -21,11 +21,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://samitt.co"),
   title: "Jeff Samitt — AI-Native Product Executive & Builder/Operator",
   description:
-    "Fractional CPO, interim product leader, and hands-on builder. I embed, lead, and ship for growth-stage companies.",
+    "Fractional CPO, product leader, and hands-on builder. I embed, lead, and ship for growth-stage companies.",
   openGraph: {
     title: "Jeff Samitt — AI-Native Product Executive & Builder/Operator",
     description:
-      "Fractional CPO, interim product leader, and hands-on builder. I embed, lead, and ship for growth-stage companies.",
+      "Fractional CPO, product leader, and hands-on builder. I embed, lead, and ship for growth-stage companies.",
     type: "website",
   },
   // X shows a small thumbnail unless told to use the full preview card.

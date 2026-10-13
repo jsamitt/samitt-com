@@ -72,8 +72,8 @@ export function Contact() {
             className="mb-5"
           />
           <p className="mb-9 max-w-[440px] text-lg leading-relaxed text-on-dark-muted">
-            Open to fractional and interim leadership, project-based work, and
-            the right long-term role. Remote-first, willing to travel up to 50%.
+            Open to fractional leadership, project-based work, and the right
+            long-term role. Remote-first, willing to travel up to 50%.
             Based in Richmond, VA.
           </p>
 
