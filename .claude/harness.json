@@ -68,9 +68,9 @@
       "design"
     ],
     "risk_focus": [
-      "Contact form delivery: /api/contact must keep sending via Resend from jeff@samitt.co to jsamitt@gmail.com with reply-to set; a silent failure means lost leads with no alert.",
-      "RESEND_API_KEY and NEXT_PUBLIC_GA_ID live in Vercel env vars; changes must never hardcode, log or expose the Resend key client-side.",
-      "Contact form abuse: the endpoint has no rate limit, honeypot or input length caps; changes must not widen this, and anything touching it should consider spam burning Resend quota or getting samitt.co flagged.",
+      "Contact form delivery: /api/contact must keep sending via Resend from jeff@samitt.co to jsamitt@gmail.com with reply-to set, and every failure must both show the visitor the error with Jeff's email link and push an ntfy alert to Jeff. A failure that reports success, or the honeypot catching a real visitor (it returns a fake success), is a lead lost with no alert.",
+      "RESEND_API_KEY, NTFY_TOPIC and NEXT_PUBLIC_GA_ID live in Vercel env vars; changes must never hardcode, log or expose the Resend key or the ntfy topic (the topic is the secret: anyone who knows it can read the alerts) client-side or in logs. Alerts carry the visitor's name and email only, never the message or company.",
+      "Contact form abuse: protection is a contact_ref honeypot, server-side type/length/email checks, and a Vercel firewall rule (5 POSTs per 60s per IP, set in the dashboard, not code). Changes must not widen any of these, must never rename the honeypot to something autofill recognises, and should consider spam burning Resend quota or getting samitt.co flagged.",
       "Every push to main deploys straight to production on Vercel with no staging gate; a change that builds but renders broken, or breaks metadata/OG image/sitemap/robots, goes live immediately.",
       "Keyboard and screen-reader use: designs drawn on the canvas omit focus styles, heading semantics and focus movement, so every interactive change must keep visible focus (ink, never accent), real headings, and focus that lands somewhere sensible after content appears, disappears or is disabled."
     ]
@@ -123,5 +123,8 @@
   "branch": {
     "base": "main",
     "prefix": "feat/"
+  },
+  "models": {
+    "builder_min": "sonnet"
   }
 }
