@@ -22,7 +22,7 @@ export function Background() {
 
         <div className="flex-[3_1_560px] min-w-0 border-t-2 border-ink">
           {timeline.map((entry, i) => (
-            <FadeIn key={entry.company} delay={i * 100}>
+            <FadeIn key={`${entry.company}-${entry.period}`} delay={i * 100}>
               <div className="py-[22px] border-b border-rule flex flex-wrap items-baseline gap-x-8 gap-y-1">
                 <span className="flex-[0_0_150px] text-[15px] font-semibold tabular-nums text-ink-muted">
                   {entry.period}

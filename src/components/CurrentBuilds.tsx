@@ -16,14 +16,15 @@ export function CurrentBuilds() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {currentBuilds.map((project, i) => {
-            // A build still in development is the one highlighted in marigold.
-            const active = project.status === "In development";
+            // Shipped builds (live or on the App Store) are highlighted in marigold.
+            const shipped =
+              project.status === "Live" || project.status === "On the App Store";
             return (
               <FadeIn key={project.name} delay={i * 120}>
                 <article className="border-t-2 border-ink pt-6 flex flex-col gap-3.5">
                   <span
                     className={`self-start px-3.5 py-1.5 rounded-full text-sm font-semibold ${
-                      active ? "bg-accent" : "bg-surface"
+                      shipped ? "bg-accent" : "bg-surface"
                     }`}
                   >
                     {project.status}
@@ -35,6 +36,16 @@ export function CurrentBuilds() {
                   <p className="text-[15px] text-ink-muted">
                     Built with {project.builtWith}
                   </p>
+                  {project.link && (
+                    <a
+                      href={project.link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="self-start font-semibold underline underline-offset-4 decoration-2 decoration-accent"
+                    >
+                      {project.link.label} →
+                    </a>
+                  )}
                 </article>
               </FadeIn>
             );

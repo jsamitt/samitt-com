@@ -16,7 +16,7 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    title: "Fractional CPO / interim product leadership",
+    title: "Fractional CPO / product leadership",
     description:
       "Embed as your senior product leader. Own the roadmap, the team, and the outcomes.",
     icon: "compass",
@@ -36,7 +36,7 @@ export const services: Service[] = [
   {
     title: "AI-accelerated development",
     description:
-      "Prototype, build, and iterate using vibe coding tools — 10–20x faster than traditional product cycles.",
+      "Ship production software with AI, with the guardrails to keep it honest. I built the harness for it: Proof, an open-source Claude Code plugin.",
     icon: "zap",
   },
 ];
@@ -50,17 +50,17 @@ export const outcomes: Outcome[] = [
   {
     figure: "$0 → $150M",
     caption:
-      "Monthly spend on a new checkout product, built with Google Chrome & Android · Capital One",
+      "Monthly spend on a new digital commerce checkout product, built with Google Chrome & Android teams · Capital One",
   },
   {
     figure: ">$30M",
     caption:
-      "Annual fraud loss avoidance and opex savings from automated decisioning · Capital One",
+      "Annualized fraud loss avoidance and opex savings obtained from realtime automated decisioning platform · Capital One",
   },
   {
     figure: "<12 months",
     caption:
-      "From MVP to nationwide rollout, delivered 50% faster than planned · CarMax",
+      "New omni-channel sales contact center, from MVP to nationwide rollout, delivered 50% faster than planned · CarMax",
   },
 ];
 
@@ -75,6 +75,18 @@ export interface WorkEntry {
 }
 
 export const selectedWork: WorkEntry[] = [
+  {
+    company: "Stealth startup",
+    context: "Co-founder, product & engineering",
+    challenge:
+      "Build a modern platform for sports pools and competitive play from a blank page \u2014 with real-time standings that hold up when everyone hits refresh at once on a Sunday afternoon",
+    whatIDid:
+      "Co-founded the company and owned product direction from first sketch through launch. Shipped the full stack myself: a cross-platform React Native/Expo app on Postgres, with Redis-powered real-time leaderboards",
+    outcome:
+      "Took a mobile-first platform from concept to a live product in users\u2019 hands",
+    tech: "React Native/Expo, Postgres, Redis, Claude Code",
+    builtByMe: true,
+  },
   {
     company: "Capital One",
     context: "Senior Director of Product, payments & tokenization",
@@ -140,31 +152,40 @@ export const selectedWork: WorkEntry[] = [
 export interface CurrentBuild {
   name: string;
   description: string;
-  status: "In development" | "Alpha testing" | "Beta testing";
+  status:
+    | "Live"
+    | "On the App Store"
+    | "In development"
+    | "Internal alpha"
+    | "External beta"
+    | "Alpha testing"
+    | "Beta testing";
   builtWith: string;
+  link?: { label: string; href: string };
 }
 
 export const currentBuilds: CurrentBuild[] = [
   {
-    name: "Mise en Place",
+    name: "Stealth startup",
     description:
-      "A freemium, AI-powered family meal planning app that gets smarter every week — building context on who\u2019s home, what they love, and how your kitchen actually works.",
-    status: "In development",
-    builtWith: "AI-assisted vibe coding tools, Claude API",
+      "A mobile-first platform for sports pools and competitive play. Think office pool, minus the spreadsheet and the guy who forgets to update it. More soon \u2014 it\u2019s stealth for a reason.",
+    status: "External beta",
+    builtWith: "React Native/Expo, Postgres, Redis, Claude Code",
+  },
+  {
+    name: "GymTime",
+    description:
+      "A strength-training iOS app for people who came to lift, not to post. Big numbers, a quiet rest timer, a lock-screen Live Activity, and no feed whatsoever.",
+    status: "External beta",
+    builtWith: "SwiftUI and Claude Code, from a Claude Design handoff",
   },
   {
     name: "Wordella",
     description:
-      "A freemium mobile app for young children focused on early spelling and reading skills. Built in partnership with a design collaborator, targeting the App Store.",
-    status: "Alpha testing",
-    builtWith: "AI-assisted vibe coding tools",
-  },
-  {
-    name: "Latin Lives",
-    description:
-      "A Latin language learning app for high school students. Features photo/upload capture of teacher lesson materials, and creates gamified learning modules for vocabulary, grammar, and culture topics. Includes a teacher dashboard for tracking student progress.",
-    status: "Beta testing",
-    builtWith: "AI-assisted vibe coding tools, Claude API",
+      "A freemium word game where young kids build spelling and reading skills in an enchanted forest. Built with a design collaborator. Now on the App Store, after surviving Apple\u2019s Kids Category review, which turns out to be its own kind of test.",
+    status: "On the App Store",
+    builtWith: "React Native/Expo and Claude Code",
+    link: { label: "View on the App Store", href: "https://apps.apple.com/us/app/wordella/id6760268398" },
   },
 ];
 
@@ -178,6 +199,30 @@ export interface GitHubRepo {
 
 export const githubRepos: GitHubRepo[] = [
   {
+    name: "Proof",
+    slug: "proof-claude-plugin",
+    description:
+      "Open-source Claude Code harness for solo builders \u2014 spec \u2192 build \u2192 review \u2192 ship, with AI reviewers on every PR and a running record of why things were built the way they were",
+    language: "Shell",
+    isPublic: true,
+  },
+  {
+    name: "GymTime",
+    slug: "GymTime",
+    description:
+      "Strength-training iOS app \u2014 big numbers, quiet timer, no feed, and a lock-screen Live Activity for the active workout",
+    language: "Swift",
+    isPublic: true,
+  },
+  {
+    name: "WTFork",
+    slug: "wtfork",
+    description:
+      "AI-powered family meal planning app \u2014 weekly plans, recipes, and grocery lists that learn what your household actually eats",
+    language: "Swift",
+    isPublic: false,
+  },
+  {
     name: "Email triage agent",
     slug: "email-triage",
     description: "AI-powered email triage agent for a shared Gmail inbox — ingests, classifies, summarizes, and drafts AI-generated replies that learn over time",
@@ -185,10 +230,10 @@ export const githubRepos: GitHubRepo[] = [
     isPublic: true,
   },
   {
-    name: "Awaire",
-    slug: "awaire",
-    description: "Mobile & web app for construction worker safety — workforce heat stress monitoring, predictive alerts, and regulatory compliance",
-    language: "TypeScript",
+    name: "Wordella",
+    slug: "wordella",
+    description: "Early literacy spelling and reading game for young children \u2014 now live on the App Store",
+    language: "React Native",
     isPublic: false,
   },
   {
@@ -199,10 +244,10 @@ export const githubRepos: GitHubRepo[] = [
     isPublic: false,
   },
   {
-    name: "Wordella",
-    slug: "wordella",
-    description: "Early literacy spelling and reading app for young children",
-    language: "React Native",
+    name: "Awaire",
+    slug: "awaire",
+    description: "Mobile & web app for construction worker safety — workforce heat stress monitoring, predictive alerts, and regulatory compliance",
+    language: "TypeScript",
     isPublic: false,
   },
   {
@@ -228,6 +273,12 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+  {
+    title: "Proof, a development harness for solo builders",
+    excerpt:
+      "Working alone with AI, you don\u2019t have coordination problems. You have memory problems and second-opinion problems. So I built a harness for those.",
+    link: "https://www.linkedin.com/pulse/proof-development-harness-solo-builders-jeff-samitt-sdwjc/",
+  },
   {
     title: "Most Product Teams Are Still Staffed Like It\u2019s 2020",
     excerpt:
@@ -273,6 +324,11 @@ export const timeline: TimelineEntry[] = [
     company: "CarMax",
     role: "Group Product Leader",
     period: "2018\u20132019",
+  },
+  {
+    company: "Capital One",
+    role: "Director of Product",
+    period: "2011\u20132018",
   },
 ];
 

@@ -9,6 +9,7 @@ const langColors: Record<string, string> = {
   Swift: "#E07A3F",
   "React Native": "#4FA3C7",
   JavaScript: "#D9B43C",
+  Shell: "#6A9A4B",
 };
 
 function RepoCard({ repo }: { repo: (typeof githubRepos)[number] }) {
