@@ -22,6 +22,11 @@ export const metadata: Metadata = {
   title: "Jeff Samitt — AI-Native Product Executive & Builder/Operator",
   description:
     "Fractional CPO, product leader, and hands-on builder. I embed, lead, and ship for growth-stage companies.",
+  // Tells search engines the bare domain is the one address, so www and any
+  // preview URLs don't split the site's standing. Resolves against metadataBase.
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Jeff Samitt — AI-Native Product Executive & Builder/Operator",
     description:
