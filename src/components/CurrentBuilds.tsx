@@ -9,7 +9,7 @@ export function CurrentBuilds() {
         <FadeIn>
           <SectionHeading
             number="03"
-            title="What I’m building right now"
+            title="Recent side quests"
             className="mb-14"
           />
         </FadeIn>
