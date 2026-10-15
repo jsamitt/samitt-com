@@ -30,4 +30,5 @@
 - [x] **GitHub repo** — https://github.com/jsamitt/samitt-com
 - [x] **Deployed to Vercel** — samitt-com.vercel.app
 - [x] **Domain** — samitt.co (Cloudflare registrar, DNS pointing to Vercel)
+- [ ] **One address** — In Vercel, make `samitt.co` the primary domain and redirect `www.samitt.co` to it with a 308. Pages already name `https://samitt.co` as canonical (#24)
 - [x] **Email forwarding** — jeff@samitt.co → Gmail via Cloudflare Email Routing
