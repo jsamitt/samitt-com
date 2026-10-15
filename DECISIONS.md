@@ -9,6 +9,11 @@ says what was decided, why, and when. Prune entries that stop being true.
 
 <!-- Newest first. -->
 
+## 2026-10-15 — Tick the `todo.md` line in the PR that finishes it  ([#35](https://github.com/jsamitt/samitt-com/issues/35))
+
+**Decision:** When a change completes a `todo.md` item, that same PR ticks the item and updates its description. A manual step in a dashboard counts too, so record it as soon as it's confirmed live.
+**Why:** Every Proof session reads `todo.md` before planning. Four finished items sat unticked, one of them describing a sender address the code no longer used. A later build would have believed it.
+
 ## 2026-10-11 — Check scroll and focus behaviour in a headless browser, not the in-app pane  ([#15](https://github.com/jsamitt/samitt-com/issues/15))
 
 **Gotcha:** The Claude desktop app's browser pane is often hidden, and a hidden page doesn't run its rendering steps. Scroll events never fire, `scroll-smooth` (set on `<html>` in `layout.tsx`) never advances, and `#section` jumps on load don't happen. The nav looked broken there when it was correct.
