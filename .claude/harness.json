@@ -101,7 +101,7 @@
         "run": null
       },
       {
-        "name": "Vercel auto-deploys main — wait for its Production deployment to succeed (read from GitHub; stops on failure or after 10 minutes)",
+        "name": "Vercel auto-deploys main — wait for its Production deployment to succeed (read from GitHub; stops on failure or after 8 minutes, so run it with a 10-minute tool timeout)",
         "run": "scripts/wait-for-vercel.sh",
         "expect": "success"
       },
