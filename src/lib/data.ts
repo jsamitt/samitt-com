@@ -1,7 +1,7 @@
 export const navLinks = [
   { label: "What I do", href: "#what-i-do" },
   { label: "Work", href: "#work" },
-  { label: "Building", href: "#building" },
+  { label: "Side quests", href: "#building" },
   { label: "GitHub", href: "#github" },
   { label: "Thinking", href: "#thinking" },
   { label: "Background", href: "#background" },
@@ -166,11 +166,11 @@ export interface CurrentBuild {
 
 export const currentBuilds: CurrentBuild[] = [
   {
-    name: "Stealth startup",
+    name: "WTFork",
     description:
-      "A mobile-first platform for sports pools and competitive play. Think office pool, minus the spreadsheet and the guy who forgets to update it. More soon \u2014 it\u2019s stealth for a reason.",
+      "A family meal-planning iOS app. Weekly plans, recipes and a grocery list that learn what your household actually eats, so \u2018what\u2019s for dinner?\u2019 stops being a nightly negotiation.",
     status: "External beta",
-    builtWith: "React Native/Expo, Postgres, Redis, Claude Code",
+    builtWith: "Swift and Claude Code",
   },
   {
     name: "GymTime",
