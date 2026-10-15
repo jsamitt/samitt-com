@@ -33,6 +33,7 @@ says what was decided, why, and when. Prune entries that stop being true.
 
 **Gotcha:** The Claude desktop app's browser pane is often hidden, and a hidden page doesn't run its rendering steps. Scroll events never fire, `scroll-smooth` (set on `<html>` in `layout.tsx`) never advances, and `#section` jumps on load don't happen. The nav looked broken there when it was correct.
 **Decision:** Verify anything driven by scroll, focus or timing with headless Playwright against `npm run dev`. Chromium for it is already cached on this machine. The pane is fine for static reads.
+**Also (2026-10-15, [#43](https://github.com/jsamitt/samitt-com/issues/43)):** The Chromium builds are cached, but the `playwright` package isn't installed in this project, so `npx playwright` stops to ask for a download. Add it first (`npm i -D playwright`), or use the browser pane against `npm run start` for static checks: text, classes, order, phone-menu labels at 375px. A headless run where a synthetic `.click()` on a phone-menu link left `scrollY` at 0 was a false alarm, because a real tap on samitt.co scrolled correctly. Confirm scroll bugs with a real tap before filing them.
 
 ## 2026-10-11 — Each git worktree needs its own `node_modules`  ([#9](https://github.com/jsamitt/samitt-com/issues/9))
 
