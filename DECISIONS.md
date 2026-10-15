@@ -9,6 +9,11 @@ says what was decided, why, and when. Prune entries that stop being true.
 
 <!-- Newest first. -->
 
+## 2026-10-15 — A static-file link that works in `next dev` can still 404 in production  ([#40](https://github.com/jsamitt/samitt-com/issues/40))
+
+**Gotcha:** On macOS, `next dev` serves files in `public/` case-insensitively. `/writing/Product-Mindset-2020.pdf` returns `200` locally, but `next start` and Vercel (Linux) return `404` for it, because the file is `product-mindset-2020.pdf`.
+**Decision:** Verify links to static files by exact path, against a production build (`npm run build && npm start`) or the Vercel preview. A dev-server `200` is not proof.
+
 ## 2026-10-15 — Read every document in full before it goes into `public/`  ([#40](https://github.com/jsamitt/samitt-com/issues/40))
 
 **Decision:** Before committing a PDF, deck or any other document to `public/`, read every page, and check its metadata and link annotations too (`pdftotext`, `pdfinfo`). A replacement file gets the same check. Compare it against the version already read, for example by diffing extracted text, rather than trusting that only the name changed.
