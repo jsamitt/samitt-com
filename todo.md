@@ -17,7 +17,7 @@
 
 ## Analytics
 
-- [x] **Google Analytics wired up** — Just needs the measurement ID
+- [x] **Google Analytics wired up** — Loaded via `NEXT_PUBLIC_GA_ID` in `src/app/layout.tsx`
 - [x] **Set GA measurement ID** — `NEXT_PUBLIC_GA_ID` is set in Vercel
 
 ## SEO
