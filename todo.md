@@ -12,13 +12,13 @@
 - [x] **Email field added** — Form now collects name, email, company, and message
 - [x] **API route created** — `src/app/api/contact/route.ts` handles POST requests
 - [x] **Email delivery live** — Resend connected, submissions go to Gmail with reply-to set
-- [ ] **Verify sending domain** — Currently sends from `onboarding@resend.dev`. Verify `samitt.co` in Resend to send from `jeff@samitt.co`
-- [ ] **Spam protection** — Add honeypot field or reCAPTCHA if spam becomes a problem
+- [x] **Verify sending domain** — The form sends from `jeff@samitt.co` via Resend
+- [x] **Spam protection** — `contact_ref` honeypot field, server-side type, length and email checks in `src/app/api/contact/route.ts`, and a Vercel firewall rate limit set in the dashboard (#3)
 
 ## Analytics
 
 - [x] **Google Analytics wired up** — Just needs the measurement ID
-- [ ] **Set GA measurement ID** — Add `NEXT_PUBLIC_GA_ID` environment variable in Vercel (e.g. `G-XXXXXXXXXX`)
+- [x] **Set GA measurement ID** — `NEXT_PUBLIC_GA_ID` is set in Vercel
 
 ## SEO
 
@@ -30,5 +30,5 @@
 - [x] **GitHub repo** — https://github.com/jsamitt/samitt-com
 - [x] **Deployed to Vercel** — samitt-com.vercel.app
 - [x] **Domain** — samitt.co (Cloudflare registrar, DNS pointing to Vercel)
-- [ ] **One address** — In Vercel, make `samitt.co` the primary domain and redirect `www.samitt.co` to it with a 308. Pages already name `https://samitt.co` as canonical (#24)
+- [x] **One address** — `samitt.co` is the primary domain, and `www.samitt.co` redirects to it with a 308. Pages name `https://samitt.co` as canonical (#24)
 - [x] **Email forwarding** — jeff@samitt.co → Gmail via Cloudflare Email Routing
