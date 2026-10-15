@@ -9,6 +9,16 @@ says what was decided, why, and when. Prune entries that stop being true.
 
 <!-- Newest first. -->
 
+## 2026-10-15 — Check the `\u` escapes after editing `data.ts`  ([#34](https://github.com/jsamitt/samitt-com/issues/34))
+
+**Gotcha:** `src/lib/data.ts` writes apostrophes and dashes as `\u2019`/`\u2014` escapes. Claude Code's Edit tool writes those escapes as the literal characters `’`/`—`, and can fail to match an existing string that contains one. The file still compiles and looks right, so the mixed style only shows up when you grep.
+**Decision:** After editing `data.ts`, run `git diff -U0 src/lib/data.ts | grep '^+' | grep '[—’→–]'` and escape any new string it flags. Moved, unchanged lines can keep their original characters. A Python script that builds the backslash with `chr(92)` writes the escapes reliably.
+
+## 2026-10-15 — Tick the `todo.md` line in the PR that finishes it  ([#35](https://github.com/jsamitt/samitt-com/issues/35))
+
+**Decision:** When a change completes a `todo.md` item, that same PR ticks the item and updates its description. A manual step in a dashboard counts too, so record it as soon as it's confirmed live.
+**Why:** Every Proof session reads `todo.md` before planning. Four finished items sat unticked, one of them describing a sender address the code no longer used. A later build would have believed it.
+
 ## 2026-10-11 — Check scroll and focus behaviour in a headless browser, not the in-app pane  ([#15](https://github.com/jsamitt/samitt-com/issues/15))
 
 **Gotcha:** The Claude desktop app's browser pane is often hidden, and a hidden page doesn't run its rendering steps. Scroll events never fire, `scroll-smooth` (set on `<html>` in `layout.tsx`) never advances, and `#section` jumps on load don't happen. The nav looked broken there when it was correct.
