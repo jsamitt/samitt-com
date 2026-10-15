@@ -24,7 +24,7 @@ export function Thinking() {
               >
                 <div className="flex flex-col gap-4">
                   <span className="text-[13px] font-semibold tracking-[0.12em] uppercase text-ink-muted">
-                    Article · LinkedIn
+                    {article.kind} · {article.published}
                   </span>
                   <h3 className="font-display font-extrabold text-[34px] leading-[1.1] tracking-[-0.01em] decoration-accent decoration-[3px] underline-offset-[6px] group-hover:underline">
                     {article.title}

@@ -2,7 +2,7 @@
 
 ## Placeholders
 
-- [ ] **"Product Mindset in the AI Era" link** — Points to a LinkedIn media-viewer overlay. Replace with a direct post URL once Jeff provides one (`src/lib/data.ts`, `articles` array)
+- [x] **"Product Mindset in the AI Era" link** — The deck is now hosted on samitt.co at `/writing/product-mindset-in-the-ai-era-2026.pdf` (`src/lib/data.ts`, `articles` array)
 - [x] **GitHub repos** — Tiles use real repo names and descriptions (`src/lib/data.ts`, `githubRepos` array)
 - [x] **Open Graph image** — Sage link-preview card generated at build time by `src/app/opengraph-image.tsx` (1200×630)
 - [x] **Favicon** — Marigold disc: `src/app/icon.svg`, `favicon.ico` (16/32/48) and a 180px `apple-icon.png`

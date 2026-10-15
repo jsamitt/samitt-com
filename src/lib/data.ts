@@ -270,6 +270,8 @@ export interface Article {
   title: string;
   excerpt: string;
   link: string;
+  kind: string;
+  published: string;
 }
 
 export const articles: Article[] = [
@@ -278,18 +280,24 @@ export const articles: Article[] = [
     excerpt:
       "Working alone with AI, you don\u2019t have coordination problems. You have memory problems and second-opinion problems. So I built a harness for those.",
     link: "https://www.linkedin.com/pulse/proof-development-harness-solo-builders-jeff-samitt-sdwjc/",
-  },
-  {
-    title: "Most Product Teams Are Still Staffed Like It\u2019s 2020",
-    excerpt:
-      "AI hasn\u2019t just made product teams faster. It\u2019s reshaping who\u2019s on the team, what each person does, and what good product leadership looks like.",
-    link: "https://www.linkedin.com/posts/jeffsamitt_most-product-teams-are-still-staffed-like-share-7441921133764853760-nnNt",
+    kind: "Article · LinkedIn",
+    published: "October 2026",
   },
   {
     title: "Product Mindset in the AI Era",
     excerpt:
       "The foundations haven\u2019t changed \u2014 empowered teams, customer obsession, outcome focus. But the team model has to evolve.",
-    link: "https://www.linkedin.com/in/jeffsamitt/overlay/1774289085235/single-media-viewer/?profileId=ACoAAAAZ4lYBhUjliXNxwOnxwx78WRVO5BEeW0w",
+    link: "/writing/product-mindset-in-the-ai-era-2026.pdf",
+    kind: "Presentation",
+    published: "May 2026",
+  },
+  {
+    title: "Product Mindset",
+    excerpt:
+      "A high-level introduction for leaders: why legacy delivery wastes so much, what makes a modern product, and how to set product teams up to succeed.",
+    link: "/writing/product-mindset-2020.pdf",
+    kind: "Presentation",
+    published: "August 2020",
   },
 ];
 
