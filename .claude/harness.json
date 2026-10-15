@@ -14,7 +14,7 @@
     "Showcase what I'm building — keep Currently Building, GitHub and Selected Work current and credible"
   ],
   "commands": {
-    "test": null,
+    "test": "npm test",
     "typecheck": "npx tsc --noEmit",
     "lint": "npm run lint",
     "build": "npm run build",
@@ -24,6 +24,7 @@
     "on_stop": false,
     "steps": [
       "typecheck",
+      "test",
       "build",
       "lint"
     ],
@@ -90,6 +91,7 @@
   "ship": {
     "preflight": [
       "typecheck",
+      "test",
       "build",
       "lint"
     ],

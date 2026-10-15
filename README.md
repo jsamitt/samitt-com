@@ -16,6 +16,8 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+`npm test` runs the tests (Vitest). They cover what `/api/contact` does when a send succeeds or fails, with Resend, ntfy and `after()` replaced by stand-ins, so nothing real is sent.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to self-host [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque) (headings) and [Figtree](https://fonts.google.com/specimen/Figtree) (body text). The link-preview image can't use web fonts, so static copies of both live in `assets/fonts/` (see its README).
