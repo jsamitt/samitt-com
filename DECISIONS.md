@@ -9,6 +9,11 @@ says what was decided, why, and when. Prune entries that stop being true.
 
 <!-- Newest first. -->
 
+## 2026-10-15 — Read every document in full before it goes into `public/`  ([#40](https://github.com/jsamitt/samitt-com/issues/40))
+
+**Decision:** Before committing a PDF, deck or any other document to `public/`, read every page, and check its metadata and link annotations too (`pdftotext`, `pdfinfo`). A replacement file gets the same check. Compare it against the version already read, for example by diffing extracted text, rather than trusting that only the name changed.
+**Why:** This repo is public and `public/` is served as-is, so anything in the file is published twice: at samitt.co and in git history, which keeps it after the file is swapped. The first export of *Product Mindset in the AI Era* had Jeff's phone number on its last slide. Reading all 20 pages caught it; a skim of the title slide would not have.
+
 ## 2026-10-15 — Check the `\u` escapes after editing `data.ts`  ([#34](https://github.com/jsamitt/samitt-com/issues/34))
 
 **Gotcha:** `src/lib/data.ts` writes apostrophes and dashes as `\u2019`/`\u2014` escapes. Claude Code's Edit tool writes those escapes as the literal characters `’`/`—`, and can fail to match an existing string that contains one. The file still compiles and looks right, so the mixed style only shows up when you grep.
