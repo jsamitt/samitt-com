@@ -9,6 +9,11 @@ says what was decided, why, and when. Prune entries that stop being true.
 
 <!-- Newest first. -->
 
+## 2026-10-16 — Check where the site really lives with `curl -sSI`, not the code  ([#24](https://github.com/jsamitt/samitt-com/issues/24))
+
+**Gotcha:** `samitt.co` was answering with a `307` redirect to `www.samitt.co` because of the Vercel domain settings. Nothing in the repo shows it, so reading the code gave the wrong picture of which address visitors land on.
+**Decision:** Before changing anything about domains, redirects or canonical URLs, run `curl -sSI https://samitt.co` (and the `www` address) and read the status and `location` headers. Treat the live response as the source of truth.
+
 ## 2026-10-15 — A static-file link that works in `next dev` can still 404 in production  ([#40](https://github.com/jsamitt/samitt-com/issues/40))
 
 **Gotcha:** On macOS, `next dev` serves files in `public/` case-insensitively. `/writing/Product-Mindset-2020.pdf` returns `200` locally, but `next start` and Vercel (Linux) return `404` for it, because the file is `product-mindset-2020.pdf`.
