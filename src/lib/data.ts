@@ -77,7 +77,7 @@ export interface WorkEntry {
 export const selectedWork: WorkEntry[] = [
   {
     company: "Stealth startup",
-    context: "Co-founder, product & engineering",
+    context: "Consultant, product & engineering",
     challenge:
       "Build a modern platform for sports pools and competitive play from a blank page \u2014 with real-time standings that hold up when everyone hits refresh at once on a Sunday afternoon",
     whatIDid:
@@ -316,7 +316,7 @@ export const timeline: TimelineEntry[] = [
   {
     company: "Tigeraire",
     role: "President & COO",
-    period: "2023\u2013Present",
+    period: "2023\u20132026",
   },
   {
     company: "Capital One",
