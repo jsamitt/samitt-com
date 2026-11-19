@@ -9,6 +9,11 @@ says what was decided, why, and when. Prune entries that stop being true.
 
 <!-- Newest first. -->
 
+## 2026-11-19 — The Claude Design homepage canvas is a reference; issue specs win  ([#50](https://github.com/jsamitt/samitt-com/issues/50))
+
+**Decision:** For the Proof Software redesign (#49), the Claude Design homepage canvas (https://claude.ai/artifact/HHWKHNJFDQq48nF1G9Tmzw) sets the look: tokens, components, layout. Where its content or structure differs from a child issue's spec, the spec wins unless the owner settles it otherwise in that issue's handoff, and the handoff records the decision.
+**Why:** The canvas was drawn before the child specs existed and its section copy is illustrative (it shows three offerings where #52 asks for seven, links About to `/about`, wraps the phone nav). Building it as drawn would quietly undo approved spec decisions.
+
 ## 2026-10-15 — A static-file link that works in `next dev` can still 404 in production  ([#40](https://github.com/jsamitt/samitt-com/issues/40))
 
 **Gotcha:** On macOS, `next dev` serves files in `public/` case-insensitively. `/writing/Product-Mindset-2020.pdf` returns `200` locally, but `next start` and Vercel (Linux) return `404` for it, because the file is `product-mindset-2020.pdf`.
