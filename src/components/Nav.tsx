@@ -23,13 +23,18 @@ const DESKTOP_QUERY = "(min-width: 64rem)";
 
 // Following a menu link removes the focused link with the menu, so hand focus
 // to the section it jumps to; the next Tab then continues from there.
-// Links are root-relative ("/#work") so they also work from /about; a route
-// without a hash, or a section not on this page, is left to the browser.
-function focusLinkTarget(href: string) {
+// Links are root-relative ("/#work") so they also work from /about. A route
+// without a hash, or a section not on this page, has nothing here to focus, so
+// focus goes to the fallback (the menu button) rather than dropping to <body>;
+// a route change then reloads the page anyway.
+function focusLinkTarget(href: string, fallback?: HTMLElement | null) {
   const hashAt = href.indexOf("#");
-  if (hashAt === -1) return;
-  const target = document.getElementById(href.slice(hashAt + 1));
-  if (!target) return;
+  const target =
+    hashAt === -1 ? null : document.getElementById(href.slice(hashAt + 1));
+  if (!target) {
+    if (fallback) requestAnimationFrame(() => fallback.focus());
+    return;
+  }
   requestAnimationFrame(() => {
     if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
     target.focus({ preventScroll: true });
@@ -180,7 +185,7 @@ export function Nav() {
               href={link.href}
               onClick={() => {
                 setMenuOpen(false);
-                focusLinkTarget(link.href);
+                focusLinkTarget(link.href, menuButtonRef.current);
               }}
               className="py-3.5 border-b border-rule font-display font-bold text-[28px] leading-tight text-ink"
             >
@@ -192,7 +197,7 @@ export function Nav() {
               href={CONTACT_HREF}
               onClick={() => {
                 setMenuOpen(false);
-                focusLinkTarget(CONTACT_HREF);
+                focusLinkTarget(CONTACT_HREF, menuButtonRef.current);
               }}
               className="flex items-center justify-center min-h-[52px] rounded-full bg-ink text-on-dark text-lg font-semibold"
             >
