@@ -1,11 +1,9 @@
 export const navLinks = [
-  { label: "What I do", href: "#what-i-do" },
-  { label: "Work", href: "#work" },
-  { label: "Side quests", href: "#building" },
-  { label: "GitHub", href: "#github" },
-  { label: "Thinking", href: "#thinking" },
-  { label: "Background", href: "#background" },
-  { label: "Contact", href: "#contact" },
+  { label: "How we work", href: "/#how" },
+  { label: "Offerings", href: "/#offerings" },
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export interface Service {

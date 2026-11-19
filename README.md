@@ -20,7 +20,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to self-host [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque) (headings) and [Figtree](https://fonts.google.com/specimen/Figtree) (body text). The link-preview image can't use web fonts, so static copies of both live in `assets/fonts/` (see its README).
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to self-host [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque) (headings) and [Figtree](https://fonts.google.com/specimen/Figtree) (body text). The link-preview image is a static PNG from the Proof Software design system (`src/app/opengraph-image.png`), so it needs no fonts at build time. Static copies of both fonts stay in `assets/fonts/` (see its README) for any generated card later.
 
 ## Contact form protection
 

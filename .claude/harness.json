@@ -2,7 +2,7 @@
   "$schema": "proof/harness-config@1",
   "project": {
     "name": "Samitt.com",
-    "summary": "Jeff Samitt's personal site at samitt.co — a single-page Next.js portfolio for recruiters, founders and execs, with a Resend-backed contact form.",
+    "summary": "Proof Software's studio site (Proof LLC), moving from samitt.co to proofsoftware.co — a single-page Next.js marketing site for founders and execs with a product to build, with case-study pages and a Resend-backed contact form.",
     "docs": [
       "CLAUDE.md",
       "AGENTS.md",
@@ -10,8 +10,8 @@
     ]
   },
   "goals": [
-    "Win consulting and role leads through the contact form",
-    "Showcase what I'm building — keep Currently Building, GitHub and Selected Work current and credible"
+    "Win consulting engagements for Proof Software through the contact form",
+    "Show what the studio has shipped — keep Work and the case studies current and credible"
   ],
   "commands": {
     "test": "npm test",
@@ -78,7 +78,7 @@
   },
   "design": {
     "tokens": "src/app/globals.css",
-    "reference": null,
+    "reference": "https://claude.ai/artifact/RnB5r8uPmDG8rKbuPCsHRL",
     "platform": "web",
     "rules": [
       "Marigold (accent) is only ever a fill behind ink text, never a text colour on light backgrounds — it measures 1.7:1 on page and is unreadable",

@@ -1,0 +1,1 @@
+Browser and home-screen icons: `ink` ground, `on-dark` "p", `accent` disc. `favicon.svg` is the scalable icon for modern browsers; `favicon-32.png` and `favicon-16.png` (disc only, no letter) are fallbacks; `apple-touch-icon-180.png` is full-bleed square (iOS rounds it). `apple-touch-icon.svg` and `favicon-16.svg` are the sources for those PNGs.
