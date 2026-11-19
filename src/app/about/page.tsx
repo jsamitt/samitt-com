@@ -7,6 +7,8 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "About — Proof Software",
   robots: { index: false },
+  // The root layout's canonical is "/"; don't let this page claim it.
+  alternates: { canonical: "/about" },
 };
 
 export default function About() {
