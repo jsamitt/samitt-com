@@ -62,6 +62,21 @@ export const outcomes: Outcome[] = [
   },
 ];
 
+export const shippedFacts: Outcome[] = [
+  {
+    figure: "On the App Store",
+    caption: "Apple Developer, with apps published and live",
+  },
+  {
+    figure: "In production",
+    caption: "Products running for real customers",
+  },
+  {
+    figure: "Open source",
+    caption: "Proof, the build harness we use on every project",
+  },
+];
+
 export interface WorkEntry {
   company: string;
   context: string;
