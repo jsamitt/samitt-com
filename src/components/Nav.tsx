@@ -1,9 +1,12 @@
 "use client";
 import { useState, useEffect, useRef, useSyncExternalStore } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { navLinks } from "@/lib/data";
 
-// "Contact" is reached through the "Let's talk" button, not a plain link.
-const sectionLinks = navLinks.filter((link) => link.href !== "#contact");
+// "Contact" is reached through the "Start a project" button, not a plain link.
+const CONTACT_HREF = "/#contact";
+const sectionLinks = navLinks.filter((link) => link.href !== CONTACT_HREF);
 
 // Scroll position as an external store, so a page that loads already scrolled
 // (a reload mid-page, or a shared /#work link) gets the scrolled nav at once.
@@ -20,8 +23,12 @@ const DESKTOP_QUERY = "(min-width: 64rem)";
 
 // Following a menu link removes the focused link with the menu, so hand focus
 // to the section it jumps to; the next Tab then continues from there.
-function focusLinkTarget(hash: string) {
-  const target = document.getElementById(hash.slice(1));
+// Links are root-relative ("/#work") so they also work from /about; a route
+// without a hash, or a section not on this page, is left to the browser.
+function focusLinkTarget(href: string) {
+  const hashAt = href.indexOf("#");
+  if (hashAt === -1) return;
+  const target = document.getElementById(href.slice(hashAt + 1));
   if (!target) return;
   requestAnimationFrame(() => {
     if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
@@ -81,57 +88,52 @@ export function Nav() {
     };
   }, [menuOpen]);
 
-  // Solid bar once scrolled, or whenever the phone menu is open.
-  const solid = scrolled || menuOpen;
+  // Compact bar once scrolled, or whenever the phone menu is open.
+  const compact = scrolled || menuOpen;
 
   return (
+    // Same page ground and hairline at every scroll position; no shadow (the
+    // design system has none). Only the bar's height eases on scroll.
     <header
       ref={headerRef}
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-300 motion-reduce:transition-none ${
-        solid
-          ? "bg-surface border-rule shadow-lg shadow-ink/10"
-          : "bg-transparent border-transparent"
-      }`}
+      className="fixed inset-x-0 top-0 z-50 bg-page border-b border-rule"
     >
       <div
         className={`max-w-[1200px] mx-auto px-5 lg:px-8 flex items-center justify-between gap-4 transition-[height] duration-300 motion-reduce:transition-none ${
-          solid ? "h-[72px]" : "h-[92px] border-b border-rule"
+          compact ? "h-[72px]" : "h-[92px]"
         }`}
       >
-        <a
-          href="#hero"
-          className="inline-flex items-center gap-3 min-h-11 font-display font-extrabold text-xl text-ink"
-        >
-          <span
-            aria-hidden="true"
-            className={`inline-flex items-center justify-center rounded-full bg-accent text-base ${
-              solid ? "w-9 h-9" : "w-9 h-9 lg:w-10 lg:h-10"
-            }`}
-          >
-            JS
-          </span>
-          Jeff Samitt
-        </a>
+        <Link href="/#hero" className="inline-flex items-center min-h-11 shrink-0">
+          <Image
+            src="/brand/proof-wordmark-ink.svg"
+            alt="Proof Software home"
+            width={96}
+            height={32}
+            unoptimized
+            loading="eager"
+            className="block h-8 w-auto"
+          />
+        </Link>
 
         {/* Desktop nav */}
         <nav
           aria-label="Primary"
-          className="hidden lg:flex items-center gap-6 font-medium text-ink"
+          className="hidden lg:flex items-center gap-6 font-semibold text-ink"
         >
           {sectionLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="underline-offset-4 decoration-2 decoration-accent hover:underline focus-visible:underline"
+              className="inline-flex items-center min-h-11 underline-offset-4 decoration-2 decoration-accent hover:underline focus-visible:underline"
             >
               {link.label}
             </a>
           ))}
           <a
-            href="#contact"
+            href={CONTACT_HREF}
             className="inline-flex items-center min-h-11 px-5 rounded-full bg-ink text-on-dark hover:bg-ink-muted transition-colors"
           >
-            Let&apos;s talk
+            Start a project
           </a>
         </nav>
 
@@ -187,21 +189,21 @@ export function Nav() {
           ))}
           <div className="mt-auto pt-8 flex flex-col gap-4">
             <a
-              href="#contact"
+              href={CONTACT_HREF}
               onClick={() => {
                 setMenuOpen(false);
-                focusLinkTarget("#contact");
+                focusLinkTarget(CONTACT_HREF);
               }}
-              className="flex items-center justify-center min-h-14 rounded-full bg-ink text-on-dark text-lg font-semibold"
+              className="flex items-center justify-center min-h-[52px] rounded-full bg-ink text-on-dark text-lg font-semibold"
             >
-              Let&apos;s talk
+              Start a project
             </a>
             <p className="flex items-center justify-center gap-2.5 text-[15px] font-semibold text-ink">
               <span
                 aria-hidden="true"
                 className="w-2 h-2 rounded-full bg-positive"
               />
-              Open to new opportunities
+              Taking on new projects
             </p>
           </div>
         </nav>
