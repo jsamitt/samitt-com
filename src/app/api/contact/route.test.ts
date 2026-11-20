@@ -189,6 +189,13 @@ describe("POST /api/contact timeline", () => {
     expect(sentText()).not.toContain("Timeline:");
   });
 
+  it("sends without a Timeline line when it is only invisible characters", async () => {
+    const res = await submit({ ...visitor, timeline: "\u200b\u200d" });
+
+    expect(res.status).toBe(200);
+    expect(sentText()).not.toContain("Timeline:");
+  });
+
   it("rejects a timeline over 100 characters and sends nothing", async () => {
     const res = await submit({ ...visitor, timeline: "x".repeat(101) });
 

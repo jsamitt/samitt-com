@@ -39,8 +39,8 @@ function invalid() {
 // Jeff can fix the cause and reply before the lead goes cold. Runs after the
 // response via after(), so a slow or failing ntfy never changes what the
 // visitor sees. Reason, name and email go in the body: a non-ASCII name in a
-// header could break the request. Never the message, company or timeline, and Cache: no
-// so ntfy doesn't keep it. The topic is the secret, so it's never logged.
+// header could break the request. Never the message, company or timeline, and
+// Cache: no so ntfy doesn't keep it. The topic is the secret, so it's never logged.
 function alertFailure(reason: string, name: string, email: string) {
   const topic = process.env.NTFY_TOPIC;
   if (!topic) {
@@ -148,7 +148,8 @@ export async function POST(request: Request) {
         `Name: ${cleanName}`,
         `Email: ${cleanEmail}`,
         `Company: ${cleanCompany || "N/A"}`,
-        ...(cleanTimeline ? [`Timeline: ${cleanTimeline}`] : []),
+        // Left out when nothing would show (blank or only invisible characters).
+        ...(isBlank(cleanTimeline) ? [] : [`Timeline: ${cleanTimeline}`]),
         "",
         cleanMessage,
       ].join("\n"),

@@ -86,7 +86,7 @@ export function Contact() {
                 <path d="M3 7l9 6 9-6" />
               </svg>
             </span>
-            <span className="min-w-0 [overflow-wrap:anywhere]">
+            <span className="min-w-0 [overflow-wrap:anywhere] underline underline-offset-[6px] decoration-2 decoration-accent">
               Or email hello@proofsoftware.co →
             </span>
           </a>
@@ -125,7 +125,7 @@ export function Contact() {
                   <div className="grid grid-cols-[repeat(auto-fit,minmax(min(200px,100%),1fr))] gap-[18px]">
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="name" className={labelClass}>Your name</label>
-                      <input type="text" id="name" name="name" autoComplete="name" required maxLength={100} placeholder="Your name" className={`${fieldClass} min-h-12`} />
+                      <input type="text" id="name" name="name" autoComplete="name" required maxLength={100} className={`${fieldClass} min-h-12`} />
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="email" className={labelClass}>Email</label>
@@ -136,7 +136,7 @@ export function Contact() {
                     <label htmlFor="company" className={labelClass}>
                       Company <span className="font-normal text-ink-muted">(optional)</span>
                     </label>
-                    <input type="text" id="company" name="company" maxLength={100} placeholder="Your company" className={`${fieldClass} min-h-12`} />
+                    <input type="text" id="company" name="company" autoComplete="organization" maxLength={100} className={`${fieldClass} min-h-12`} />
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="message" className={labelClass}>What are you building?</label>
