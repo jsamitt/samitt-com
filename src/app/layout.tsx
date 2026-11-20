@@ -18,7 +18,7 @@ const figtree = Figtree({
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://samitt.co"),
+  metadataBase: new URL("https://proofsoftware.co"),
   title: "Proof Software — product-first software studio",
   description:
     "Proof Software is a product-first software studio. We start from the user, understand the problems worth solving, prove the approach, then build and ship.",
