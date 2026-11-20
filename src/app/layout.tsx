@@ -18,19 +18,19 @@ const figtree = Figtree({
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://samitt.co"),
-  title: "Jeff Samitt — AI-Native Product Executive & Builder/Operator",
+  metadataBase: new URL("https://proofsoftware.co"),
+  title: "Proof Software — product-first software studio",
   description:
-    "Fractional CPO, product leader, and hands-on builder. I embed, lead, and ship for growth-stage companies.",
+    "Proof Software is a product-first software studio. We start from the user, understand the problems worth solving, prove the approach, then build and ship.",
   // Tells search engines the bare domain is the one address, so www and any
   // preview URLs don't split the site's standing. Resolves against metadataBase.
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Jeff Samitt — AI-Native Product Executive & Builder/Operator",
+    title: "Proof Software — product-first software studio",
     description:
-      "Fractional CPO, product leader, and hands-on builder. I embed, lead, and ship for growth-stage companies.",
+      "We build software that solves real-world problems. Start from the user. Prove it. Then ship.",
     type: "website",
   },
   // X shows a small thumbnail unless told to use the full preview card.

@@ -1,25 +1,35 @@
-import { socialLinks } from "@/lib/data";
+import Image from "next/image";
+import Link from "next/link";
+import { navLinks } from "@/lib/data";
 
-const linkClass =
-  "text-on-dark hover:text-on-dark-muted transition-colors focus-visible:outline-on-dark";
-
-// Sits directly under Contact on the same ink background, so the two read as one block.
+// On the page ground, not ink: Contact is the page's one dark section.
+// Focus uses the global ink ring.
 export function Footer() {
   return (
-    <footer className="bg-ink border-t border-dark-rule">
-      <div className="max-w-[1200px] mx-auto px-5 lg:px-8 py-7 flex flex-wrap items-center justify-between gap-4 text-[15px] text-on-dark-muted">
-        <p>&copy; 2026 Jeff Samitt / Proof LLC</p>
-        <nav aria-label="Social" className="flex flex-wrap gap-6">
-          <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className={linkClass}>
-            LinkedIn
-          </a>
-          <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
-            GitHub
-          </a>
-          <a href={socialLinks.email} className={linkClass}>
-            Email
-          </a>
+    <footer className="bg-page border-t border-rule">
+      <div className="max-w-[1200px] mx-auto px-5 lg:px-8 py-10 flex flex-wrap items-center justify-between gap-x-8 gap-y-4 text-[15px] text-ink-muted">
+        <Link href="/#hero" className="inline-flex items-center min-h-11 shrink-0">
+          <Image
+            src="/brand/proof-wordmark-ink.svg"
+            alt="Proof Software home"
+            width={72}
+            height={24}
+            unoptimized
+            className="block h-6 w-auto"
+          />
+        </Link>
+        <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-1 font-semibold">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="inline-flex items-center min-h-11 text-ink hover:text-ink-muted transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
+        <p>&copy; 2026 Proof LLC &middot; Richmond, Virginia</p>
       </div>
     </footer>
   );

@@ -1,11 +1,7 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
-import { WhatIDo } from "@/components/WhatIDo";
-import { SelectedWork } from "@/components/SelectedWork";
-import { CurrentBuilds } from "@/components/CurrentBuilds";
-import { GitHub } from "@/components/GitHub";
-import { Thinking } from "@/components/Thinking";
-import { Background } from "@/components/Background";
+import { HowWeWork } from "@/components/HowWeWork";
+import { Offerings } from "@/components/Offerings";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -15,12 +11,8 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <WhatIDo />
-        <SelectedWork />
-        <CurrentBuilds />
-        <GitHub />
-        <Thinking />
-        <Background />
+        <HowWeWork />
+        <Offerings />
         <Contact />
       </main>
       <Footer />

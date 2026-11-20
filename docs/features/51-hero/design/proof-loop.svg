@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img" aria-label="Our loop: users, problems, hypotheses, proof, build and ship, then back to users">
+<circle cx="210" cy="210" r="150" fill="none" stroke="#14302B" stroke-width="2"></circle>
+<path d="M -7 -8 L 7 0 L -7 8 Z" fill="#14302B" transform="translate(298.2 88.6) rotate(36)"></path>
+<path d="M -7 -8 L 7 0 L -7 8 Z" fill="#14302B" transform="translate(352.7 256.4) rotate(108)"></path>
+<path d="M -7 -8 L 7 0 L -7 8 Z" fill="#14302B" transform="translate(210.0 360.0) rotate(180)"></path>
+<path d="M -7 -8 L 7 0 L -7 8 Z" fill="#14302B" transform="translate(67.3 256.4) rotate(252)"></path>
+<path d="M -7 -8 L 7 0 L -7 8 Z" fill="#14302B" transform="translate(121.8 88.6) rotate(324)"></path>
+<circle cx="210.0" cy="60.0" r="46" fill="#DDE7DA"></circle>
+<text x="210.0" y="51.0" text-anchor="middle" font-family="Bricolage Grotesque, system-ui, sans-serif" font-weight="800" font-size="13" fill="#14302B">01</text>
+<text x="210.0" y="70.0" text-anchor="middle" font-family="Figtree, system-ui, sans-serif" font-weight="600" font-size="14" fill="#14302B">Users</text>
+<circle cx="352.7" cy="163.6" r="46" fill="#DDE7DA"></circle>
+<text x="352.7" y="154.6" text-anchor="middle" font-family="Bricolage Grotesque, system-ui, sans-serif" font-weight="800" font-size="13" fill="#14302B">02</text>
+<text x="352.7" y="173.6" text-anchor="middle" font-family="Figtree, system-ui, sans-serif" font-weight="600" font-size="14" fill="#14302B">Problems</text>
+<circle cx="298.2" cy="331.4" r="46" fill="#DDE7DA"></circle>
+<text x="298.2" y="322.4" text-anchor="middle" font-family="Bricolage Grotesque, system-ui, sans-serif" font-weight="800" font-size="13" fill="#14302B">03</text>
+<text x="298.2" y="341.4" text-anchor="middle" font-family="Figtree, system-ui, sans-serif" font-weight="600" font-size="14" fill="#14302B">Hypotheses</text>
+<circle cx="121.8" cy="331.4" r="54" fill="#F2B135"></circle>
+<text x="121.8" y="322.4" text-anchor="middle" font-family="Bricolage Grotesque, system-ui, sans-serif" font-weight="800" font-size="13" fill="#14302B">04</text>
+<text x="121.8" y="341.4" text-anchor="middle" font-family="Figtree, system-ui, sans-serif" font-weight="600" font-size="14" fill="#14302B">Proof</text>
+<circle cx="67.3" cy="163.6" r="46" fill="#14302B"></circle>
+<text x="67.3" y="154.6" text-anchor="middle" font-family="Bricolage Grotesque, system-ui, sans-serif" font-weight="800" font-size="13" fill="#F1F4EE">05</text>
+<text x="67.3" y="173.6" text-anchor="middle" font-family="Figtree, system-ui, sans-serif" font-weight="600" font-size="13" fill="#F1F4EE">Build &amp; ship</text>
+<text x="210" y="204" text-anchor="middle" font-family="Bricolage Grotesque, system-ui, sans-serif" font-weight="800" font-size="22" fill="#14302B">Learn,</text>
+<text x="210" y="230" text-anchor="middle" font-family="Bricolage Grotesque, system-ui, sans-serif" font-weight="800" font-size="22" fill="#14302B">then repeat.</text>
+</svg>

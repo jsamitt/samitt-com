@@ -1,0 +1,1 @@
+`og-card-1200x630.png`: the link-preview card for proofsoftware.co, used as `og:image` and `twitter:image` (summary_large_image). Page ground, ink wordmark, the thesis headline with the marigold Highlight, and a 2px ink rule over the footer line. Rebuild case-study cards on the same layout.

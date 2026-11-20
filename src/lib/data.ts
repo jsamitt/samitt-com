@@ -1,43 +1,139 @@
 export const navLinks = [
-  { label: "What I do", href: "#what-i-do" },
-  { label: "Work", href: "#work" },
-  { label: "Side quests", href: "#building" },
-  { label: "GitHub", href: "#github" },
-  { label: "Thinking", href: "#thinking" },
-  { label: "Background", href: "#background" },
-  { label: "Contact", href: "#contact" },
+  { label: "How we work", href: "/#how" },
+  { label: "Offerings", href: "/#offerings" },
+  { label: "Contact", href: "/#contact" },
 ];
 
-export interface Service {
+export interface Engagement {
   title: string;
-  description: string;
-  icon: string;
+  /** The recommended starting point: ink border and "Start here" flag. One per set. */
+  recommended?: boolean;
+  who: string;
+  what: string;
+  /** Described in time and team, never money. */
+  shape: string;
+  cta: { label: string; href: string };
 }
 
-export const services: Service[] = [
+export const engagements: Engagement[] = [
   {
-    title: "Fractional CPO / product leadership",
-    description:
-      "Embed as your senior product leader. Own the roadmap, the team, and the outcomes.",
-    icon: "compass",
+    title: "Proof sprint",
+    recommended: true,
+    who: "Founders and teams with an idea and no proof yet.",
+    what: "User interviews, a clickable prototype and a clear build-or-don\u2019t answer.",
+    shape: "Two to three weeks, one small team.",
+    cta: { label: "Talk to us about a sprint \u2192", href: "#contact" },
   },
   {
-    title: "0-to-1 product builds",
-    description:
-      "Take products from concept to shipped — including hands-on prototyping with AI tools.",
-    icon: "rocket",
+    title: "Build to launch",
+    who: "Teams with a proven idea that needs shipping.",
+    what: "A production app on the web or the App Store, and the product decisions behind it.",
+    shape: "Two to four months, in two-week releases.",
+    cta: { label: "Plan a build with us \u2192", href: "#contact" },
   },
   {
-    title: "Product team design",
+    title: "Product partner",
+    who: "Teams that ship already and want senior product leadership beside them.",
+    what: "Roadmap, discovery and design reviews, plus hands-on prototypes when a debate needs settling.",
+    shape: "A few days a week, quarter by quarter.",
+    cta: { label: "Ask about a partnership \u2192", href: "#contact" },
+  },
+];
+
+export interface Offering {
+  name: string;
+  description: string;
+  /** Optional link out: `text` must appear verbatim in `description` and becomes the link. */
+  link?: { text: string; href: string };
+}
+
+export const offerings: Offering[] = [
+  {
+    name: "Proof sprint",
     description:
-      "Stand up product teams, operating models, and discovery practices from scratch.",
-    icon: "users",
+      "Product discovery: user interviews, a clickable prototype, a build plan and estimate.",
   },
   {
-    title: "AI-accelerated development",
+    name: "Proof of concept / MVP",
     description:
-      "Ship production software with AI, with the guardrails to keep it honest. I built the harness for it: Proof, an open-source Claude Code plugin.",
-    icon: "zap",
+      "Working software that tests the idea with real users or stakeholders.",
+  },
+  {
+    name: "0-to-1 product build",
+    description:
+      "A shipped iOS, Android or web product, from spec to App Store or web.",
+  },
+  {
+    name: "AI workflow automation",
+    description:
+      "A production AI tool (triage, drafting, ops), with a human feedback loop.",
+  },
+  {
+    name: "Digital transformation",
+    description:
+      "Diagnosis, then replatforming, extending, or adding instrumentation and observability to lift reliability, usability and funnel metrics.",
+  },
+  {
+    name: "Software factory setup",
+    description:
+      "A product development lifecycle (PDLC) harness, a more advanced version of our Proof plugin, plus the training to run it, so the team can build and maintain its own software.",
+    link: {
+      text: "Proof plugin",
+      href: "https://github.com/jsamitt/proof-claude-plugin",
+    },
+  },
+  {
+    name: "Fractional product leadership",
+    description:
+      "Roadmap, discovery practice and team design, embedded part-time.",
+  },
+];
+
+export interface ThesisPoint {
+  title: string;
+  body: string;
+}
+
+export const thesisPoints: ThesisPoint[] = [
+  {
+    title: "Code got cheap",
+    body: "AI tools turn a prompt into a working app in an afternoon. That\u2019s great, right up until it ships to people who didn\u2019t need it.",
+  },
+  {
+    title: "Judgment didn\u2019t",
+    body: "Knowing who it\u2019s for, what to leave out and when it\u2019s ready still takes people who\u2019ve shipped products for a living.",
+  },
+  {
+    title: "So we lead with product",
+    body: "Strategy and UX first, then we build fast with the same AI tools everyone has. The difference is where we point them.",
+  },
+];
+
+export interface ProcessStep {
+  title: string;
+  description: string;
+  /** Optional link out: `text` must appear verbatim in `description` and becomes the link. */
+  link?: { text: string; href: string };
+}
+
+export const processSteps: ProcessStep[] = [
+  {
+    title: "Listen",
+    description: "We start with the people who\u2019ll use it, not the feature list.",
+  },
+  {
+    title: "Prove it",
+    description: "A prototype in real hands tells us what\u2019s worth building.",
+  },
+  {
+    title: "Build",
+    description:
+      "AI tools make us fast. Every change is specced, reviewed and logged in Proof, our open-source build harness.",
+    link: { text: "Proof", href: "https://github.com/jsamitt/proof-claude-plugin" },
+  },
+  {
+    title: "Ship",
+    description: "Released, measured and improved in small steps.",
   },
 ];
 
@@ -61,6 +157,21 @@ export const outcomes: Outcome[] = [
     figure: "<12 months",
     caption:
       "New omni-channel sales contact center, from MVP to nationwide rollout, delivered 50% faster than planned · CarMax",
+  },
+];
+
+export const shippedFacts: Outcome[] = [
+  {
+    figure: "On the App Store",
+    caption: "Apple Developer, with apps published and live",
+  },
+  {
+    figure: "In production",
+    caption: "Products running for real customers",
+  },
+  {
+    figure: "Open source",
+    caption: "Proof, the build harness we use on every project",
   },
 ];
 
@@ -343,5 +454,5 @@ export const timeline: TimelineEntry[] = [
 export const socialLinks = {
   linkedin: "https://linkedin.com/in/jeffsamitt",
   github: "https://github.com/jsamitt",
-  email: "mailto:jeff@samitt.co",
+  email: "mailto:hello@proofsoftware.co",
 };
