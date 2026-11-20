@@ -29,11 +29,11 @@ export function SectionHeading({
       >
         {number}
       </p>
-      <h2 className={`mt-4 font-display font-extrabold ${titleSize} ${titleColor}`}>
+      <h2 className={`mt-4 [overflow-wrap:anywhere] font-display font-extrabold ${titleSize} ${titleColor}`}>
         {title}
       </h2>
       {subtitle && (
-        <p className={`mt-3 text-lg ${subtitleColor} max-w-2xl`}>{subtitle}</p>
+        <p className={`mt-3 [overflow-wrap:anywhere] text-lg ${subtitleColor} max-w-2xl`}>{subtitle}</p>
       )}
     </div>
   );

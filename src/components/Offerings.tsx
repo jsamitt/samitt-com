@@ -54,7 +54,7 @@ export function Offerings() {
         </FadeIn>
 
         <FadeIn>
-          <h3 className="mt-20 mb-8 font-display font-extrabold text-[32px] leading-[1.05] tracking-[-0.02em]">
+          <h3 className="[overflow-wrap:anywhere] mt-20 mb-8 font-display font-extrabold text-[32px] leading-[1.05] tracking-[-0.02em]">
             What we build
           </h3>
         </FadeIn>
@@ -66,10 +66,10 @@ export function Offerings() {
                 i === 0 ? "border-t-2 border-ink" : "border-t border-rule"
               } ${i === offerings.length - 1 ? "border-b border-b-rule" : ""}`}
             >
-              <h4 className="flex-[1_1_240px] min-w-0 font-display font-extrabold text-2xl leading-[1.15]">
+              <h4 className="flex-[1_1_240px] min-w-0 [overflow-wrap:anywhere] font-display font-extrabold text-2xl leading-[1.15]">
                 {offering.name}
               </h4>
-              <p className="flex-[2_1_280px] min-w-0 text-ink-muted leading-relaxed">
+              <p className="flex-[2_1_280px] min-w-0 [overflow-wrap:anywhere] text-ink-muted leading-relaxed">
                 <Description {...offering} />
               </p>
             </li>

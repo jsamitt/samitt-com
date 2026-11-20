@@ -23,7 +23,7 @@ export function OfferingCard({
 
   return (
     <article
-      className={`h-full flex flex-col gap-6 p-8 rounded-card bg-surface border-2 ${
+      className={`h-full flex flex-col gap-6 p-6 sm:p-8 rounded-card bg-surface border-2 ${
         recommended ? "border-ink" : "border-transparent"
       }`}
     >
@@ -32,7 +32,7 @@ export function OfferingCard({
           Start here
         </p>
       )}
-      <h3 className="font-display font-extrabold text-[32px] leading-[1.05] tracking-[-0.02em]">
+      <h3 className="[overflow-wrap:anywhere] font-display font-extrabold text-[32px] leading-[1.05] tracking-[-0.02em]">
         {title}
       </h3>
       <dl className="flex-1">
@@ -41,10 +41,10 @@ export function OfferingCard({
             key={row.label}
             className={`py-4 ${i === 0 ? "border-t-2 border-ink" : "border-t border-rule"}`}
           >
-            <dt className="text-sm font-semibold tracking-[0.12em] uppercase text-ink-muted">
+            <dt className="[overflow-wrap:anywhere] text-sm font-semibold tracking-[0.12em] uppercase text-ink-muted">
               {row.label}
             </dt>
-            <dd className="mt-1 text-[17px] leading-normal">{row.value}</dd>
+            <dd className="[overflow-wrap:anywhere] mt-1 text-[17px] leading-normal">{row.value}</dd>
           </div>
         ))}
       </dl>
