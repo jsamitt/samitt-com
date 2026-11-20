@@ -1,27 +1,9 @@
-import { engagements, offerings, type Offering } from "@/lib/data";
+import { engagements, offerings } from "@/lib/data";
 import { SectionHeading } from "./SectionHeading";
 import { FadeIn } from "./FadeIn";
 import { OfferingCard } from "./OfferingCard";
-
-/** The sentence, with `link.text` (if any) turned into an external link. */
-function Description({ description, link }: Offering) {
-  const at = link ? description.indexOf(link.text) : -1;
-  if (!link || at === -1) return <>{description}</>;
-  return (
-    <>
-      {description.slice(0, at)}
-      <a
-        href={link.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-ink font-semibold underline underline-offset-4 decoration-2 decoration-accent"
-      >
-        {link.text}
-      </a>
-      {description.slice(at + link.text.length)}
-    </>
-  );
-}
+import { RuleRows } from "./RuleRows";
+import { InlineLink } from "./InlineLink";
 
 export function Offerings() {
   return (
@@ -58,23 +40,20 @@ export function Offerings() {
             What we build
           </h3>
         </FadeIn>
-        <ul>
-          {offerings.map((offering, i) => (
-            <li
-              key={offering.name}
-              className={`py-7 flex flex-wrap gap-x-10 gap-y-2 ${
-                i === 0 ? "border-t-2 border-ink" : "border-t border-rule"
-              } ${i === offerings.length - 1 ? "border-b border-b-rule" : ""}`}
-            >
-              <h4 className="flex-[1_1_240px] min-w-0 [overflow-wrap:anywhere] font-display font-extrabold text-2xl leading-[1.15]">
-                {offering.name}
-              </h4>
-              <p className="flex-[2_1_280px] min-w-0 [overflow-wrap:anywhere] text-ink-muted leading-relaxed">
-                <Description {...offering} />
-              </p>
-            </li>
-          ))}
-        </ul>
+        <RuleRows
+          as="h4"
+          ratio={2}
+          rows={offerings.map((offering) => ({
+            key: offering.name,
+            title: offering.name,
+            body: (
+              <InlineLink
+                description={offering.description}
+                link={offering.link}
+              />
+            ),
+          }))}
+        />
       </div>
     </section>
   );

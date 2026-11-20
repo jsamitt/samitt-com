@@ -91,6 +91,54 @@ export const offerings: Offering[] = [
   },
 ];
 
+export interface ThesisPoint {
+  title: string;
+  body: string;
+}
+
+export const thesisPoints: ThesisPoint[] = [
+  {
+    title: "Code got cheap",
+    body: "AI tools turn a prompt into a working app in an afternoon. That\u2019s great, right up until it ships to people who didn\u2019t need it.",
+  },
+  {
+    title: "Judgment didn\u2019t",
+    body: "Knowing who it\u2019s for, what to leave out and when it\u2019s ready still takes people who\u2019ve shipped products for a living.",
+  },
+  {
+    title: "So we lead with product",
+    body: "Strategy and UX first, then we build fast with the same AI tools everyone has. The difference is where we point them.",
+  },
+];
+
+export interface ProcessStep {
+  title: string;
+  description: string;
+  /** Optional link out: `text` must appear verbatim in `description` and becomes the link. */
+  link?: { text: string; href: string };
+}
+
+export const processSteps: ProcessStep[] = [
+  {
+    title: "Listen",
+    description: "We start with the people who\u2019ll use it, not the feature list.",
+  },
+  {
+    title: "Prove it",
+    description: "A prototype in real hands tells us what\u2019s worth building.",
+  },
+  {
+    title: "Build",
+    description:
+      "AI tools make us fast. Every change is specced, reviewed and logged in Proof, our open-source build harness.",
+    link: { text: "Proof", href: "https://github.com/jsamitt/proof-claude-plugin" },
+  },
+  {
+    title: "Ship",
+    description: "Released, measured and improved in small steps.",
+  },
+];
+
 export interface Outcome {
   figure: string;
   caption: string;
