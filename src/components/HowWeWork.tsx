@@ -7,7 +7,7 @@ import { InlineLink } from "./InlineLink";
 export function HowWeWork() {
   return (
     <>
-      <section id="why" className="bg-surface">
+      <section id="how" className="bg-surface">
         <div className="max-w-[1200px] mx-auto px-5 lg:px-8 pt-24 pb-28">
           <div className="flex flex-wrap gap-12">
             <FadeIn className="flex-[1_1_280px] min-w-0">
@@ -33,7 +33,7 @@ export function HowWeWork() {
         </div>
       </section>
 
-      <section id="how">
+      <section id="process">
         <div className="max-w-[1200px] mx-auto px-5 lg:px-8 pt-24 pb-28">
           <FadeIn>
             <SectionHeading
