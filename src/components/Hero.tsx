@@ -64,10 +64,10 @@ export function Hero() {
 
       <FadeIn delay={150}>
         {/* Word figures at 52px: "production" alone is ~270px, so columns
-            need ~300px before a third one fits, and min() keeps one column on
+            need ~310px (text 278px after the gutter) before a third one fits, and min() keeps one column on
             phones. Below ~370px wide even one column is too narrow for it at
             52px, so the figure eases down (to ~45px at 320px). */}
-        <div className="mt-[88px] grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] border-t-2 border-ink">
+        <div className="mt-[88px] grid grid-cols-[repeat(auto-fit,minmax(min(310px,100%),1fr))] border-t-2 border-ink">
           {shippedFacts.map((fact) => (
             <div key={fact.figure} className="pt-7 pr-8">
               <p className="font-display font-extrabold text-[clamp(40px,14vw,52px)] leading-none tracking-[-0.03em]">
