@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { outcomes } from "@/lib/data";
+import { shippedFacts } from "@/lib/data";
 import { FadeIn } from "./FadeIn";
+import { ProofLoop } from "./ProofLoop";
 
 export function Hero() {
   return (
@@ -11,28 +11,29 @@ export function Hero() {
             <div className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-3">
               <p className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-surface text-[15px] font-semibold">
                 <span aria-hidden="true" className="w-2 h-2 rounded-full bg-positive" />
-                Open to new opportunities
+                Taking on new projects
               </p>
               <p className="text-sm font-semibold tracking-[0.12em] uppercase text-ink-muted">
-                Fractional CPO · Product executive · Hands-on builder
+                Product-first software studio
               </p>
             </div>
           </FadeIn>
 
           <FadeIn delay={100}>
-            <h1 className="max-w-[777px] font-display font-extrabold text-[clamp(46px,6.2vw,88px)] leading-[1.02] tracking-[-0.03em]">
-              Hi there. I&rsquo;m <br />
-              Jeff Samitt. I lead product teams —{" "}
+            <h1 className="max-w-[800px] font-display font-extrabold text-[clamp(46px,6.2vw,88px)] leading-[1.02] tracking-[-0.03em]">
+              We build software that solves{" "}
               <span className="bg-accent rounded-[14px] px-3 [box-decoration-break:clone]">
-                and still build.
+                real-world problems.
               </span>
             </h1>
           </FadeIn>
 
           <FadeIn delay={200}>
-            <p className="mt-8 max-w-[560px] text-[21px] leading-relaxed text-ink-muted">
-              AI-native product executive &amp; builder/operator. I embed, lead,
-              and ship for growth-stage companies.
+            <p className="mt-8 max-w-[580px] text-[21px] leading-relaxed text-ink-muted">
+              AI made it easy to ship bad software fast. We start from the
+              user, understand the problems worth solving, hypothesize
+              solutions, prove the approach, then build and ship &mdash; so
+              what you launch is worth launching.
             </p>
           </FadeIn>
 
@@ -42,41 +43,37 @@ export function Hero() {
                 href="#contact"
                 className="inline-flex items-center min-h-[52px] px-7 rounded-full bg-ink text-on-dark font-semibold hover:bg-ink-muted transition-colors"
               >
-                Let&rsquo;s talk
+                Tell us what you&rsquo;re building
               </a>
               <a
                 href="#work"
-                className="font-semibold underline underline-offset-[6px] decoration-2 decoration-accent"
+                className="inline-flex items-center min-h-11 font-semibold underline underline-offset-[6px] decoration-2 decoration-accent"
               >
-                See my work →
+                See the work →
               </a>
             </div>
           </FadeIn>
         </div>
 
         <div className="flex-[2_1_300px] min-w-0 flex justify-center">
-          <FadeIn delay={200}>
-            <Image
-              src="/jeff-samitt.jpg"
-              alt="Jeff Samitt"
-              width={800}
-              height={800}
-              preload
-              sizes="(min-width: 640px) 360px, 280px"
-              className="block w-[280px] sm:w-[360px] aspect-square object-cover rounded-full bg-band shadow-[0_0_0_12px_var(--color-surface),0_0_0_14px_var(--color-rule)]"
-            />
+          <FadeIn delay={200} className="w-full max-w-[440px]">
+            <ProofLoop />
           </FadeIn>
         </div>
       </div>
 
       <FadeIn delay={150}>
-        <div className="mt-[88px] grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] border-t-2 border-ink">
-          {outcomes.map((outcome) => (
-            <div key={outcome.figure} className="pt-7 pr-8">
-              <p className="font-display font-extrabold text-[52px] leading-none tracking-[-0.03em]">
-                {outcome.figure}
+        {/* Word figures at 52px: "production" alone is ~270px, so columns
+            need ~310px (text 278px after the gutter) before a third one fits, and min() keeps one column on
+            phones. Below ~370px wide even one column is too narrow for it at
+            52px, so the figure eases down (to ~45px at 320px). */}
+        <div className="mt-[88px] grid grid-cols-[repeat(auto-fit,minmax(min(310px,100%),1fr))] border-t-2 border-ink">
+          {shippedFacts.map((fact) => (
+            <div key={fact.figure} className="pt-7 pr-8">
+              <p className="font-display font-extrabold text-[clamp(40px,14vw,52px)] leading-none tracking-[-0.03em]">
+                {fact.figure}
               </p>
-              <p className="mt-3 text-[15px] text-ink-muted">{outcome.caption}</p>
+              <p className="mt-3 text-[15px] text-ink-muted">{fact.caption}</p>
             </div>
           ))}
         </div>
