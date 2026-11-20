@@ -46,10 +46,10 @@ export function Hero() {
                 Tell us what you&rsquo;re building
               </a>
               <a
-                href="#work"
+                href="#how"
                 className="inline-flex items-center min-h-11 font-semibold underline underline-offset-[6px] decoration-2 decoration-accent"
               >
-                See the work →
+                How we work →
               </a>
             </div>
           </FadeIn>
