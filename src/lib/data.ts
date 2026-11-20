@@ -6,36 +6,88 @@ export const navLinks = [
   { label: "Contact", href: "/#contact" },
 ];
 
-export interface Service {
+export interface Engagement {
   title: string;
-  description: string;
-  icon: string;
+  /** The recommended starting point: ink border and "Start here" flag. One per set. */
+  recommended?: boolean;
+  who: string;
+  what: string;
+  /** Described in time and team, never money. */
+  shape: string;
+  cta: { label: string; href: string };
 }
 
-export const services: Service[] = [
+export const engagements: Engagement[] = [
   {
-    title: "Fractional CPO / product leadership",
-    description:
-      "Embed as your senior product leader. Own the roadmap, the team, and the outcomes.",
-    icon: "compass",
+    title: "Proof sprint",
+    recommended: true,
+    who: "Founders and teams with an idea and no proof yet.",
+    what: "User interviews, a clickable prototype and a clear build-or-don\u2019t answer.",
+    shape: "Two to three weeks, one small team.",
+    cta: { label: "Talk to us about a sprint \u2192", href: "#contact" },
   },
   {
-    title: "0-to-1 product builds",
-    description:
-      "Take products from concept to shipped — including hands-on prototyping with AI tools.",
-    icon: "rocket",
+    title: "Build to launch",
+    who: "Teams with a proven idea that needs shipping.",
+    what: "A production app on the web or the App Store, and the product decisions behind it.",
+    shape: "Two to four months, in two-week releases.",
+    cta: { label: "Plan a build with us \u2192", href: "#contact" },
   },
   {
-    title: "Product team design",
+    title: "Product partner",
+    who: "Teams that ship already and want senior product leadership beside them.",
+    what: "Roadmap, discovery and design reviews, plus hands-on prototypes when a debate needs settling.",
+    shape: "A few days a week, quarter by quarter.",
+    cta: { label: "Ask about a partnership \u2192", href: "#contact" },
+  },
+];
+
+export interface Offering {
+  name: string;
+  description: string;
+  /** Optional link out: `text` must appear verbatim in `description` and becomes the link. */
+  link?: { text: string; href: string };
+}
+
+export const offerings: Offering[] = [
+  {
+    name: "Proof sprint",
     description:
-      "Stand up product teams, operating models, and discovery practices from scratch.",
-    icon: "users",
+      "Product discovery: user interviews, a clickable prototype, a build plan and estimate.",
   },
   {
-    title: "AI-accelerated development",
+    name: "Proof of concept / MVP",
     description:
-      "Ship production software with AI, with the guardrails to keep it honest. I built the harness for it: Proof, an open-source Claude Code plugin.",
-    icon: "zap",
+      "Working software that tests the idea with real users or stakeholders.",
+  },
+  {
+    name: "0-to-1 product build",
+    description:
+      "A shipped iOS, Android or web product, from spec to App Store or web.",
+  },
+  {
+    name: "AI workflow automation",
+    description:
+      "A production AI tool (triage, drafting, ops), with a human feedback loop.",
+  },
+  {
+    name: "Digital transformation",
+    description:
+      "Diagnosis, then replatforming, extending, or adding instrumentation and observability to lift reliability, usability and funnel metrics.",
+  },
+  {
+    name: "Software factory setup",
+    description:
+      "A product development lifecycle (PDLC) harness, a more advanced version of our Proof plugin, plus the training to run it, so the team can build and maintain its own software.",
+    link: {
+      text: "Proof plugin",
+      href: "https://github.com/jsamitt/proof-claude-plugin",
+    },
+  },
+  {
+    name: "Fractional product leadership",
+    description:
+      "Roadmap, discovery practice and team design, embedded part-time.",
   },
 ];
 

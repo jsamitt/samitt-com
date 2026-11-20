@@ -1,6 +1,6 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
-import { WhatIDo } from "@/components/WhatIDo";
+import { Offerings } from "@/components/Offerings";
 import { SelectedWork } from "@/components/SelectedWork";
 import { CurrentBuilds } from "@/components/CurrentBuilds";
 import { GitHub } from "@/components/GitHub";
@@ -15,7 +15,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <WhatIDo />
+        <Offerings />
         <SelectedWork />
         <CurrentBuilds />
         <GitHub />
