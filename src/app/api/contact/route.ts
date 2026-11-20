@@ -140,7 +140,7 @@ export async function POST(request: Request) {
     // Resend doesn't throw when the API rejects the email or can't be reached:
     // it returns { data: null, error }. That's a failure, same as a throw.
     const { error } = await resend.emails.send({
-      from: "Samitt.co Contact <jeff@samitt.co>",
+      from: "Proof Software Contact <jeff@samitt.co>",
       to: "jsamitt@gmail.com",
       replyTo: cleanEmail,
       subject: `Contact form: ${cleanName}${cleanCompany ? ` from ${cleanCompany}` : ""}`,
