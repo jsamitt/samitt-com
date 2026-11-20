@@ -33,16 +33,23 @@ const visitor = {
   email: "ann@example.com",
   company: "SecretCo",
   message: "SECRET MESSAGE TEXT",
+  timeline: "SECRET TIMELINE",
 };
 
-function submit() {
+function submit(fields: Record<string, unknown> = visitor) {
   return POST(
     new Request("http://localhost/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(visitor),
+      body: JSON.stringify(fields),
     })
   );
+}
+
+// The plain-text body of the one email sent.
+function sentText() {
+  expect(send).toHaveBeenCalledTimes(1);
+  return String(send.mock.calls[0][0].text);
 }
 
 // The ntfy calls made once every scheduled after() callback has finished.
@@ -51,8 +58,8 @@ async function ntfyCalls() {
   return fetchMock.mock.calls;
 }
 
-// Exactly one alert: the reason and who to reply to, never the message text
-// or company, and not stored by ntfy.
+// Exactly one alert: the reason and who to reply to, never the message text,
+// company or timeline, and not stored by ntfy.
 async function expectOneAlert(reason: string) {
   const calls = await ntfyCalls();
   expect(calls).toHaveLength(1);
@@ -66,6 +73,7 @@ async function expectOneAlert(reason: string) {
   expect(body).toContain(visitor.email);
   expect(body).not.toContain(visitor.message);
   expect(body).not.toContain(visitor.company);
+  expect(body).not.toContain(visitor.timeline);
 }
 
 beforeEach(() => {
@@ -148,5 +156,68 @@ describe("POST /api/contact send outcomes", () => {
     expect(res.status).toBe(500);
     expect(await res.json()).toEqual({ error: "Failed to send message" });
     expect(await ntfyCalls()).toHaveLength(0);
+  });
+});
+
+describe("POST /api/contact timeline", () => {
+  beforeEach(() => {
+    send.mockResolvedValue({ data: { id: "email_1" }, error: null });
+  });
+
+  it("puts the timeline in the email when given, with reply-to the visitor", async () => {
+    const res = await submit({ ...visitor, timeline: "launch by March" });
+
+    expect(res.status).toBe(200);
+    expect(sentText()).toContain("Timeline: launch by March");
+    expect(send.mock.calls[0][0].replyTo).toBe(visitor.email);
+  });
+
+  it("sends without a Timeline line when none is given", async () => {
+    const { timeline: _omit, ...withoutTimeline } = visitor;
+    void _omit;
+
+    const res = await submit(withoutTimeline);
+
+    expect(res.status).toBe(200);
+    expect(sentText()).not.toContain("Timeline:");
+  });
+
+  it("sends without a Timeline line when it is only whitespace", async () => {
+    const res = await submit({ ...visitor, timeline: "  \n " });
+
+    expect(res.status).toBe(200);
+    expect(sentText()).not.toContain("Timeline:");
+  });
+
+  it("rejects a timeline over 100 characters and sends nothing", async () => {
+    const res = await submit({ ...visitor, timeline: "x".repeat(101) });
+
+    expect(res.status).toBe(400);
+    expect(send).not.toHaveBeenCalled();
+  });
+
+  it("accepts a timeline of exactly 100 characters", async () => {
+    const res = await submit({ ...visitor, timeline: "x".repeat(100) });
+
+    expect(res.status).toBe(200);
+  });
+
+  it("rejects a timeline that is not a string and sends nothing", async () => {
+    const res = await submit({ ...visitor, timeline: 2027 });
+
+    expect(res.status).toBe(400);
+    expect(send).not.toHaveBeenCalled();
+  });
+
+  it("sends a timeline with line breaks or control characters as one line", async () => {
+    const res = await submit({
+      ...visitor,
+      timeline: "Q1\nBcc: x@evil.com\u0007\u2028soon",
+    });
+
+    expect(res.status).toBe(200);
+    expect(sentText().split("\n")).toContain(
+      "Timeline: Q1 Bcc: x@evil.com soon"
+    );
   });
 });
