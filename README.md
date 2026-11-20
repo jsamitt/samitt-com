@@ -37,7 +37,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Contact form alerts
 
-When a real visitor's message doesn't go through (Resend rejects it, the send throws, or `RESEND_API_KEY` isn't set), the visitor sees the form's error with Jeff's email address, and `/api/contact` sends a phone notification through [ntfy](https://ntfy.sh): the reason, plus the visitor's name and email so Jeff can reply. The message text and company are never included, and the notification is sent with `Cache: no` so ntfy doesn't store it. It goes out after the visitor's response, so ntfy being slow or down never affects the form. Successful sends, rejected submissions and honeypot hits send nothing.
+When a real visitor's message doesn't go through (Resend rejects it, the send throws, or `RESEND_API_KEY` isn't set), the visitor sees the form's error with the studio's email address (hello@proofsoftware.co), and `/api/contact` sends a phone notification through [ntfy](https://ntfy.sh): the reason, plus the visitor's name and email so Jeff can reply. The message text, company and timeline are never included, and the notification is sent with `Cache: no` so ntfy doesn't store it. It goes out after the visitor's response, so ntfy being slow or down never affects the form. Successful sends, rejected submissions and honeypot hits send nothing.
 
 Env var: **`NTFY_TOPIC`**, the ntfy topic name. Anyone who knows it can read and post to it, so treat it as a secret. Without it the form works exactly as before, and the server logs "contact alerts off: NTFY_TOPIC not set" when a send fails.
 
