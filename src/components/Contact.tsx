@@ -41,6 +41,7 @@ export function Contact() {
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       company: (form.elements.namedItem("company") as HTMLInputElement).value,
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      timeline: (form.elements.namedItem("timeline") as HTMLInputElement).value,
       contact_ref: (form.elements.namedItem("contact_ref") as HTMLInputElement).value,
     };
 
@@ -65,46 +66,28 @@ export function Contact() {
       <div className="max-w-[1200px] mx-auto px-5 lg:px-8 py-[104px] flex flex-wrap gap-14">
         <FadeIn className="flex-[1_1_380px] min-w-0">
           <SectionHeading
-            number="07"
-            title="Let’s talk."
+            number="04"
+            title="Tell us what you’re building"
             tone="dark"
             size="lg"
             className="mb-5"
           />
           <p className="mb-9 max-w-[440px] text-lg leading-relaxed text-on-dark-muted">
-            Open to fractional leadership, project-based work, and the right
-            long-term role. Remote-first, willing to travel up to 50%.
-            Based in Richmond, VA.
+            A few lines is plenty. We’ll reply quickly.
           </p>
 
-          <div className="flex flex-col gap-3.5">
-            <a
-              href="mailto:jeff@samitt.co"
-              className={`inline-flex items-center gap-3.5 min-h-11 self-start font-medium ${darkLinkClass}`}
-            >
-              <span className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-ink-muted">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <rect x="3" y="5" width="18" height="14" rx="2" />
-                  <path d="M3 7l9 6 9-6" />
-                </svg>
-              </span>
-              jeff@samitt.co
-            </a>
-            <a
-              href="https://linkedin.com/in/jeffsamitt"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-3.5 min-h-11 self-start font-medium ${darkLinkClass}`}
-            >
-              <span className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-ink-muted">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="18" rx="3" />
-                  <path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" />
-                </svg>
-              </span>
-              linkedin.com/in/jeffsamitt
-            </a>
-          </div>
+          <a
+            href="mailto:hello@proofsoftware.co"
+            className={`inline-flex items-center gap-3.5 min-h-11 self-start font-medium ${darkLinkClass}`}
+          >
+            <span className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-ink-muted">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" />
+              </svg>
+            </span>
+            Or email hello@proofsoftware.co →
+          </a>
         </FadeIn>
 
         <FadeIn delay={100} className="flex-[1_1_440px] min-w-0">
@@ -124,7 +107,7 @@ export function Contact() {
                 <h3 className="font-display font-extrabold text-[32px] leading-[1.1]">
                   Thanks for reaching out
                 </h3>
-                <p className="text-ink-muted">I’ll get back to you shortly.</p>
+                <p className="text-ink-muted">We’ll get back to you shortly.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
@@ -139,12 +122,12 @@ export function Contact() {
                   </div>
                   <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[18px]">
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="name" className={labelClass}>Name</label>
-                      <input type="text" id="name" name="name" required maxLength={100} placeholder="Your name" className={`${fieldClass} min-h-12`} />
+                      <label htmlFor="name" className={labelClass}>Your name</label>
+                      <input type="text" id="name" name="name" autoComplete="name" required maxLength={100} placeholder="Your name" className={`${fieldClass} min-h-12`} />
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="email" className={labelClass}>Email</label>
-                      <input type="email" id="email" name="email" required maxLength={254} placeholder="you@company.com" className={`${fieldClass} min-h-12`} />
+                      <input type="email" id="email" name="email" autoComplete="email" required maxLength={254} placeholder="you@company.com" className={`${fieldClass} min-h-12`} />
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5">
@@ -154,8 +137,15 @@ export function Contact() {
                     <input type="text" id="company" name="company" maxLength={100} placeholder="Your company" className={`${fieldClass} min-h-12`} />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="message" className={labelClass}>Message</label>
-                    <textarea id="message" name="message" required maxLength={5000} rows={5} placeholder="How can I help?" className={`${fieldClass} py-3.5 resize-y`} />
+                    <label htmlFor="message" className={labelClass}>What are you building?</label>
+                    <p id="message-hint" className="text-ink-muted text-[15px]">Who it’s for, and where it’s stuck.</p>
+                    <textarea id="message" name="message" required maxLength={5000} rows={5} aria-describedby="message-hint" className={`${fieldClass} py-3.5 resize-y`} />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="timeline" className={labelClass}>
+                      Timeline <span className="font-normal text-ink-muted">(optional)</span>
+                    </label>
+                    <input type="text" id="timeline" name="timeline" maxLength={100} placeholder="e.g. launch by March" className={`${fieldClass} min-h-12`} />
                   </div>
 
                   {error && (
@@ -165,9 +155,9 @@ export function Contact() {
                         <path d="M12 7.5v5.5M12 16.5v.01" />
                       </svg>
                       <span>
-                        Something went wrong. Please email me directly at{" "}
-                        <a href="mailto:jeff@samitt.co" className="text-negative underline">
-                          jeff@samitt.co
+                        Something went wrong. Please email us at{" "}
+                        <a href="mailto:hello@proofsoftware.co" className="text-negative underline">
+                          hello@proofsoftware.co
                         </a>
                         .
                       </span>
@@ -184,7 +174,7 @@ export function Contact() {
                         <path d="M21 12a9 9 0 1 1-9-9" />
                       </svg>
                     )}
-                    {sending ? "Sending…" : "Send message"}
+                    {sending ? "Sending…" : "Send it over"}
                   </button>
                 </fieldset>
               </form>
