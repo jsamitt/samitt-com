@@ -106,12 +106,12 @@
         "expect": "success"
       },
       {
-        "name": "Smoke test proofsoftware.co",
-        "run": "curl -sSfL -o /dev/null -w '%{http_code}' https://proofsoftware.co",
-        "expect": "200"
+        "name": "Smoke test proofsoftware.co serves the new build (its canonical names proofsoftware.co, so the old site does not pass)",
+        "run": "curl -sSfL https://proofsoftware.co | grep -o '<link rel=\"canonical\" href=\"https://proofsoftware.co\"/>'",
+        "expect": "<link rel=\"canonical\" href=\"https://proofsoftware.co\"/>"
       },
       {
-        "name": "samitt.co still redirects to proofsoftware.co",
+        "name": "samitt.co redirects to proofsoftware.co, keeping the path (at the first launch this only passes once Jeff has set the Vercel redirects: pause before it until he confirms)",
         "run": "curl -sS -o /dev/null -w '%{http_code} %{redirect_url}' https://samitt.co/about",
         "expect": "308 https://proofsoftware.co/about"
       }
