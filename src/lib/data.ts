@@ -251,19 +251,19 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    name: "GymTime",
+    name: "AI-powered email ops",
     featured: true,
-    status: "Open beta",
+    status: "In production",
     story:
-      "Strength training for people who want to track their progress without taking notes: recommended routines, simple steps, easy-to-read numbers & rest timers. GymTime is fee-free and ad-free.",
-    why: "To demonstrate an app proof-of-concept that utilizes AI to monitor usage activity, triage problems, resolve bugs & address user feedback.",
-    stack: "SwiftUI",
+      "Reads a shared support inbox, triages and categorizes email, retrieves context, learns your style, and drafts the reply, then a person reviews it and hits send.",
+    why: "Tigeraire\u2019s goal was to provide world-class customer service on a limited budget, without overwhelming their small team. Whether allocating scarce operational resources or managing down the cost per service interaction, efficiency matters.",
+    stack: "Python \u00b7 Flask \u00b7 Claude API \u00b7 Gmail API",
     screenshot: {
-      src: "/work/gymtime.jpg",
-      alt: "GymTime\u2019s New workout screen, choosing a training goal",
-      frame: "phone",
-      width: 359,
-      height: 782,
+      src: "/work/tigeraire-triage.jpg",
+      alt: "The email tool built for Tigeraire, reviewing a warranty email with completed action items and a drafted reply",
+      frame: "browser",
+      width: 1520,
+      height: 1760,
     },
   },
   {
@@ -284,19 +284,19 @@ export const projects: Project[] = [
     },
   },
   {
-    name: "AI-powered email ops",
+    name: "GymTime",
     featured: true,
-    status: "In production",
+    status: "Open beta",
     story:
-      "Reads a shared support inbox, triages and categorizes email, retrieves context, learns your style, and drafts the reply, then a person reviews it and hits send.",
-    why: "Tigeraire\u2019s goal was to provide world-class customer service on a limited budget, without overwhelming their small team. Whether allocating scarce operational resources or managing down the cost per service interaction, efficiency matters.",
-    stack: "Python \u00b7 Flask \u00b7 Claude API \u00b7 Gmail API",
+      "Strength training for people who want to track their progress without taking notes: recommended routines, simple steps, easy-to-read numbers & rest timers. GymTime is fee-free and ad-free.",
+    why: "To demonstrate an app proof-of-concept that utilizes AI to monitor usage activity, triage problems, resolve bugs & address user feedback.",
+    stack: "SwiftUI",
     screenshot: {
-      src: "/work/tigeraire-triage.jpg",
-      alt: "The email tool built for Tigeraire, reviewing a warranty email with completed action items and a drafted reply",
-      frame: "browser",
-      width: 1520,
-      height: 1760,
+      src: "/work/gymtime.jpg",
+      alt: "GymTime\u2019s New workout screen, choosing a training goal",
+      frame: "phone",
+      width: 359,
+      height: 782,
     },
   },
   {
