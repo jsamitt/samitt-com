@@ -239,23 +239,57 @@ export interface Project {
   name: string;
   featured: boolean;
   status: ProjectStatus;
-  /** One line. */
+  /** What it does. A line for list rows; a short paragraph on featured cards. */
   story: string;
+  /** Featured projects only: why it was built. */
+  why?: string;
   /** Featured projects only. */
   stack?: string;
   link?: { label: string; href: string };
   screenshot?: { src: string; alt: string; frame: "phone" | "browser"; width: number; height: number };
-  /** Case-study path; unused until the pages exist (#55). */
-  caseStudy?: string;
 }
 
 export const projects: Project[] = [
+  {
+    name: "AI-powered email ops",
+    featured: true,
+    status: "In production",
+    story:
+      "Reads a shared support inbox, triages and categorizes email, retrieves context, learns your style, and drafts the reply, then a person reviews it and hits send.",
+    why: "Tigeraire\u2019s goal was to provide world-class customer service on a limited budget, without overwhelming their small team. Whether allocating scarce operational resources or managing down the cost per service interaction, efficiency matters.",
+    stack: "Python \u00b7 Flask \u00b7 Claude API \u00b7 Gmail API",
+    screenshot: {
+      src: "/work/tigeraire-triage.jpg",
+      alt: "The email tool built for Tigeraire, reviewing a warranty email with completed action items and a drafted reply",
+      frame: "browser",
+      width: 1520,
+      height: 1760,
+    },
+  },
+  {
+    // The client's product name stays off the site, and so does the company.
+    name: "NFL Pool Management",
+    featured: true,
+    status: "Closed beta",
+    story:
+      "Sports pools with live schedules, scores, & standings that keep up when everyone hits refresh on a Sunday afternoon. System includes commissioner/player registration, pool setup, invite management, payment tracking, picks & reminders, scoring & standings, and payouts.",
+    why: "Our client saw a market opportunity. Whereas other companies charge a % of the pot and compete against their own league commissioners, with their service you pay a flat fee and you\u2019re always in control of your pools and your customer list.",
+    stack: "React Native \u00b7 Expo \u00b7 Postgres \u00b7 Redis",
+    screenshot: {
+      src: "/work/nfl-pools.jpg",
+      alt: "The NFL pool app\u2019s sign-in screen",
+      frame: "phone",
+      width: 359,
+      height: 782,
+    },
+  },
   {
     name: "GymTime",
     featured: true,
     status: "Open beta",
     story:
-      "Strength training for people who want to track their progress without taking notes: recommended routines, simple steps, easy-to-read numbers & rest timers.",
+      "Strength training for people who want to track their progress without taking notes: recommended routines, simple steps, easy-to-read numbers & rest timers. GymTime is fee-free and ad-free.",
+    why: "To demonstrate an app proof-of-concept that utilizes AI to monitor usage activity, triage problems, resolve bugs & address user feedback.",
     stack: "SwiftUI",
     screenshot: {
       src: "/work/gymtime.jpg",
@@ -266,33 +300,14 @@ export const projects: Project[] = [
     },
   },
   {
-    name: "HeadPro",
-    featured: true,
-    status: "Closed beta",
+    name: "Proof harness",
+    featured: false,
+    status: "Open source",
     story:
-      "Sports pools with live schedules, scores, & standings that keep up when everyone hits refresh on a Sunday afternoon.",
-    stack: "React Native \u00b7 Expo \u00b7 Postgres \u00b7 Redis",
-    screenshot: {
-      src: "/work/headpro.jpg",
-      alt: "HeadPro\u2019s sign-in screen",
-      frame: "phone",
-      width: 359,
-      height: 782,
-    },
-  },
-  {
-    name: "AI-powered email support ops",
-    featured: true,
-    status: "In production",
-    story:
-      "Reads a shared support inbox, triages and categorizes email, retrieves context, learns your style, and drafts the reply, then a person reviews it and hits send.",
-    stack: "Python \u00b7 Flask \u00b7 Claude API \u00b7 Gmail API",
-    screenshot: {
-      src: "/work/tigeraire-triage.jpg",
-      alt: "The email support tool built for Tigeraire, reviewing a warranty email with completed action items and a drafted reply",
-      frame: "browser",
-      width: 1520,
-      height: 1760,
+      "The open-source harness we build every project with: spec, build, review, ship.",
+    link: {
+      label: "View on GitHub",
+      href: "https://github.com/jsamitt/proof-claude-plugin",
     },
   },
   {
@@ -307,12 +322,6 @@ export const projects: Project[] = [
     },
   },
   {
-    name: "WTFork",
-    featured: false,
-    status: "Closed beta \u00b7 client build",
-    story: "Family meal planning that learns what your house will actually eat.",
-  },
-  {
     name: "Tigeraire ecommerce",
     featured: false,
     status: "In production",
@@ -320,22 +329,17 @@ export const projects: Project[] = [
       "A storefront rebuilt for business leads and direct sales, wired to Shopify, Amazon and fulfillment.",
   },
   {
+    name: "WTFork",
+    featured: false,
+    status: "Closed beta \u00b7 client build",
+    story: "Family meal planning that learns what your house will actually eat.",
+  },
+  {
     name: "Awaire",
     featured: false,
     status: "Prototype",
     story:
       "Heat-stress monitoring and alerts that keep construction crews safe on hot job sites.",
-  },
-  {
-    name: "Proof harness",
-    featured: false,
-    status: "Open source",
-    story:
-      "The open-source harness we build every project with: spec, build, review, ship.",
-    link: {
-      label: "View on GitHub",
-      href: "https://github.com/jsamitt/proof-claude-plugin",
-    },
   },
 ];
 
