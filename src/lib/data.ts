@@ -281,18 +281,18 @@ export const projects: Project[] = [
     },
   },
   {
-    name: "Tigeraire email triage",
+    name: "AI-powered email support ops",
     featured: true,
     status: "In production",
     story:
       "Reads a shared support inbox, triages and categorizes email, retrieves context, learns your style, and drafts the reply, then a person reviews it and hits send.",
     stack: "Python \u00b7 Flask \u00b7 Claude API \u00b7 Gmail API",
     screenshot: {
-      src: "/work/tigeraire-email-triage.jpg",
-      alt: "Tigeraire email triage reviewing a warranty email, with action items and a drafted reply",
+      src: "/work/tigeraire-triage.jpg",
+      alt: "The email support tool built for Tigeraire, reviewing a warranty email with completed action items and a drafted reply",
       frame: "browser",
       width: 1520,
-      height: 2250,
+      height: 1760,
     },
   },
   {

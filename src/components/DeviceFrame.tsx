@@ -7,18 +7,18 @@ type Screenshot = NonNullable<Project["screenshot"]>;
 export function DeviceFrame({ src, alt, frame, width, height }: Screenshot) {
   if (frame === "phone") {
     return (
-      <div className="relative w-[220px] max-w-full rounded-[48px] bg-ink p-2.5">
+      <div className="relative w-[180px] sm:w-[220px] max-w-full rounded-[40px] sm:rounded-[48px] bg-ink p-2.5">
         <div
           aria-hidden="true"
           className="absolute top-4 left-1/2 z-10 h-5 w-20 -translate-x-1/2 rounded-full bg-ink"
         />
-        <div className="aspect-[9/19.5] overflow-hidden rounded-[38px] bg-band">
+        <div className="aspect-[9/19.5] overflow-hidden rounded-[30px] sm:rounded-[38px] bg-band">
           <Image
             src={src}
             alt={alt}
             width={width}
             height={height}
-            sizes="220px"
+            sizes="(min-width: 640px) 220px, 180px"
             className="h-full w-full object-cover object-top"
           />
         </div>
@@ -32,14 +32,15 @@ export function DeviceFrame({ src, alt, frame, width, height }: Screenshot) {
         <span className="h-2.5 w-2.5 rounded-full bg-on-dark-muted" />
         <span className="h-2.5 w-2.5 rounded-full bg-on-dark-muted" />
       </div>
-      <div className="aspect-[4/3] overflow-hidden bg-surface">
+      {/* The screenshot keeps its own proportions, so nothing in it is cropped. */}
+      <div className="overflow-hidden bg-surface">
         <Image
           src={src}
           alt={alt}
           width={width}
           height={height}
           sizes="(min-width: 640px) 420px, 100vw"
-          className="h-full w-full object-cover object-top"
+          className="block h-auto w-full"
         />
       </div>
     </div>
