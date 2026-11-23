@@ -10,6 +10,7 @@ export function FeaturedProject({
   name,
   status,
   story,
+  why,
   stack,
   link,
   screenshot,
@@ -25,6 +26,15 @@ export function FeaturedProject({
             {name}
           </h3>
           <p className="[overflow-wrap:anywhere] text-lg leading-normal">{story}</p>
+          {why && (
+            <div>
+              {/* Same label style as OfferingCard's row labels. */}
+              <h4 className="[overflow-wrap:anywhere] text-sm font-semibold tracking-[0.12em] uppercase text-ink-muted">
+                Why build it
+              </h4>
+              <p className="mt-1 [overflow-wrap:anywhere] text-[17px] leading-normal">{why}</p>
+            </div>
+          )}
           {link && (
             <a
               href={link.href}
