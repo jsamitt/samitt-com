@@ -3,7 +3,7 @@
 ## Placeholders
 
 - [x] **"Product Mindset in the AI Era" link** — The deck is now hosted on samitt.co at `/writing/product-mindset-in-the-ai-era-2026.pdf` (`src/lib/data.ts`, `articles` array)
-- [x] **GitHub repos** — Tiles use real repo names and descriptions (`src/lib/data.ts`, `githubRepos` array)
+- [x] **Work section** — One `projects` list in `src/lib/data.ts` drives the Work section (featured cards with screenshots in `public/work/`, then "More from the studio"); the old GitHub tiles are gone (#54)
 - [x] **Open Graph image** — Proof Software link-preview card, a static `src/app/opengraph-image.png` (1200×630) from the design system, with `opengraph-image.alt.txt`
 - [x] **Favicon** — Proof Software mark (ink disc, "p", marigold dot): `src/app/icon.svg`, `favicon.ico` (16/32) and a 180px `apple-icon.png`
 

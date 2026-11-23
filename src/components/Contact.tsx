@@ -66,7 +66,7 @@ export function Contact() {
       <div className="max-w-[1200px] mx-auto px-5 lg:px-8 py-[104px] flex flex-wrap gap-14">
         <FadeIn className="flex-[1_1_380px] min-w-0">
           <SectionHeading
-            number="04"
+            number="05"
             title="Tell us what you’re building"
             tone="dark"
             size="lg"

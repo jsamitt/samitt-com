@@ -1,6 +1,7 @@
 export const navLinks = [
   { label: "How we work", href: "/#how" },
   { label: "Offerings", href: "/#offerings" },
+  { label: "Work", href: "/#work" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -185,19 +186,7 @@ export interface WorkEntry {
   builtByMe?: boolean;
 }
 
-export const selectedWork: WorkEntry[] = [
-  {
-    company: "Stealth startup",
-    context: "Consultant, product & engineering",
-    challenge:
-      "Build a modern platform for sports pools and competitive play from a blank page \u2014 with real-time standings that hold up when everyone hits refresh at once on a Sunday afternoon",
-    whatIDid:
-      "Co-founded the company and owned product direction from first sketch through launch. Shipped the full stack myself: a cross-platform React Native/Expo app on Postgres, with Redis-powered real-time leaderboards",
-    outcome:
-      "Took a mobile-first platform from concept to a live product in users\u2019 hands",
-    tech: "React Native/Expo, Postgres, Redis, Claude Code",
-    builtByMe: true,
-  },
+export const pastRoles: WorkEntry[] = [
   {
     company: "Capital One",
     context: "Senior Director of Product, payments & tokenization",
@@ -226,29 +215,6 @@ export const selectedWork: WorkEntry[] = [
       "Industry-leading transparency with zero drop-off in applicant conversion",
   },
   {
-    company: "Tigeraire",
-    context: "President & COO, hardware/software IoT startup",
-    challenge: "Automate customer and partner email management for a lean team",
-    whatIDid:
-      "Conceived, designed, and built a production AI application entirely hands-on — Gmail integration, automated categorization, Claude API-powered reply drafting with a continuous human feedback loop, activity dashboard and archive",
-    outcome:
-      "Fully deployed production app running in-house; eliminated manual email triage",
-    tech: "Claude API, vibe coding tools (Cursor, Replit, Windsurf)",
-    builtByMe: true,
-  },
-  {
-    company: "Tigeraire",
-    context: "President & COO, hardware/software IoT startup",
-    challenge:
-      "Overhaul online presence to reposition the company for both B2B lead gen and direct-to-consumer sales",
-    whatIDid:
-      "Conceived, designed, and built a production site optimized for web and mobile, entirely hands-on — integration with Shopify, a regional 3PL, Amazon Seller Central, HubSpot CRM, Intuit QuickBooks, Google Analytics, GSuite, and GitHub",
-    outcome:
-      "Fully deployed production ecommerce presence running on Shopify and Amazon; eliminated manual fulfillment; automated customer service operations",
-    tech: "Vibe coding tools (Cursor, ChatGPT, Grok)",
-    builtByMe: true,
-  },
-  {
     company: "CarMax",
     context: "Group Product Leader",
     challenge:
@@ -260,120 +226,116 @@ export const selectedWork: WorkEntry[] = [
   },
 ];
 
-export interface CurrentBuild {
+export type ProjectStatus =
+  | "Open beta"
+  | "Closed beta"
+  | "In production"
+  | "On the App Store"
+  | "Closed beta \u00b7 client build"
+  | "Prototype"
+  | "Open source";
+
+export interface Project {
   name: string;
-  description: string;
-  status:
-    | "Live"
-    | "On the App Store"
-    | "In development"
-    | "Internal alpha"
-    | "External beta"
-    | "Alpha testing"
-    | "Beta testing";
-  builtWith: string;
+  featured: boolean;
+  status: ProjectStatus;
+  /** One line. */
+  story: string;
+  /** Featured projects only. */
+  stack?: string;
   link?: { label: string; href: string };
+  screenshot?: { src: string; alt: string; frame: "phone" | "browser"; width: number; height: number };
+  /** Case-study path; unused until the pages exist (#55). */
+  caseStudy?: string;
 }
 
-export const currentBuilds: CurrentBuild[] = [
-  {
-    name: "WTFork",
-    description:
-      "A family meal-planning iOS app. Weekly plans, recipes and a grocery list that learn what your household actually eats, so \u2018what\u2019s for dinner?\u2019 stops being a nightly negotiation.",
-    status: "External beta",
-    builtWith: "Swift and Claude Code",
-  },
+export const projects: Project[] = [
   {
     name: "GymTime",
-    description:
-      "A strength-training iOS app for people who came to lift, not to post. Big numbers, a quiet rest timer, a lock-screen Live Activity, and no feed whatsoever.",
-    status: "External beta",
-    builtWith: "SwiftUI and Claude Code, from a Claude Design handoff",
+    featured: true,
+    status: "Open beta",
+    story:
+      "Strength training for people who want to track their progress without taking notes: recommended routines, simple steps, easy-to-read numbers & rest timers.",
+    stack: "SwiftUI",
+    screenshot: {
+      src: "/work/gymtime.jpg",
+      alt: "GymTime\u2019s New workout screen, choosing a training goal",
+      frame: "phone",
+      width: 359,
+      height: 782,
+    },
+  },
+  {
+    name: "HeadPro",
+    featured: true,
+    status: "Closed beta",
+    story:
+      "Sports pools with live schedules, scores, & standings that keep up when everyone hits refresh on a Sunday afternoon.",
+    stack: "React Native \u00b7 Expo \u00b7 Postgres \u00b7 Redis",
+    screenshot: {
+      src: "/work/headpro.jpg",
+      alt: "HeadPro\u2019s sign-in screen",
+      frame: "phone",
+      width: 359,
+      height: 782,
+    },
+  },
+  {
+    name: "AI-powered email support ops",
+    featured: true,
+    status: "In production",
+    story:
+      "Reads a shared support inbox, triages and categorizes email, retrieves context, learns your style, and drafts the reply, then a person reviews it and hits send.",
+    stack: "Python \u00b7 Flask \u00b7 Claude API \u00b7 Gmail API",
+    screenshot: {
+      src: "/work/tigeraire-triage.jpg",
+      alt: "The email support tool built for Tigeraire, reviewing a warranty email with completed action items and a drafted reply",
+      frame: "browser",
+      width: 1520,
+      height: 1760,
+    },
   },
   {
     name: "Wordella",
-    description:
-      "A freemium word game where young kids build spelling and reading skills in an enchanted forest. Built with a design collaborator. Now on the App Store, after surviving Apple\u2019s Kids Category review, which turns out to be its own kind of test.",
+    featured: false,
     status: "On the App Store",
-    builtWith: "React Native/Expo and Claude Code",
-    link: { label: "View on the App Store", href: "https://apps.apple.com/us/app/wordella/id6760268398" },
-  },
-];
-
-export interface GitHubRepo {
-  name: string;
-  slug: string;
-  description: string;
-  language: string;
-  isPublic: boolean;
-}
-
-export const githubRepos: GitHubRepo[] = [
-  {
-    name: "Proof",
-    slug: "proof-claude-plugin",
-    description:
-      "Open-source Claude Code harness for solo builders \u2014 spec \u2192 build \u2192 review \u2192 ship, with AI reviewers on every PR and a running record of why things were built the way they were",
-    language: "Shell",
-    isPublic: true,
-  },
-  {
-    name: "GymTime",
-    slug: "GymTime",
-    description:
-      "Strength-training iOS app \u2014 big numbers, quiet timer, no feed, and a lock-screen Live Activity for the active workout",
-    language: "Swift",
-    isPublic: true,
+    story:
+      "A word game for young kids that made it through App Store review for children\u2019s apps, which is its own small boss level.",
+    link: {
+      label: "View on the App Store",
+      href: "https://apps.apple.com/us/app/wordella/id6760268398",
+    },
   },
   {
     name: "WTFork",
-    slug: "wtfork",
-    description:
-      "AI-powered family meal planning app \u2014 weekly plans, recipes, and grocery lists that learn what your household actually eats",
-    language: "Swift",
-    isPublic: false,
+    featured: false,
+    status: "Closed beta \u00b7 client build",
+    story: "Family meal planning that learns what your house will actually eat.",
   },
   {
-    name: "Email triage agent",
-    slug: "email-triage",
-    description: "AI-powered email triage agent for a shared Gmail inbox — ingests, classifies, summarizes, and drafts AI-generated replies that learn over time",
-    language: "TypeScript",
-    isPublic: true,
-  },
-  {
-    name: "Wordella",
-    slug: "wordella",
-    description: "Early literacy spelling and reading game for young children \u2014 now live on the App Store",
-    language: "React Native",
-    isPublic: false,
-  },
-  {
-    name: "Latin Lives",
-    slug: "latin-lives",
-    description: "Gamified Latin language learning app with teacher dashboard and lesson capture",
-    language: "Swift",
-    isPublic: false,
+    name: "Tigeraire ecommerce",
+    featured: false,
+    status: "In production",
+    story:
+      "A storefront rebuilt for business leads and direct sales, wired to Shopify, Amazon and fulfillment.",
   },
   {
     name: "Awaire",
-    slug: "awaire",
-    description: "Mobile & web app for construction worker safety — workforce heat stress monitoring, predictive alerts, and regulatory compliance",
-    language: "TypeScript",
-    isPublic: false,
+    featured: false,
+    status: "Prototype",
+    story:
+      "Heat-stress monitoring and alerts that keep construction crews safe on hot job sites.",
   },
   {
-    name: "Samitt.co",
-    slug: "samitt-com",
-    description: "This site — personal website built with Next.js and Tailwind",
-    language: "TypeScript",
-    isPublic: true,
-  },
-  {
-    name: "Heat relief & hydration calculator",
-    slug: "heat-relief-and-hydration-calculator",
-    description: "Web calculator for work schedule and hydration break recommendations",
-    language: "JavaScript",
-    isPublic: true,
+    name: "Proof harness",
+    featured: false,
+    status: "Open source",
+    story:
+      "The open-source harness we build every project with: spec, build, review, ship.",
+    link: {
+      label: "View on GitHub",
+      href: "https://github.com/jsamitt/proof-claude-plugin",
+    },
   },
 ];
 
