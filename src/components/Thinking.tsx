@@ -8,9 +8,9 @@ export function Thinking() {
       <div className="max-w-[1200px] mx-auto px-5 lg:px-8 py-24">
         <FadeIn>
           <div className="mb-12 flex flex-wrap items-end justify-between gap-x-12 gap-y-4">
-            <SectionHeading number="05" title="Thinking" className="" />
+            <SectionHeading title="From the studio" className="" />
             <p className="max-w-[420px] text-ink-muted">
-              Occasional writing on product, AI, and building.
+              Occasional writing on product, AI, and how we build.
             </p>
           </div>
         </FadeIn>
