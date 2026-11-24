@@ -9,7 +9,7 @@ import { socialLinks } from "@/lib/data";
 
 const title = "About — Proof Software";
 const description =
-  "Proof Software is a product-first software studio in Richmond, Virginia, led by Jeff Samitt, with design and technology partners on every engagement.";
+  "Proof Software is a product-first software studio in Richmond, Virginia. We help founders and teams decide what’s worth building, prove it with real users, and ship it.";
 
 export const metadata: Metadata = {
   title,
