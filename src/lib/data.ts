@@ -139,7 +139,7 @@ export const processSteps: ProcessStep[] = [
   {
     title: "Build & ship",
     description:
-      "AI tools make us fast. Every change is specced, reviewed and logged in Proof, our open-source build harness, then released and measured in small steps.",
+      "AI tools make us fast. Every change is specced, reviewed and logged in Proof, our open-source agentic product-development workflow, then released and measured in small steps.",
     link: { text: "Proof", href: "https://github.com/jsamitt/proof-claude-plugin" },
   },
 ];
@@ -178,7 +178,7 @@ export const shippedFacts: Outcome[] = [
   },
   {
     figure: "Open source",
-    caption: "Proof, the build harness we use on every project",
+    caption: "Proof, the agentic product-development workflow we use on every project",
   },
 ];
 
@@ -306,11 +306,11 @@ export const projects: Project[] = [
     },
   },
   {
-    name: "Proof harness",
+    name: "Proof workflow",
     featured: false,
     status: "Open source",
     story:
-      "The open-source harness we build every project with: spec, build, review, ship.",
+      "The open-source agentic product-development harness we build every project with: spec, build, review, ship.",
     link: {
       label: "View on GitHub",
       href: "https://github.com/jsamitt/proof-claude-plugin",
