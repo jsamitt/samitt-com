@@ -1,13 +1,10 @@
 export function SectionHeading({
-  number,
   title,
   subtitle,
   tone = "light",
   size = "md",
   className = "mb-12",
 }: {
-  /** The homepage's numbered disc; leave out on pages outside that run. */
-  number?: string;
   title: string;
   subtitle?: string;
   /** "dark" for sections on the ink background */
@@ -24,15 +21,7 @@ export function SectionHeading({
 
   return (
     <div className={className}>
-      {number && (
-        <p
-          aria-hidden="true"
-          className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-accent text-ink font-display font-extrabold text-lg"
-        >
-          {number}
-        </p>
-      )}
-      <h2 className={`${number ? "mt-4 " : ""}[overflow-wrap:anywhere] font-display font-extrabold ${titleSize} ${titleColor}`}>
+      <h2 className={`[overflow-wrap:anywhere] font-display font-extrabold ${titleSize} ${titleColor}`}>
         {title}
       </h2>
       {subtitle && (

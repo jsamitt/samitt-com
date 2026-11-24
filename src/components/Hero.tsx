@@ -8,18 +8,6 @@ export function Hero() {
       <div className="flex flex-wrap items-center gap-14">
         <div className="flex-[3_1_560px] min-w-0">
           <FadeIn>
-            <div className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <p className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-surface text-[15px] font-semibold">
-                <span aria-hidden="true" className="w-2 h-2 rounded-full bg-positive" />
-                Taking on new projects
-              </p>
-              <p className="text-sm font-semibold tracking-[0.12em] uppercase text-ink-muted">
-                Product-first software studio
-              </p>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={100}>
             <h1 className="max-w-[800px] font-display font-extrabold text-[clamp(46px,6.2vw,88px)] leading-[1.02] tracking-[-0.03em]">
               We build software that solves{" "}
               <span className="bg-accent rounded-[14px] px-3 [box-decoration-break:clone]">
@@ -63,11 +51,14 @@ export function Hero() {
       </div>
 
       <FadeIn delay={150}>
+        <h2 className="mt-[88px] mb-5 text-sm font-semibold tracking-[0.12em] uppercase text-ink-muted">
+          Proof, in action
+        </h2>
         {/* Word figures at 52px: "production" alone is ~270px, so columns
             need ~310px (text 278px after the gutter) before a third one fits, and min() keeps one column on
             phones. Below ~370px wide even one column is too narrow for it at
             52px, so the figure eases down (to ~45px at 320px). */}
-        <div className="mt-[88px] grid grid-cols-[repeat(auto-fit,minmax(min(310px,100%),1fr))] border-t-2 border-ink">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(310px,100%),1fr))] border-t-2 border-ink">
           {shippedFacts.map((fact) => (
             <div key={fact.figure} className="pt-7 pr-8">
               <p className="font-display font-extrabold text-[clamp(40px,14vw,52px)] leading-none tracking-[-0.03em]">

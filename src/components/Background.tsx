@@ -8,7 +8,7 @@ export function Background() {
       <div className="max-w-[1200px] mx-auto px-5 lg:px-8 py-24 flex flex-wrap gap-12">
         <div className="flex-[1_1_240px]">
           <FadeIn>
-            <SectionHeading number="06" title="Background" className="mb-6" />
+            <SectionHeading title="Background" className="mb-6" />
             <a
               href={socialLinks.linkedin}
               target="_blank"
