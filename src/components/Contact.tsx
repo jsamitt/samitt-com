@@ -66,14 +66,13 @@ export function Contact() {
       <div className="max-w-[1200px] mx-auto px-5 lg:px-8 py-[104px] flex flex-wrap gap-14">
         <FadeIn className="flex-[1_1_380px] min-w-0">
           <SectionHeading
-            number="05"
             title="Tell us what you’re building"
             tone="dark"
             size="lg"
             className="mb-5"
           />
           <p className="mb-9 max-w-[440px] text-lg leading-relaxed text-on-dark-muted">
-            A few lines is plenty. We’ll reply quickly.
+            We’ll reply quickly.
           </p>
 
           <a

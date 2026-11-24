@@ -11,7 +11,6 @@ export function Offerings() {
       <div className="max-w-[1200px] mx-auto px-5 lg:px-8 pt-24 pb-28">
         <FadeIn>
           <SectionHeading
-            number="03"
             title="Ways to work with us"
             subtitle="Most teams start with a sprint. Some never need more than that, which is fine by us."
             className="mb-14"
@@ -30,8 +29,9 @@ export function Offerings() {
 
         <FadeIn>
           <p className="mt-8 max-w-3xl text-ink-muted leading-relaxed">
-            We work on a fixed fee, a monthly retainer, or a fee tied to
-            outcomes we agree up front and paid over time.
+            Payment options that work for your business: fixed fee, time &amp;
+            expense, monthly retainer, or a fee tied to outcomes we agree upon
+            up front.
           </p>
         </FadeIn>
 

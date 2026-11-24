@@ -13,9 +13,8 @@ export function Work() {
       <div className="max-w-[1200px] mx-auto px-5 lg:px-8 pt-24 pb-28">
         <FadeIn>
           <SectionHeading
-            number="04"
             title="Proof, shipped"
-            subtitle="Our own products, built the same way we’d build yours."
+            subtitle="Recent projects, built the same way we’d build yours."
             className="mb-14"
           />
         </FadeIn>

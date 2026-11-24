@@ -99,11 +99,11 @@ export interface ThesisPoint {
 export const thesisPoints: ThesisPoint[] = [
   {
     title: "Code got cheap",
-    body: "AI tools turn a prompt into a working app in an afternoon. That\u2019s great, right up until it ships to people who didn\u2019t need it.",
+    body: "AI tools turn a prompt into a working app in an afternoon. That\u2019s great, right up until it ships and misses the mark. Because sometimes you only get one chance with your users.",
   },
   {
-    title: "Judgment didn\u2019t",
-    body: "Knowing who it\u2019s for, what to leave out and when it\u2019s ready still takes people who\u2019ve shipped products for a living.",
+    title: "Judgment is still key",
+    body: "Knowing the user, the problems they need solved, and appreciating the gap between MVP and MLP (minimum lovable product) still takes experienced product builders.",
   },
   {
     title: "So we lead with product",
@@ -118,24 +118,29 @@ export interface ProcessStep {
   link?: { text: string; href: string };
 }
 
+// The same five stages, in the same order, as the hero's loop (ProofLoop).
 export const processSteps: ProcessStep[] = [
   {
-    title: "Listen",
+    title: "Users",
     description: "We start with the people who\u2019ll use it, not the feature list.",
   },
   {
-    title: "Prove it",
+    title: "Problems",
+    description: "We find the problems worth solving, and the ones worth leaving alone.",
+  },
+  {
+    title: "Hypotheses",
+    description: "Each problem becomes a bet we can test: who it\u2019s for, what should change, and how we\u2019ll know.",
+  },
+  {
+    title: "Proof",
     description: "A prototype in real hands tells us what\u2019s worth building.",
   },
   {
-    title: "Build",
+    title: "Build & ship",
     description:
-      "AI tools make us fast. Every change is specced, reviewed and logged in Proof, our open-source build harness.",
+      "AI tools make us fast. Every change is specced, reviewed and logged in Proof, our open-source build harness, then released and measured in small steps.",
     link: { text: "Proof", href: "https://github.com/jsamitt/proof-claude-plugin" },
-  },
-  {
-    title: "Ship",
-    description: "Released, measured and improved in small steps.",
   },
 ];
 
@@ -164,7 +169,7 @@ export const outcomes: Outcome[] = [
 
 export const shippedFacts: Outcome[] = [
   {
-    figure: "On the App Store",
+    figure: "App Store",
     caption: "Apple Developer, with apps published and live",
   },
   {
@@ -269,11 +274,11 @@ export const projects: Project[] = [
   },
   {
     // The client's product name stays off the site, and so does the company.
-    name: "NFL Pool Management",
+    name: "Sports Pool Platform",
     featured: true,
     status: "Closed beta",
     story:
-      "Sports pools with live schedules, scores, & standings that keep up when everyone hits refresh on a Sunday afternoon. System includes commissioner/player registration, pool setup, invite management, payment tracking, picks & reminders, scoring & standings, and payouts.",
+      "NFL Pool Management for iOS, Android, and web with live schedules, scores, & standings that keep up when everyone hits refresh on a Sunday afternoon. System includes commissioner/player registration, pool setup, invite management, payment tracking, picks & reminders, scoring & standings, and payouts.",
     why: "Our client saw a market opportunity. Whereas other companies charge a % of the pot and compete against their own league commissioners, with their service you pay a flat fee and you\u2019re always in control of your pools and your customer list.",
     stack: "React Native \u00b7 Expo \u00b7 Postgres \u00b7 Redis",
     screenshot: {
@@ -285,11 +290,11 @@ export const projects: Project[] = [
     },
   },
   {
-    name: "GymTime",
+    name: "Strength Training Partner",
     featured: true,
     status: "Open beta",
     story:
-      "Strength training for people who want to track their progress without taking notes: recommended routines, simple steps, easy-to-read numbers & rest timers. GymTime is fee-free and ad-free.",
+      "GymTime is an iOS app for people who want to track their progress without taking notes: recommended routines, simple steps, easy-to-read numbers & rest timers. GymTime is fee-free and ad-free.",
     why: "To demonstrate an app proof-of-concept that utilizes AI to monitor usage activity, triage problems, resolve bugs & address user feedback.",
     stack: "SwiftUI",
     screenshot: {

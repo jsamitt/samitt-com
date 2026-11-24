@@ -108,17 +108,23 @@ export function Nav() {
           compact ? "h-[72px]" : "h-[92px]"
         }`}
       >
-        <Link href="/#hero" className="inline-flex items-center min-h-11 shrink-0">
-          <Image
-            src="/brand/proof-wordmark-ink.svg"
-            alt="Proof Software home"
-            width={96}
-            height={32}
-            unoptimized
-            loading="eager"
-            className="block h-8 w-auto"
-          />
-        </Link>
+        {/* The tagline sits outside the link, so the link's name stays "Proof Software home". */}
+        <div className="flex min-w-0 flex-col items-start">
+          <Link href="/#hero" className="inline-flex items-center min-h-11 shrink-0">
+            <Image
+              src="/brand/proof-wordmark-ink.svg"
+              alt="Proof Software home"
+              width={96}
+              height={32}
+              unoptimized
+              loading="eager"
+              className="block h-8 w-auto"
+            />
+          </Link>
+          <p className="-mt-1 text-[11px] font-semibold leading-tight tracking-[0.1em] uppercase text-ink-muted [overflow-wrap:anywhere]">
+            Product-first software studio
+          </p>
+        </div>
 
         {/* Desktop nav */}
         <nav
@@ -192,7 +198,7 @@ export function Nav() {
               {link.label}
             </a>
           ))}
-          <div className="mt-auto pt-8 flex flex-col gap-4">
+          <div className="mt-auto pt-8">
             <a
               href={CONTACT_HREF}
               onClick={() => {
@@ -203,13 +209,6 @@ export function Nav() {
             >
               Start a project
             </a>
-            <p className="flex items-center justify-center gap-2.5 text-[15px] font-semibold text-ink">
-              <span
-                aria-hidden="true"
-                className="w-2 h-2 rounded-full bg-positive"
-              />
-              Taking on new projects
-            </p>
           </div>
         </nav>
       )}
